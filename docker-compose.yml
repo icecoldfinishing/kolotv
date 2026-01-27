@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  oracle-xe:
+    build: .
+    container_name: oracle-xe
+    ports:
+      - "1521:1521"   # port JDBC
+      - "8088:8080"   # port HTTP / APEX
+    environment:
+      ORACLE_PASSWORD: kolo0107
+    volumes:
+      - ./dumps:/dumps   # monte ton dossier dumps local dans le container
+    restart: unless-stopped

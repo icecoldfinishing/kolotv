@@ -1,0 +1,639 @@
+
+Connected to: Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+
+Export file created by EXPORT:V11.02.00 via conventional path
+
+Warning: the objects were exported by KOLOTV, not by you
+
+import done in AL32UTF8 character set and AL16UTF16 NCHAR character set
+export client uses US7ASCII character set (possible charset conversion)
+. importing KOLOTV's objects into KOLO0107
+. . importing table                         "ACTE"       2012 rows imported
+. . importing table                  "ACTEDETAILS"          0 rows imported
+. . importing table                   "ACTIONROLE"          0 rows imported
+. . importing table                       "AGENCE"          4 rows imported
+. . importing table                "ANCIEN_CAISSE"         10 rows imported
+. . importing table        "ANNULATIONUTILISATEUR"          6 rows imported
+. . importing table                 "ANOMALIEORDO"       6833 rows imported
+. . importing table                  "ARTICLEPRIX"       3104 rows imported
+. . importing table             "AS_BONDECOMMANDE"          0 rows imported
+. . importing table       "AS_BONDECOMMANDE_FILLE"          0 rows imported
+. . importing table            "AS_BONDELIVRAISON"          0 rows imported
+. . importing table     "AS_BONDELIVRAISON_CLIENT"          0 rows imported
+. . importing table "AS_BONDELIVRAISON_CLIENT_FILLE"          0 rows imported
+. . importing table      "AS_BONDELIVRAISON_FILLE"          0 rows imported
+. . importing table               "AS_INGREDIENTS"        404 rows imported
+. . importing table                   "AS_RECETTE"          0 rows imported
+. . importing table              "AS_RECETTE_BACK"         12 rows imported
+. . importing table                     "AS_UNITE"         10 rows imported
+. . importing table             "ATTACHER_FICHIER"         43 rows imported
+. . importing table                      "AVOIRFC"          5 rows imported
+. . importing table                 "AVOIRFCFILLE"          6 rows imported
+. . importing table                 "BILANSECTION"          2 rows imported
+. . importing table         "BILAN_SECTION_COMPTE"          1 rows imported
+. . importing table                  "BONCOMMANDE"          1 rows imported
+. . importing table         "BONDECOMMANDE_CLIENT"          6 rows imported
+. . importing table   "BONDECOMMANDE_CLIENT_FILLE"          7 rows imported
+. . importing table                       "CAISSE"         12 rows imported
+. . importing table                       "CARTON"          0 rows imported
+. . importing table                  "CARTONFILLE"          0 rows imported
+. . importing table                    "CATEGORIE"          3 rows imported
+. . importing table             "CATEGORIEAVOIRFC"          0 rows imported
+. . importing table              "CATEGORIECAISSE"          8 rows imported
+. . importing table               "CATEGORIEHEURE"          2 rows imported
+. . importing table          "CATEGORIEINGREDIENT"         17 rows imported
+. . importing table             "CATEGORIE_CENTRE"          0 rows imported
+. . importing table                       "CENTRE"          0 rows imported
+. . importing table                      "CHECKIN"          0 rows imported
+. . importing table                     "CHECKOUT"          0 rows imported
+. . importing table                       "CHEQUE"          0 rows imported
+. . importing table                "CLASSEETFICHE"          6 rows imported
+. . importing table                       "CLIENT"        560 rows imported
+. . importing table           "CLOTURE_MOIS_ANNEE"         13 rows imported
+. . importing table                   "CNAPS_USER"         21 rows imported
+. . importing table         "COMPTA_CLASSE_COMPTE"          8 rows imported
+. . importing table                "COMPTA_COMPTE"        214 rows imported
+. . importing table              "COMPTA_ECRITURE"        249 rows imported
+. . importing table              "COMPTA_EXERCICE"          4 rows imported
+. . importing table               "COMPTA_JOURNAL"         13 rows imported
+. . importing table              "COMPTA_LETTRAGE"          1 rows imported
+. . importing table               "COMPTA_ORIGINE"         15 rows imported
+. . importing table         "COMPTA_SOUS_ECRITURE"        486 rows imported
+. . importing table           "COMPTA_TYPE_COMPTE"          4 rows imported
+. . importing table              "CONDITIONNEMENT"        271 rows imported
+. . importing table                "CONFIGURATION"          1 rows imported
+. . importing table            "CONFIGURATIONPRIX"          2 rows imported
+. . importing table                      "DEPENSE"          0 rows imported
+. . importing table             "DETAILSBONCAISSE"          0 rows imported
+. . importing table                       "DEVISE"          3 rows imported
+. . importing table                    "DIRECTION"          1 rows imported
+. . importing table                 "DUREEMAXSPOT"          0 rows imported
+. . importing table                     "EMISSION"        124 rows imported
+. . importing table              "EMISSIONDETAILS"        761 rows imported
+. . importing table                 "ENCAISSEMENT"          4 rows imported
+. . importing table         "ENCAISSEMENT_DETAILS"          0 rows imported
+. . importing table                  "EQUIVALENCE"          0 rows imported
+. . importing table                    "ETATSTOCK"          0 rows imported
+. . importing table                  "FABRICATION"          0 rows imported
+. . importing table             "FABRICATIONFILLE"          0 rows imported
+. . importing table                "FACTURECLIENT"          0 rows imported
+. . importing table         "FACTURECLIENTDETAILS"          0 rows imported
+. . importing table           "FACTUREFOURNISSEUR"          1 rows imported
+. . importing table      "FACTUREFOURNISSEURFILLE"          1 rows imported
+. . importing table                  "FOURNISSEUR"          2 rows imported
+. . importing table                  "HISTOINSERT"       3414 rows imported
+. . importing table                   "HISTORIQUE"     339623 rows imported
+. . importing table              "HISTORIQUEPUING"         10 rows imported
+. . importing table              "HISTORIQUEPVING"          7 rows imported
+. . importing table           "HISTORIQUE_PRODUIT"         22 rows imported
+. . importing table              "INDISPONIBILITE"          0 rows imported
+. . importing table                   "INVENTAIRE"         70 rows imported
+. . importing table              "INVENTAIREFILLE"         48 rows imported
+. . importing table                        "JAUGE"          0 rows imported
+. . importing table                         "JOUR"          7 rows imported
+. . importing table                  "LIAISONBCBL"          0 rows imported
+. . importing table                  "LIAISONBCFC"          0 rows imported
+. . importing table                    "LIVRAISON"          0 rows imported
+. . importing table                "LOG_DIRECTION"          9 rows imported
+. . importing table                "LOG_PERSONNEL"       2580 rows imported
+. . importing table                  "LOG_SERVICE"        160 rows imported
+. . importing table                     "MAGASIN2"          2 rows imported
+. . importing table                        "MEDIA"          4 rows imported
+. . importing table                "MENUDYNAMIQUE"        328 rows imported
+. . importing table                      "MESSAGE"         34 rows imported
+. . importing table                 "MODEPAIEMENT"          3 rows imported
+. . importing table                   "MODEREMISE"          2 rows imported
+. . importing table                 "MOTIFAVOIRFC"          0 rows imported
+. . importing table              "MOUVEMENTCAISSE"         24 rows imported
+. . importing table           "MVTCAISSEPREVISION"          0 rows imported
+. . importing table                     "MVTSTOCK"          0 rows imported
+. . importing table                "MVTSTOCKFILLE"          0 rows imported
+. . importing table            "MVTSTOCKFILLEBACK"        137 rows imported
+. . importing table                     "MY_TABLE"       1844 rows imported
+. . importing table                 "NOTIFICATION"        513 rows imported
+. . importing table                         "OFAB"          0 rows imported
+. . importing table                      "OFFILLE"          0 rows imported
+. . importing table             "ORDONNERPAIEMENT"          0 rows imported
+. . importing table       "ORDONNERPAIEMENTDETAIL"          0 rows imported
+. . importing table               "ORDREDIFFUSION"          3 rows imported
+. . importing table                  "PAIEMENTBON"          0 rows imported
+. . importing table                   "PAIEMENTFF"          0 rows imported
+. . importing table                   "PARAMCRYPT"         21 rows imported
+. . importing table           "PARRAINAGEEMISSION"         36 rows imported
+. . importing table    "PARRAINAGEEMISSIONDETAILS"         40 rows imported
+. . importing table          "PARTICIPANTEMISSION"          0 rows imported
+. . importing table                    "PERSONNEL"          2 rows imported
+. . importing table            "PERTEGAINIMPREVUE"          5 rows imported
+. . importing table                        "PLAGE"         28 rows imported
+. . importing table                      "PLATEAU"          1 rows imported
+. . importing table                        "POINT"          7 rows imported
+. . importing table                        "POMPE"          0 rows imported
+. . importing table "PRECISION_DETAIL_ENCAISSEMENT"          0 rows imported
+. . importing table                  "PRELEVEMENT"          0 rows imported
+. . importing table         "PRELEVEMENT_ENCAISSE"          0 rows imported
+. . importing table                    "PREVISION"        244 rows imported
+. . importing table                      "PROCESS"         17 rows imported
+. . importing table                      "PRODUIT"         15 rows imported
+. . importing table                     "PROFORMA"         18 rows imported
+. . importing table             "PROFORMA_DETAILS"         27 rows imported
+. . importing table             "RAP_OPERATIONNEL"       1601 rows imported
+. . importing table                 "REPORTCAISSE"          9 rows imported
+. . importing table            "REQUETE_A_ENVOYER"       6728 rows imported
+. . importing table     "REQUETE_A_ENVOYER_GROUPE"          5 rows imported
+. . importing table              "REQUETE_EXECUTE"         68 rows imported
+. . importing table                  "RESERVATION"        954 rows imported
+. . importing table           "RESERVATIONDETAILS"      69273 rows imported
+. . importing table                        "ROLES"          6 rows imported
+. . importing table             "SERVER_BROADCAST"          1 rows imported
+. . importing table                        "SEUIL"          0 rows imported
+. . importing table                       "SOURCE"          0 rows imported
+. . importing table                "SOUSCATEGORIE"        125 rows imported
+. . importing table                      "SUPPORT"         16 rows imported
+. . importing table                 "TAUXDECHANGE"         20 rows imported
+. . importing table               "TRANSFERTSTOCK"          0 rows imported
+. . importing table        "TRANSFERTSTOCKDETAILS"          0 rows imported
+. . importing table                   "TYPECAISSE"          4 rows imported
+. . importing table      "TYPECATEGORIEINGREDIENT"          3 rows imported
+. . importing table                 "TYPEEMISSION"         14 rows imported
+. . importing table                "TYPEGAINPERTE"          5 rows imported
+. . importing table                  "TYPEMAGASIN"          4 rows imported
+. . importing table                    "TYPEMEDIA"          2 rows imported
+. . importing table                 "TYPEMVTSTOCK"          2 rows imported
+. . importing table                  "TYPE_CENTRE"          0 rows imported
+. . importing table            "TYPE_ENCAISSEMENT"          2 rows imported
+. . importing table                 "TYPE_FACTURE"          0 rows imported
+. . importing table                 "TYPE_PRODUIT"          6 rows imported
+. . importing table                        "UNITE"          5 rows imported
+. . importing table                 "USERHOMEPAGE"          0 rows imported
+. . importing table                     "USERMENU"         73 rows imported
+. . importing table                  "UTILISATEUR"         17 rows imported
+. . importing table                        "VENTE"         33 rows imported
+. . importing table              "VENTELUBRIFIANT"          0 rows imported
+. . importing table                "VENTE_DETAILS"         51 rows imported
+. . importing table          "VENTE_DETAILSTALOHA"          0 rows imported
+. . importing table              "VERSEMENTCHEQUE"          0 rows imported
+. . importing table       "VERSEMENTCHEQUEDETAILS"          0 rows imported
+. . importing table          "VIREMENTINTRACAISSE"          5 rows imported
+. . importing table                   "VISAOBJECT"          0 rows imported
+. . importing table       "V_ETATCAISSE_DEVISE_AR"          7 rows imported
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."ENCAISSEMENT_DETAILS_LIB"                    "
+ "    ("ID","IDENCAISSEMENT","IDCATEGORIECAISSE","IDCATEGORIECAISSELIB","MONT"
+ "ANT","REMARQUE") AS "
+ "SELECT "
+ "ed.ID ,"
+ "ed.IDENCAISSEMENT ,"
+ "ed.IDCATEGORIECAISSE ,"
+ "c.VAL AS IDCATEGORIECAISSELIB,"
+ "ed.MONTANT ,"
+ "ed.REMARQUE "
+ "FROM ENCAISSEMENT_DETAILS ed "
+ "LEFT JOIN CATEGORIECAISSE c ON c.ID = ed.IDCATEGORIECAISSE  "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."UNITES_TRAIT"                        ("ID","V"
+ "AL","DESCE") AS "
+ "select ''  as id,"
+ "       '-' as val,"
+ "       '-' as desce"
+ "from DUAL"
+ "union"
+ "select su."ID", su."VAL", su."DESCE""
+ "from ST_UNITE su"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."ENCAISSEMENT_BON"                        ("ID"
+ "ENCAISSEMENT","MONTANTCATEGORIE") AS "
+ "SELECT "
+ "ed.IDENCAISSEMENT ,"
+ "sum( nvl(ed.MONTANT,0) ) AS montantcategorie"
+ "FROM ENCAISSEMENT_DETAILS ed"
+ "WHERE ed.IDCATEGORIECAISSE = 'CTC001' "
+ "GROUP BY ed.IDENCAISSEMENT "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."ENCAISSEMENT_CHEQUE"                        ("
+ ""IDENCAISSEMENT","MONTANTCATEGORIE") AS "
+ "SELECT "
+ "ed.IDENCAISSEMENT ,"
+ "sum( nvl(ed.MONTANT,0) ) AS montantcategorie"
+ "FROM ENCAISSEMENT_DETAILS ed"
+ "WHERE ed.IDCATEGORIECAISSE = 'CTC002' "
+ "GROUP BY ed.IDENCAISSEMENT "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."ENCAISSEMENT_MVOLA"                        (""
+ "IDENCAISSEMENT","MONTANTCATEGORIE") AS "
+ "SELECT "
+ "ed.IDENCAISSEMENT ,"
+ "sum( nvl(ed.MONTANT,0) ) AS montantcategorie"
+ "FROM ENCAISSEMENT_DETAILS ed"
+ "WHERE ed.IDCATEGORIECAISSE = 'CTC003' "
+ "GROUP BY ed.IDENCAISSEMENT "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."ENCAISSEMENT_ESPECES"                        "
+ "("IDENCAISSEMENT","MONTANTCATEGORIE") AS "
+ "SELECT "
+ "ed.IDENCAISSEMENT ,"
+ "sum( nvl(ed.MONTANT,0) ) AS montantcategorie"
+ "FROM ENCAISSEMENT_DETAILS ed"
+ "WHERE ed.IDCATEGORIECAISSE = 'CTC003' "
+ "GROUP BY ed.IDENCAISSEMENT "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."ENCAISSEMENT_ORANGEMONEY"                    "
+ "    ("IDENCAISSEMENT","MONTANTCATEGORIE") AS "
+ "SELECT "
+ "ed.IDENCAISSEMENT ,"
+ "sum( nvl(ed.MONTANT,0) ) AS montantcategorie"
+ "FROM ENCAISSEMENT_DETAILS ed"
+ "WHERE ed.IDCATEGORIECAISSE = 'CTC005' "
+ "GROUP BY ed.IDENCAISSEMENT "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."ENCAISSEMENT_FANILO"                        ("
+ ""IDENCAISSEMENT","MONTANTCATEGORIE") AS "
+ "SELECT "
+ "ed.IDENCAISSEMENT ,"
+ "sum( nvl(ed.MONTANT,0) ) AS montantcategorie"
+ "FROM ENCAISSEMENT_DETAILS ed"
+ "WHERE ed.IDCATEGORIECAISSE = 'CTC006' "
+ "GROUP BY ed.IDENCAISSEMENT "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."ENCAISSEMENT_TPE"                        ("ID"
+ "ENCAISSEMENT","MONTANTCATEGORIE") AS "
+ "SELECT "
+ "ed.IDENCAISSEMENT ,"
+ "sum( nvl(ed.MONTANT,0) ) AS montantcategorie"
+ "FROM ENCAISSEMENT_DETAILS ed"
+ "WHERE ed.IDCATEGORIECAISSE = 'CTC007' "
+ "GROUP BY ed.IDENCAISSEMENT "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."ENCAISSEMENT_VISA"                        ("I"
+ "DENCAISSEMENT","MONTANTCATEGORIE") AS "
+ "SELECT "
+ "ed.IDENCAISSEMENT ,"
+ "sum( nvl(ed.MONTANT,0) ) AS montantcategorie"
+ "FROM ENCAISSEMENT_DETAILS ed"
+ "WHERE ed.IDCATEGORIECAISSE = 'CTC008' "
+ "GROUP BY ed.IDENCAISSEMENT "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."ENCAISSEMENT_LIB"                        ("ID"
+ "","DESIGNATION","IDCAISSE","IDCAISSELIB","ETAT","ETATLIB","DATY","IDPOMPIST"
+ "E","IDPOMPISTELIB","IDPOINT","IDPOINTLIB","IDCATEGORIECAISSE","VENTECARBURA"
+ "NT","VENTELUBRIFIANT","DEPENSE","TOTALRECETTE","TOTALENCAISSEMENT","TOTALVE"
+ "RSEMENT","ECART","TOTALESPECE","TOTALORANGEMONEY") AS "
+ "SELECT "
+ "e.ID ,"
+ "e.DESIGNATION ,"
+ "e.IDCAISSE ,"
+ "c.VAL AS IDCAISSELIB,"
+ "e.ETAT ,"
+ "CASE "
+ "	WHEN e.ETAT = 1 "
+ "	THEN 'CREE'"
+ "	WHEN e.ETAT = 11 "
+ "	THEN 'VALIDEE'"
+ "	WHEN e.ETAT = 0 "
+ "	THEN 'ANNULEE'"
+ "END AS ETATLIB, "
+ "e.DATY ,"
+ "c.IDPOMPISTE ,"
+ "p.NOMUSER AS IDPOMPISTELIB,"
+ "c.IDPOINT ,"
+ "p2.VAL AS IDPOINTLIB ,"
+ "c.IDCATEGORIECAISSE ,"
+ "nvl(ev.ventecarburant,0) AS ventecarburant ,"
+ "nvl(vv.ventelubrifiant,0) AS ventelubrifiant ,"
+ "nvl(dv.depense,0) AS depense ,"
+ "nvl(ev.ventecarburant,0) + nvl(vv.ventelubrifiant,0) AS totalrecette ,"
+ "nvl(ev2.totalencaissement,0) AS totalencaissement ,"
+ "nvl(ev2.totalencaissement,0) - nvl(dv.depense,0) AS totalversement ,"
+ "nvl(ev2.totalencaissement,0) - ( nvl(ev.ventecarburant,0) + nvl(vv.ventelub"
+ "rifiant,0) ) AS ecart ,"
+ "nvl(ee.montantcategorie , 0) AS totalEspece,"
+ "nvl(eo.montantcategorie , 0) AS totalOrangeMoney"
+ "FROM ENCAISSEMENT e "
+ "LEFT JOIN CAISSE c ON c.ID = e.IDCAISSE "
+ "LEFT JOIN POMPISTELIB p ON p.REFUSER = c.IDPOMPISTE "
+ "LEFT JOIN encaissementvente ev ON ev.IDENCAISSEMENT = e.ID "
+ "LEFT JOIN ventelubrifiant_validee vv ON vv.IDENCAISSEMENT = e.ID"
+ "LEFT JOIN depense_validee dv ON dv.IDORIGINE = e.ID"
+ "LEFT JOIN encaissement_validee ev2 ON ev2.IDENCAISSEMENT = e.ID"
+ "LEFT JOIN POINT p2 ON p2.ID = c.IDPOINT "
+ "LEFT JOIN ENCAISSEMENT_ESPECES ee ON ee.IDENCAISSEMENT = e.ID"
+ "LEFT JOIN ENCAISSEMENT_ORANGEMONEY eo ON eo.IDENCAISSEMENT = e.ID"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."ENCAISSEMENT_PRECISION_TOTAL"                "
+ "        ("ID","IDENCAISSEMENT","IDCATEGORIECAISSE","MONTANT","REMARQUE","MO"
+ "NTANTTOTALPRECISION") AS "
+ "SELECT "
+ "ed.ID ,"
+ "ed.IDENCAISSEMENT ,"
+ "ed.IDCATEGORIECAISSE ,"
+ "ed.MONTANT ,"
+ "ed.REMARQUE ,"
+ "nvl(pde.montantTotalPrecision,0) AS montantTotalPrecision"
+ "FROM ENCAISSEMENT_DETAILS ed "
+ "LEFT JOIN MONTANTPRECISIONENCAISSEMENT pde ON pde.IDENCAISSEMENT = ed.IDENC"
+ "AISSEMENT AND pde.IDCATEGORIECAISSE = ed.IDCATEGORIECAISSE "
+ "WHERE ed.IDCATEGORIECAISSE != 'CTC004'"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."RESULTATPREVGROUPSEMAINE"                    "
+ "    ("DATY","DEBIT","CREDIT","semaine","annee","mois") AS "
+ "SELECT min(r.daty) AS daty,sum(r.debit) AS debit,sum(r.CREDIT) AS credit,r."
+ ""semaine",r."annee", r."mois" "
+ "FROM RESULTATPREVISIONNELTOUS r GROUP BY r."semaine",r."annee", r."mois""
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."RESULTATPREVGROUPMOIS"                       "
+ " ("DATY","DEBIT","CREDIT","annee","mois") AS "
+ "SELECT min(r.daty) AS daty,sum(r.debit) AS debit,sum(r.CREDIT) AS credit,r."
+ ""annee", r."mois" "
+ "FROM RESULTATPREVISIONNELTOUS r GROUP BY r."annee", r."mois""
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."PLANNINGFACTURE"                        ("ID""
+ ","IDCLIENT","DESIGNATION","DATY","MONTANTTOTAL","MONTANTRESTE","MONTANTPAYE"
+ "","ETATPLANNING","ETATPAIEMENT") AS "
+ "SELECT"
+ "    v.ID,"
+ "    v.IDCLIENT,"
+ "    v.DESIGNATION,"
+ "    v.DATYPREVU AS DATY,"
+ "    v.MONTANTTTC AS MONTANTTOTAL,"
+ "    v.MONTANTRESTE,"
+ "    v.MONTANTPAYE,"
+ "    CASE"
+ "        WHEN v.DATYPREVU < SYSDATE THEN 1"
+ "        ELSE 0"
+ "        END etatPlanning,"
+ "    CASE"
+ "        WHEN v.MONTANTRESTE = 0 THEN 1"
+ "        ELSE 0"
+ "        END etatPaiement"
+ "FROM VENTE_CPL v"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."PLANNINGFACTURELIB"                        (""
+ "ID","IDCLIENT","DESIGNATION","DATY","MONTANTTOTAL","MONTANTRESTE","MONTANTP"
+ "AYE","ETATPLANNING","ETATPAIEMENT","ETATPAIEMENTLIB","IDCLIENTLIB") AS "
+ "SELECT p."ID",p."IDCLIENT",p."DESIGNATION",p."DATY",p."MONTANTTOTAL",p."MON"
+ "TANTRESTE",p."MONTANTPAYE",p."ETATPLANNING",p."ETATPAIEMENT","
+ "       CASE"
+ "           WHEN p.etatPaiement = 1 THEN 'Pay&eacute;'"
+ "           ELSE 'Impay&eacute;'"
+ "           END etatPaiementLib,"
+ "       c.NOM AS idClientLib"
+ "FROM PLANNINGFACTURE p"
+ "         LEFT JOIN CLIENT c ON p.IDCLIENT = c.ID"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."EQUIVALENCE_QTE"                        ("ID""
+ ","IDPRODUIT","IDUNITE","QTE","IDPRODUITLIB","IDUNITELIB") AS "
+ "select "ID","
+ "       "IDPRODUIT","
+ "       "IDUNITE","
+ "       "QTE","
+ "       "IDPRODUITLIB","
+ "       "IDUNITELIB""
+ "from EQUIVALENCE_LIBCOMPLET"
+ "where QTE = 1"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."ENCAISSEMENT_RESUME"                        ("
+ ""ID","IDPOINT","IDPOINTLIB","DATY","VENTECARBURANT","VENTELUBRIFIANT","BON""
+ ","CHEQUE","MVOLA","ESPECES","ORANGEMONEY","FANILO","TPE","VISA","DEPENSE",""
+ "TOTALRECETTE","TOTALENCAISSEMENT","TOTALVERSEMENT") AS "
+ "SELECT "
+ "el.ID ,"
+ "el.IDPOINT,"
+ "el.IDPOINTLIB ,"
+ "el.DATY,"
+ "el.ventecarburant,"
+ "el.ventelubrifiant,"
+ "nvl(eb.montantcategorie,0) AS bon ,"
+ "nvl(ec.montantcategorie,0) AS cheque ,"
+ "nvl(em.montantcategorie,0) AS mvola ,"
+ "nvl(ee.montantcategorie,0) AS especes ,"
+ "nvl(eo.montantcategorie,0) AS orangemoney ,"
+ "nvl(ef.montantcategorie,0) AS fanilo,"
+ "nvl(et.montantcategorie,0) AS tpe ,"
+ "nvl(ev.montantcategorie,0) AS visa ,"
+ "el.depense ,"
+ "el.totalrecette ,"
+ "el.totalencaissement ,"
+ "el.totalversement "
+ "FROM ENCAISSEMENT_LIB el "
+ "LEFT JOIN CATEGORIECAISSE c ON c.ID = el.IDCATEGORIECAISSE "
+ "LEFT JOIN encaissement_bon eb ON eb.IDENCAISSEMENT = el.ID "
+ "LEFT JOIN encaissement_cheque ec ON ec.IDENCAISSEMENT = el.ID"
+ "LEFT JOIN encaissement_mvola em ON em.IDENCAISSEMENT = el.ID"
+ "LEFT JOIN encaissement_especes ee ON ee.IDENCAISSEMENT = el.ID "
+ "LEFT JOIN encaissement_orangemoney eo ON eo.IDENCAISSEMENT = el.ID"
+ "LEFT JOIN encaissement_fanilo ef ON ef.IDENCAISSEMENT = el.ID"
+ "LEFT JOIN encaissement_tpe et ON et.IDENCAISSEMENT = el.ID"
+ "LEFT JOIN encaissement_visa ev ON ev.IDENCAISSEMENT = el.ID"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."VENTE_CARBU_CLIENT"                        (""
+ "IDPRELEVEMENT","IDENCAISSEMENT","IDPOMPISTE","NOMUSER","IDPOMPE","NOMMAGASI"
+ "N","VENTECARBURANT","DATY") AS "
+ "("
+ "SELECT "
+ "pe.IDPRELEVEMENT,"
+ "pe.IDENCAISSEMENT,"
+ "p.IDPOMPISTE,"
+ "p.NOMUSER,"
+ "p.IDPOMPE,"
+ "p.NOMMAGASIN,"
+ "el.VENTECARBURANT,"
+ "el.DATY"
+ "FROM PRELEVEMENT_ENCAISSE pe"
+ "JOIN PRELEVEMENTLIB p ON p.id=pe.IDPRELEVEMENT"
+ "JOIN ENCAISSEMENT_LIB el ON el.ID =pe.IDENCAISSEMENT)"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."VENTEDEP_GRAPH"                        ("IDPR"
+ "ELEVEMENT","IDENCAISSEMENT","IDPOMPISTE","NOMUSER","IDPOMPE","NOMMAGASIN",""
+ "VENTECARBURANT","ENTREE","DATY") AS "
+ "("
+ "SELECT"
+ "pe.IDPRELEVEMENT,"
+ "pe.IDENCAISSEMENT,"
+ "p.IDPOMPISTE,"
+ "p.NOMUSER,"
+ "p.IDPOMPE,"
+ "p.NOMMAGASIN,"
+ "el.VENTECARBURANT,"
+ "el.VENTECARBURANT - el.DEPENSE AS entree,"
+ "el.DATY"
+ "FROM PRELEVEMENT_ENCAISSE pe"
+ "JOIN PRELEVEMENTLIB p ON p.id=pe.IDPRELEVEMENT"
+ "JOIN ENCAISSEMENT_LIB el ON el.ID =pe.IDENCAISSEMENT"
+ ")"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."ST_ARTICLELIB_PU"                        ("ID"
+ "","CODE","DESIGNATION","SEUIL","UNITE","PRESENTATION","TYPE","GROUPEE","SOU"
+ "SGROUPE","CLASSEE","CODEMNEMONIQUE","PUGROS","PUDONATION") AS "
+ "select ar.id,"
+ "       ar.code,"
+ "       ar.designation,"
+ "       ar.seuil,"
+ "       uni.val as unite,"
+ "       ar.presentation,"
+ "       ta.VAL        as type,"
+ "       ga.VAL        as groupee,"
+ "       sga.VAL       as sousgroupe,"
+ "       ar.classee,"
+ "       ar.codemnemonique,"
+ "       ar.PUGROS,"
+ "       ar.PUDONATION"
+ "from ST_ARTICLE ar"
+ "         left join ST_TYPE_ARTICLE ta on ta.id = ar.TYPE"
+ "         left join ST_GROUPE_ARTICLE ga on ga.id = ar.GROUPEE"
+ "         left join ST_SOUSGROUPE_ARTICLE sga on sga.id = ar.SOUSGROUPE"
+ "         left join st_unite uni on ar.UNITE = uni.ID"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."ST_ARTICLE_EQUIVALENCE"                      "
+ "  ("ID","CODE","DESIGNATION","SEUIL","UNITE","PRESENTATION","TYPE","GROUPEE"
+ "","SOUSGROUPE","CLASSEE","CODEMNEMONIQUE","PUGROS","PUDONATION","UNITEEQUIV"
+ "ALENCE","QTEEQUIVALENCE") AS "
+ "SELECT sa."ID","
+ "       sa."CODE","
+ "       sa."DESIGNATION","
+ "       sa."SEUIL","
+ "       sa."UNITE","
+ "       sa."PRESENTATION","
+ "       sa."TYPE","
+ "       sa."GROUPEE","
+ "       sa."SOUSGROUPE","
+ "       sa."CLASSEE","
+ "       sa."CODEMNEMONIQUE","
+ "       sa."PUGROS","
+ "       sa."PUDONATION","
+ "       ''                         AS uniteEquivalence,"
+ "       CAST(0.0 AS NUMBER(38, 2)) as qteEquivalence"
+ "FROM ST_ARTICLE sa"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."EQUIVALENCE_LIBCOMPLET"                      "
+ "  ("ID","IDPRODUIT","IDUNITE","QTE","IDPRODUITLIB","IDUNITELIB") AS "
+ "SELECT eq."ID","
+ "          eq."IDPRODUIT","
+ "          eq."IDUNITE","
+ "          eq."QTE","
+ "          ar.DESIGNATION AS idproduitlib,"
+ "          un.VAL||' ('||EQ.QTE||' unite)' AS idunitelib"
+ "     FROM equivalence eq"
+ "          LEFT JOIN ST_ARTICLE ar ON ar.ID = eq.IDPRODUIT"
+ "          LEFT JOIN ST_UNITE un ON un.id = eq.IDUNITE"
+IMP-00017: following statement failed with ORACLE error 1031:
+ "CREATE SNAPSHOT "V_ETATCAISSE_DEVISE_AR" USING ("V_ETATCAISSE_DEVISE_AR", ("
+ "9, 'EE.ORACLE.DOCKER', 1, 0, 0, "GALLOIS", "POINT", '2025-04-08:10:07:21', "
+ "0, 0, '2025-04-08:10:07:21', '', 0, 8850021, 0, NULL), 2097472, 10, ('2024-"
+ "09-19:07:47:07', 21, 0, 0, 8850021, 0, 0, 0, NULL, NULL)) REFRESH COMPLETE "
+ "AS"
+ "SELECT"
+ "	r.ID,"
+ "	r.IDCAISSE ,"
+ "	c.val AS idcaisseLib,"
+ "	c.idtypecaisse,"
+ "	tc.desce AS idtypecaisselib,"
+ "	c.idpoint,"
+ "	p.desce AS idpointlib,"
+ "	r.DATY dateDernierReport,"
+ "	CAST(NVL(r.MONTANT*taux.taux,0) AS number(30,2)) montantDernierReport,"
+ "	CAST(NVL(mvt.debit,0) AS number(30,2)) debit,"
+ "	CAST(NVL(mvt.credit,0) AS number(30,2)) credit,"
+ "	CAST((NVL(mvt.credit,0)+NVL(r.MONTANT*taux.taux,0)-NVL(mvt.debit,0))  AS n"
+ "umber(30,2)) reste,"
+ "	'AR' AS devise"
+ "FROM"
+ "	REPORTCAISSE_devise r,"
+ "	("
+ "		SELECT"
+ "			r.IDCAISSE ,"
+ "			MAX(r.DATY) maxDateReport"
+ "		FROM"
+ "			REPORTCAISSE_devise r"
+ "		WHERE"
+ "			r.ETAT = 11"
+ "			AND r.DATY < sysdate"
+ "		GROUP BY r.IDCAISSE"
+ "	) rm,"
+ "	("
+ "		SELECT"
+ "			m.IDCAISSE ,"
+ "			SUM(nvl((m.DEBIT*t.taux),0)) DEBIT ,"
+ "			SUM(nvl((m.CREDIT*t.taux) ,0)) CREDIT"
+ "		FROM"
+ "			MOUVEMENTCAISSE m ,"
+ "			("
+ "				SELECT"
+ "					r.IDCAISSE ,"
+ "					MAX(r.DATY) maxDateReport"
+ "				FROM"
+ "					REPORTCAISSE r"
+ "				WHERE"
+ "					r.ETAT = 11"
+ "					AND r.DATY < sysdate"
+ "				GROUP BY r.IDCAISSE"
+ "			) rm,"
+ "			--ajout jointure table tauxdechange"
+ "			( SELECT"
+ "						ta.*"
+ "					FROM"
+ "						TAUXDECHANGE ta,"
+ "						("
+ "						SELECT"
+ "										max(daty) AS daty,"
+ "										iddevise"
+ "						FROM"
+ "										TAUXDECHANGE t"
+ "							------mipetraka eto ilay date en params"
+ "						WHERE"
+ "							daty <= sysdate"
+ "						GROUP BY iddevise) tmax"
+ "					WHERE"
+ "						ta.daty = tmax.daty"
+ "						AND ta.iddevise = tmax.iddevise"
+ "			) t"
+ "		WHERE"
+ "			m.iddevise= t.iddevise(+)"
+ "			AND m.IDCAISSE = rm.idcaisse(+)"
+ "			AND m.DATY > rm.maxDateReport"
+ "			AND m.DATY <=  sysdate"
+ "		GROUP BY m.IDCAISSE"
+ "	) mvt,"
+ "	--ajout jointure table tauxdechange"
+ "	( SELECT"
+ "						ta.*"
+ "					FROM"
+ "						TAUXDECHANGE ta,"
+ "						("
+ "						SELECT"
+ "										max(daty) AS daty,"
+ "										iddevise"
+ "						FROM"
+ "										TAUXDECHANGE t"
+ "							------mipetraka eto ilay date en params"
+ "						WHERE"
+ "							daty <= sysdate"
+ "						GROUP BY iddevise) tmax"
+ "					WHERE"
+ "						ta.daty = tmax.daty"
+ "						AND ta.iddevise = tmax.iddevise"
+ "			) taux,"
+ "	caisse c,"
+ "	typecaisse tc,"
+ "	point p"
+ "WHERE"
+ "	r.DATY = rm.maxDateReport"
+ "	AND r.IDDEVISE =taux.iddevise (+)"
+ "	AND r.ETAT = 11"
+ "	AND r.IDCAISSE = rm.IDCAISSE"
+ "	AND r.IDCAISSE = c.ID(+)"
+ "	AND r.IDCAISSE = mvt.idcaisse(+)"
+ "	AND c.IDTYPECAISSE = tc.ID (+)"
+ "	AND c.IDPOINT = p.ID"
+ ""
+ ""
+ ""
+ ""
+ ""
+ ""
+IMP-00003: ORACLE error 1031 encountered
+ORA-01031: insufficient privileges
+IMP-00017: following statement failed with ORACLE error 12003:
+ "ALTER SNAPSHOT "V_ETATCAISSE_DEVISE_AR" COMPILE"
+IMP-00003: ORACLE error 12003 encountered
+ORA-12003: materialized view "KOLO0107"."V_ETATCAISSE_DEVISE_AR" does not exist
+About to enable constraints...
+Import terminated successfully with warnings.
