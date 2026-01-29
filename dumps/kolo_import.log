@@ -84,7 +84,4013 @@ export client uses WE8MSWIN1252 character set (possible charset conversion)
 . . importing table                        "PLAGE"         28 rows imported
 . . importing table                      "PLATEAU"          1 rows imported
 . . importing table                        "POINT"          7 rows imported
-. . importing table                    "PREVISION"
-IMP-00009: abnormal end of export file
-IMP-00028: partial import of previous table rolled back: 12 rows rolled back
+. . importing table                    "PREVISION"        242 rows imported
+. . importing table                      "PROCESS"         17 rows imported
+. . importing table                      "PRODUIT"         15 rows imported
+. . importing table                     "PROFORMA"          9 rows imported
+. . importing table             "PROFORMA_DETAILS"         11 rows imported
+. . importing table             "RAP_OPERATIONNEL"       1601 rows imported
+. . importing table                 "REPORTCAISSE"          5 rows imported
+. . importing table            "REQUETE_A_ENVOYER"       3783 rows imported
+. . importing table     "REQUETE_A_ENVOYER_GROUPE"          5 rows imported
+. . importing table              "REQUETE_EXECUTE"         68 rows imported
+. . importing table                  "RESERVATION"        550 rows imported
+. . importing table           "RESERVATIONDETAILS"      33222 rows imported
+. . importing table                        "ROLES"          6 rows imported
+. . importing table             "SERVER_BROADCAST"          1 rows imported
+. . importing table                "SOUSCATEGORIE"        125 rows imported
+. . importing table                      "SUPPORT"         16 rows imported
+. . importing table                 "TAUXDECHANGE"         20 rows imported
+. . importing table                   "TYPECAISSE"          4 rows imported
+. . importing table      "TYPECATEGORIEINGREDIENT"          3 rows imported
+. . importing table                 "TYPEEMISSION"         14 rows imported
+. . importing table            "TYPE_ENCAISSEMENT"          2 rows imported
+. . importing table                "TYPEGAINPERTE"          5 rows imported
+. . importing table                  "TYPEMAGASIN"          4 rows imported
+. . importing table                    "TYPEMEDIA"          2 rows imported
+. . importing table                 "TYPEMVTSTOCK"          2 rows imported
+. . importing table                 "TYPE_PRODUIT"          6 rows imported
+. . importing table                        "UNITE"          5 rows imported
+. . importing table                     "USERMENU"         72 rows imported
+. . importing table                  "UTILISATEUR"         15 rows imported
+. . importing table                        "VENTE"         17 rows imported
+. . importing table                "VENTE_DETAILS"         24 rows imported
+. . importing table       "V_ETATCAISSE_DEVISE_AR"          7 rows imported
+. . importing table          "VIREMENTINTRACAISSE"          1 rows imported
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."CHEQUECPL"                        ("ID","REFE"
+ "RENCE","IDCAISSE","IDCAISSELIB","MONTANT","DATY","ETAT","ETATLIB","REMARQUE"
+ "") AS "
+ "SELECT "
+ "c.ID ,"
+ "c.REFERENCE ,"
+ "c.IDCAISSE ,"
+ "c2.VAL AS IDCAISSELIB,"
+ "c.MONTANT ,"
+ "c.DATY ,"
+ "c.ETAT ,"
+ "CASE "
+ "	WHEN c.ETAT = 1 "
+ "	THEN 'CREE'"
+ "	WHEN c.ETAT = 11 "
+ "	THEN 'VALIDEE'"
+ "	WHEN c.ETAT = 20 "
+ "	THEN 'TOUCHEE'"
+ "END AS ETATLIB,"
+ "c.REMARQUE "
+ "FROM CHEQUE c "
+ "LEFT JOIN CAISSE c2 ON c2.ID = c.IDCAISSE "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."ENCAISSEMENT_DETAILS_LIB"                    "
+ "    ("ID","IDENCAISSEMENT","IDCATEGORIECAISSE","IDCATEGORIECAISSELIB","MONT"
+ "ANT","REMARQUE") AS "
+ "SELECT "
+ "ed.ID ,"
+ "ed.IDENCAISSEMENT ,"
+ "ed.IDCATEGORIECAISSE ,"
+ "c.VAL AS IDCATEGORIECAISSELIB,"
+ "ed.MONTANT ,"
+ "ed.REMARQUE "
+ "FROM ENCAISSEMENT_DETAILS ed "
+ "LEFT JOIN CATEGORIECAISSE c ON c.ID = ed.IDCATEGORIECAISSE  "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."PRECISDETENCAISSEMENT_LIB"                   "
+ "     ("ID","IDENCAISSEMENT","IDENCAISSEMENTLIB","IDCATEGORIECAISSE","IDCATE"
+ "GORIECAISSELIB","IDCLIENT","IDCLIENTLIB","MONTANT","REFERENCE","DATY","IDCA"
+ "ISSE") AS "
+ "SELECT"
+ "	pde.ID ,"
+ "	pde.IDENCAISSEMENT ,"
+ "	e.DESIGNATION AS IDENCAISSEMENTLIB,"
+ "	pde.IDCATEGORIECAISSE ,"
+ "	c.VAL AS IDCATEGORIECAISSELIB,"
+ "	pde.IDCLIENT ,"
+ "	c2.NOM AS IDCLIENTLIB,"
+ "	pde.MONTANT ,"
+ "	pde.REFERENCE ,"
+ "	pde.DATY,"
+ "	e.IDCAISSE "
+ "FROM"
+ "	PRECISION_DETAIL_ENCAISSEMENT pde"
+ "LEFT JOIN ENCAISSEMENT e ON"
+ "	e.ID = pde.IDENCAISSEMENT"
+ "LEFT JOIN CATEGORIECAISSE c ON"
+ "	c.ID = pde.IDCATEGORIECAISSE"
+ "LEFT JOIN CLIENT c2 ON"
+ "	c2.ID = pde.IDCLIENT "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."DETAILSBONCAISSECPL"                        ("
+ ""ID","IDCAISSE","IDCAISSELIB","IDPOINT","IDPOINTLIB","DEBIT","CREDIT","IDCL"
+ "IENT","IDCLIENTLIB","IDPRECISIONDETAILENCAISSEMENT","DATY","REMARQUE","ETAT"
+ "","ETATLIB") AS "
+ "SELECT "
+ "d.ID ,"
+ "d.IDCAISSE ,"
+ "c.VAL AS IDCAISSELIB,"
+ "c.IDPOINT ,"
+ "p.VAL AS IDPOINTLIB,"
+ "d.DEBIT ,"
+ "d.CREDIT ,"
+ "d.IDCLIENT ,"
+ "c2.NOM AS IDCLIENTLIB,"
+ "d.IDPRECISIONDETAILENCAISSEMENT ,"
+ "d.DATY ,"
+ "d.REMARQUE ,"
+ "d.ETAT ,"
+ "CASE "
+ "	WHEN d.ETAT = 1 "
+ "	THEN 'CREE'"
+ "	WHEN d.ETAT = 11"
+ "	THEN 'VISEE'"
+ "	WHEN d.ETAT = 0 "
+ "	THEN 'ANNULEE'"
+ "END AS ETATLIB"
+ "FROM DETAILSBONCAISSE d "
+ "LEFT JOIN CAISSE c ON c.ID = d.IDCAISSE "
+ "LEFT JOIN POINT p ON p.ID = c.IDPOINT "
+ "LEFT JOIN CLIENT c2 ON c2.ID = d.IDCLIENT "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."TRANSFERTSTOCKDETAILSCPL"                    "
+ "    ("ID","IDTRANSFERTSTOCK","IDTRANSFERTSTOCKLIB","IDPRODUIT","IDPRODUITLI"
+ "B","QUANTITE") AS "
+ "SELECT"
+ "t.ID ,"
+ "t.IDTRANSFERTSTOCK ,"
+ "t2.DESIGNATION AS IDTRANSFERTSTOCKLIB,"
+ "t.IDPRODUIT ,"
+ "p.libelle AS IDPRODUITLIB,"
+ "t.QUANTITE"
+ "FROM TRANSFERTSTOCKDETAILS t"
+ "LEFT JOIN TRANSFERTSTOCK t2 ON t2.ID = t.IDTRANSFERTSTOCK"
+ "LEFT JOIN AS_INGREDIENTS  p ON p.ID = t.IDPRODUIT"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."DEPENSELIB"                        ("ID","DES"
+ "IGNATION","IDCAISSE","IDCAISSELIB","IDOP","IDORIGINE","DATY","MONTANT","ETA"
+ "T","ETATLIB") AS "
+ "SELECT "
+ "d.ID ,"
+ "d.DESIGNATION ,"
+ "d.IDCAISSE ,"
+ "c.VAL AS IDCAISSELIB,"
+ "d.IDOP ,"
+ "d.IDORIGINE ,"
+ "d.DATY ,"
+ "d.MONTANT ,"
+ "d.ETAT ,"
+ "CASE "
+ "	WHEN d.ETAT = 1 "
+ "	THEN 'CREE'"
+ "	WHEN d.ETAT = 11 "
+ "	THEN 'VISEE'"
+ "	WHEN d.ETAT = 0 "
+ "	THEN 'ANNULEE'"
+ "END AS ETATLIB"
+ "FROM DEPENSE d "
+ "LEFT JOIN CAISSE c ON c.ID = d.IDCAISSE "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."EQUIVALENCE_LIB"                        ("ID""
+ ","IDPRODUIT","IDUNITE","QTE") AS "
+ "select eq.id,"
+ "       ar.LIBELLE as idproduit,"
+ "       un.VAL         as idunite,"
+ "       qte"
+ "from equivalence eq"
+ "         left join AS_INGREDIENTS ar on ar.ID = eq.IDPRODUIT"
+ "         left join AS_UNITE un on un.id = eq.IDUNITE"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."UNITES_TRAIT"                        ("ID","V"
+ "AL","DESCE") AS "
+ "select ''  as id,"
+ "       '-' as val,"
+ "       '-' as desce"
+ "from DUAL"
+ "union"
+ "select su."ID", su."VAL", su."DESCE""
+ "from ST_UNITE su"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."AS_BONDECOMMANDE_MF"                        ("
+ ""ID","PRODUIT","IDBC","QUANTITE","PU","MONTANT","TVA","UNITE","REMISE","DAT"
+ "Y","ETAT","REMARQUE","DESIGNATION","MODEPAIEMENT","FOURNISSEUR","REFERENCE""
+ ") AS "
+ "select bcf."ID",bcf."PRODUIT",bcf."IDBC",bcf."QUANTITE",bcf."PU",bcf."MONTA"
+ "NT",bcf."TVA",bcf."UNITE",bcf."REMISE","
+ "       ab.DATY,"
+ "       ab.ETAT,"
+ "       ab.REMARQUE,"
+ "       ab.DESIGNATION,"
+ "       ab.MODEPAIEMENT,"
+ "       ab.FOURNISSEUR,"
+ "       ab.REFERENCE"
+ "from AS_BONDECOMMANDE_FILLE bcf"
+ "         left outer join AS_BONDECOMMANDE AB on AB.ID = bcf.IDBC"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."AS_BONDELIVRAISON_MF"                        "
+ "("ID","PRODUIT","NUMBL","QUANTITE","IDDETAILSFACTUREFOURNISSEUR","UNITE","I"
+ "DBC_FILLE","REMARQUE","IDBC","DATY","ETAT") AS "
+ "select blf."ID",blf."PRODUIT",blf."NUMBL",blf."QUANTITE",blf."IDDETAILSFACT"
+ "UREFOURNISSEUR",blf."UNITE",blf."IDBC_FILLE","
+ "       AB.REMARQUE,"
+ "       AB.IDBC,"
+ "       AB.DATY,"
+ "       AB.ETAT"
+ ""
+ "from AS_BONDELIVRAISON_FILLE blf"
+ "         left join AS_BONDELIVRAISON AB on AB.ID = blf.NUMBL"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."AS_BONDELIVRAISON_FILLE_LIB"                 "
+ "       ("ID","PRODUIT","NUMBL","QUANTITE","IDDETAILSFACTUREFOURNISSEUR","UN"
+ "ITE","IDBC_FILLE") AS "
+ "select bl.ID,"
+ "       p.LIBELLE as PRODUIT,"
+ "       bl.NUMBL,"
+ "       bl.QUANTITE,"
+ "       bl.IDDETAILSFACTUREFOURNISSEUR,"
+ "       u.VAL as UNITE,"
+ "       bl.IDBC_FILLE"
+ "from As_BonDeLivraison_Fille bl"
+ "         left join AS_INGREDIENTS p on bl.PRODUIT = p.ID"
+ "         left join AS_UNITE u on bl.UNITE = u.ID"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."AS_BONDECOMMANDE_CPL"                        "
+ "("ID","PRODUIT","IDBC","QUANTITE","MONTANT","PU","TVA","UNITE","REMISE","DA"
+ "TY","ETAT","REMARQUE","DESIGNATION","MODEPAIEMENT","FOURNISSEUR","REFERENCE"
+ "","PRODUITLIB","UNITELIB","MODEPAIEMENTLIB","FOURNISSEURLIB","MONTANTTVA",""
+ "MONTANTTTC","MONTANTHT","COMPTE") AS "
+ "select bcf.ID,bcf.PRODUIT,bcf.IDBC,bcf.QUANTITE,bcf.QUANTITE*bcf.PU AS mont"
+ "ant,bcf.PU,bcf.TVA,bcf.UNITE,bcf.REMISE,"
+ "       ab.DATY,"
+ "       ab.ETAT,"
+ "       ab.REMARQUE,"
+ "       ab.DESIGNATION,"
+ "       ab.MODEPAIEMENT,"
+ "       ab.FOURNISSEUR,"
+ "       ab.REFERENCE,"
+ "       p.LIBELLE  as produitlib,"
+ "       u.VAL  as unitelib,"
+ "       mp.VAL as MODEPAIEMENTLIB,"
+ "       F.nom  AS FOURNISSEURLIB,"
+ "       CAST (bcf.quantite * bcf.pu * (bcf.tva/100) AS NUMBER(30,2)) AS mont"
+ "anttva,"
+ "       CAST( bcf.quantite * bcf.pu + (bcf.quantite * bcf.pu * (bcf.tva/100)"
+ ") AS NUMBER(30,2)) AS montantttc,"
+ "       CAST (bcf.quantite * bcf.pu + (bcf.quantite * bcf.pu * (bcf.tva/100)"
+ ") - bcf.quantite * bcf.pu * (bcf.tva/100) AS NUMBER(30,2)) AS montantht,"
+ " 	   p.COMPTE_ACHAT AS compte"
+ "from AS_BONDECOMMANDE_FILLE bcf"
+ "         left outer join AS_BONDECOMMANDE AB on AB.ID = bcf.IDBC"
+ "         left join AS_INGREDIENTS P on bcf.PRODUIT = P.ID"
+ "         left join AS_UNITE  u on bcf.UNITE = u.id"
+ "         left join MODEPAIEMENT mp on AB.MODEPAIEMENT = mp.id"
+ "         left join fournisseur F on AB.fournisseur = F.id"
+ ""
+ " "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."FFFILLERESTEALIVRER"                        ("
+ ""ID","IDFACTUREFOURNISSEUR","IDPRODUIT","QTE","PU","REMISES","IDBCDETAIL",""
+ "TVA") AS "
+ "SELECT f.id, f.IDFACTUREFOURNISSEUR, f.IDPRODUIT,f.QTE -nvl(sum(abf.QUANTIT"
+ "E),0) AS qte , f.PU , f.REMISES , f.IDBCDETAIL, f.TVA   FROM FACTUREFOURNIS"
+ "SEURFILLE f LEFT JOIN AS_BONDELIVRAISON_FILLE abf ON f.ID  = abf.IDBC_FILLE"
+ " GROUP BY f.id, f.IDFACTUREFOURNISSEUR, f.IDPRODUIT,f.QTE  , f.PU , f.REMIS"
+ "ES , f.IDBCDETAIL, f.TVA"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."VENTE_ENCAISSE"                        ("IDVE"
+ "NTE","IDRESERVATION","MONTANTPAYE") AS "
+ "SELECT"
+ "v.id AS IDVENTE,"
+ "v.IDRESERVATION,"
+ "sum( nvl(ed.MONTANT,0) ) AS montantpaye"
+ "FROM ENCAISSEMENT_DETAILS ed"
+ "LEFT JOIN ENCAISSEMENT e ON e.id = ed.IDENCAISSEMENT"
+ "LEFT JOIN VENTE v ON v.id = e.IDORIGINE"
+ "GROUP BY v.id ,v.IDRESERVATION"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."AS_BONDELIVRAISON_CLIENT_MF"                 "
+ "       ("IDMERE","REMARQUE","IDVENTE","IDBC","DATY","ETAT","MAGASIN","IDFIL"
+ "LE","PRODUIT","NUMBL","QUANTITE","IDVENTEDETAIL","UNITE","IDBC_FILLE") AS "
+ "SELECT "
+ "m.id AS idmere, m.remarque, m.idvente, m.idbc, m.daty, m.etat, m.magasin,"
+ "f.id AS idfille, f.produit, f.numbl, f.quantite, f.idventedetail, f.unite, "
+ "f.idbc_fille "
+ "FROM AS_BONDELIVRAISON_CLIENT m,AS_BONDELIVRAISON_CLIENT_FILLE f WHERE m.id"
+ "=f.numbl"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."BLCLIENT_FILLE_GRP"                        (""
+ "IDBC_FILLE","IDBC","QUANTITE","PRODUIT","NUMBL","IDVENTEDETAIL","UNITE") AS"
+ " "
+ "SELECT "
+ "abcf.IDBC_FILLE ,"
+ "bcf.IDBC,"
+ "nvl(sum(abcf.QUANTITE),0) AS QUANTITE,"
+ "abcf.PRODUIT,"
+ "abcf.NUMBL,"
+ "abcf.IDVENTEDETAIL,"
+ "abcf.UNITE"
+ "FROM AS_BONDELIVRAISON_CLIENT_FILLE abcf "
+ "LEFT JOIN BONDECOMMANDE_CLIENT_FILLE bcf ON bcf.id = abcf.IDBC_FILLE"
+ "GROUP BY abcf.IDBC_FILLE,bcf.IDBC,abcf.PRODUIT,abcf.NUMBL,abcf.IDVENTEDETAI"
+ "L,abcf.UNITE"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."BLCF_GRPVENTEDET"                        ("ID"
+ "VENTEDETAIL","QUANTITE") AS "
+ "SELECT "
+ "IDVENTEDETAIL,"
+ "sum(quantite) AS quantite"
+ "FROM "
+ "AS_BONDELIVRAISON_CLIENT_FILLE group by IDVENTEDETAIL"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."BL_CLIENT_FILLE_GRP_VENTE"                   "
+ "     ("IDVENTEDETAIL","QUANTITE") AS "
+ "SELECT"
+ "IDVENTEDETAIL,"
+ "SUM(QUANTITE) AS QUANTITE"
+ "FROM "
+ "AS_BONDELIVRAISON_CLIENT_FILLE abcf "
+ "GROUP BY IDVENTEDETAIL "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."BL_CLIENT_FILLE_GRP_BC"                      "
+ "  ("IDBC_FILLE","QUANTITE") AS "
+ "SELECT"
+ "IDBC_FILLE,"
+ "SUM(QUANTITE) AS QUANTITE"
+ "FROM"
+ "AS_BONDELIVRAISON_CLIENT_FILLE abcf"
+ "left join BONDECOMMANDE_CLIENT b on b.id=abcf.NUMBL"
+ "where b.ETAT>=11"
+ "GROUP BY IDBC_FILLE"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."SORTIESTOCKFILLE"                        ("ID"
+ "PRODUIT","IDVENTEDETAIL","QTELIVREE") AS "
+ "SELECT "
+ "m.IDPRODUIT ,"
+ "m.IDVENTEDETAIL ,"
+ "CAST(nvl(sum(m.SORTIE ),0)AS NUMBER(30,2)) AS  qtelivree"
+ "FROM MVTSTOCKFILLE m "
+ "GROUP BY m.IDPRODUIT,m.IDVENTEDETAIL"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."AS_BONDECOMMANDEFILLE_CPL"                   "
+ "     ("IDBC","MONTANTHT","MONTANTTVA","TAUXDECHANGE") AS "
+ "SELECT "
+ "abf.IDBC ,"
+ "CAST(nvl(sum(abf.QUANTITE*abf.PU),0) AS NUMBER(30,2))  AS montantHT,"
+ "CAST(nvl(sum(abf.QUANTITE*abf.PU*abf.TVA/100),0) AS NUMBER(30,2)) AS montan"
+ "ttva,"
+ "abf.TAUXDECHANGE"
+ "FROM AS_BONDECOMMANDE_FILLE abf "
+ "GROUP BY abf.IDBC,abf.TAUXDECHANGE"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."BCFILLERESTEALIVRERLIB"                      "
+ "  ("ID","IDBC","IDPRODUIT","IDPRODUITLIB","QUANTITE","PU","REMISE","TVA","I"
+ "DUNITE","IDDEVISE","TAUXDECHANGE") AS "
+ "SELECT "
+ "f.ID ,"
+ "f.IDBC ,"
+ "f.PRODUIT AS idproduit,"
+ "p.LIBELLE AS IDPRODUITLIB,"
+ "f.QUANTITE ,"
+ "f.PU ,"
+ "f.REMISE , "
+ "f.TVA , "
+ "p.unite AS idunite, "
+ "f.iddevise,"
+ "f.tauxdechange"
+ "FROM AS_BONDECOMMANDE_FILLE f "
+ "LEFT JOIN AS_INGREDIENTS p ON p.ID = f.PRODUIT  "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."PREVISION_CPL"                        ("ID",""
+ "DESIGNATION","IDCAISSE","IDCAISSELIB","IDVENTEDETAIL","IDVENTE","IDVENTELIB"
+ "","IDVIREMENT","DEBIT","CREDIT","DATY","ETAT","IDOP","IDOPLIB","IDORIGINE","
+ ""IDDEVISE","IDDEVISELIB","TAUX","IDTIERS","COMPTE","IDFACTURE","IDRESERVATI"
+ "ON") AS "
+ "select"
+ "  p.id,"
+ "  p.designation,"
+ "  p.idcaisse,"
+ "  c.val as idcaisselib,"
+ "  p.idventedetail,"
+ "  v.IDVENTE,"
+ "  v2.designation as idventelib,"
+ "  p.idvirement,"
+ "  p.debit,"
+ "  p.credit,"
+ " p.daty,"
+ " p.etat,"
+ " p.idop,"
+ "  o.DESIGNATION as idoplib ,"
+ " p.idorigine,"
+ " p.iddevise,"
+ "  p.designation as iddeviselib,"
+ " p.taux,"
+ " p.idtiers,"
+ " p.compte,"
+ " p.idfacture,"
+ " v2.IDRESERVATION"
+ "  from PREVISION p"
+ "  left join caisse c on p.idcaisse = c.id"
+ "  left join VENTE_DETAILS v on p.IDVENTEDETAIL=v.ID"
+ "  left join vente v2 on v2.id=v.IDVENTE"
+ "  left join ORDONNERPAIEMENT o on o.id=p.IDOP"
+ "  left join devise d on d.id=p.IDDEVISE"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."MVTCAISSEPREVISIONVISE"                      "
+ "  ("ID","ID1","ID2","MONTANTMERE","ETAT","REMARQUE","MONTANTCREDIT","DEVISE"
+ "","TAUX") AS "
+ "select "ID","ID1","ID2","MONTANTMERE","ETAT","REMARQUE","MONTANTCREDIT","DE"
+ "VISE","TAUX" from MVTCAISSEPREVISION where etat>=1"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."AS_RECETTECOMPOSE"                        ("I"
+ "D","IDPRODUITS","IDINGREDIENTS","QUANTITE","UNITE","COMPOSE") AS "
+ "select r."ID",r."IDPRODUITS",r."IDINGREDIENTS",cast(r."QUANTITE" as number("
+ "20,2)) as quantite,r."UNITE",ing.compose from as_recette r,as_ingredients i"
+ "ng"
+ "  where r.IDINGREDIENTS=ing.id"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."AS_RECETTE_LIBCOMPLET"                       "
+ " ("ID","IDPRODUITS","IDINGREDIENTS","QUANTITE","UNITE","LIBELLEINGREDIENT","
+ ""LIBELLEPRODUIT","IDUNITE","VALUNITE","PU") AS "
+ "select rec."ID",rec."IDPRODUITS",rec."IDINGREDIENTS",rec."QUANTITE",ing."UN"
+ "ITE","
+ "ing.LIBELLE as libelleingredient,"
+ "       ing2.libelle as libelleproduit,"
+ "un.id as idunite,"
+ "un.val as valunite,"
+ "ing.pu"
+ "from as_recette rec"
+ "left join as_ingredients ing on"
+ "ing.id=rec.idingredients"
+ "left join as_ingredients ing2 on"
+ "ing2.id=rec.IDPRODUITS"
+ "left join as_unite un on"
+ "un.id=ing.unite"
+ "order by rec.id asc"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."AS_RECETTEFAB"                        ("ID",""
+ "IDPRODUITS","IDINGREDIENTS","QUANTITE","UNITE","COMPOSE") AS "
+ "select offi.id,offi.idMere as IDPRODUITS,offi.idingredients,"
+ "offi.qte*nvl(e.qte,1) as quantite,ing.unite,ing.compose from FabricationFil"
+ "le offi left join equivalence e"
+ "on e.idproduit=offi.idingredients and e.idunite=offi.idunite"
+ "left join as_ingredients ing on ing.id=offi.idingredients"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."OFABLIB"                        ("ID","LANCEP"
+ "AR","CIBLE","REMARQUE","LIBELLE","BESOIN","DATY","ETAT") AS "
+ "SELECT ofl.ID,"
+ "	p1.VAL  AS LANCEPAR,"
+ "	p2.VAL  AS CIBLE,"
+ "	ofl.REMARQUE,"
+ "	ofl.LIBELLE,"
+ "	ofl.BESOIN,"
+ "	ofl.DATY,"
+ "	ofl.ETAT"
+ "FROM OFAB ofl"
+ "	LEFT JOIN POINT p1 ON p1.ID = ofl.LANCEPAR"
+ "	LEFT JOIN POINT p2 ON p2.ID = ofl.CIBLE"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."OfFilleLib"                        ("ID","IDI"
+ "NGREDIENTS","LIBELLE","REMARQUE","IDMERE","DATYBESOIN","QTE","IDUNITE") AS "
+ "SELECT "
+ "	ofll.ID,"
+ "	ai.LIBELLE AS IDINGREDIENTS, "
+ "	ofll.LIBELLE, "
+ "	ofll.REMARQUE, "
+ "	ofll.IDMERE, "
+ "	ofll.DATYBESOIN, "
+ "	ofll.QTE, "
+ "	nvl(au.VAL,'unite') AS IDUNITE"
+ "FROM OFFILLE ofll"
+ "	LEFT JOIN AS_INGREDIENTS ai ON ai.ID = ofll.IDINGREDIENTS "
+ "	LEFT JOIN AS_UNITE au ON au.ID = ofll.IDUNITE "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."FABRICATION_OF"                        ("ID","
+ ""IDMERE","IDINGREDIENTS","LIBELLE","REMARQUE","DATYBESOIN","QTE","IDUNITE","
+ ""IDOF") AS "
+ "("
+ "SELECT"
+ "	f.id,"
+ "	f.idMere,"
+ "	f.idingredients,"
+ "	f.libelle,"
+ "	f.remarque,"
+ "	f.datybesoin,"
+ "	f.qte,"
+ "	f.idunite,"
+ "	f2.IDOF"
+ "FROM"
+ "	FABRICATIONFILLE f"
+ "JOIN FABRICATION f2 ON"
+ "	f.IDMERE = f2.ID"
+ ")"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."FABRICATIONCPL"                        ("ID","
+ ""LANCEPAR","CIBLE","REMARQUE","LIBELLE","BESOIN","DATY","IDOF","LANCEPARLIB"
+ "","CIBLELIB","ETAT","ETATLIB") AS "
+ "SELECT"
+ "f.ID,f.LANCEPAR,f.CIBLE,f.REMARQUE,f.LIBELLE,f.BESOIN,f.DATY,f.IDOF,"
+ "p.val AS lanceparLib,"
+ "p2.val AS cibleLib,"
+ "f.etat AS etat,"
+ "CASE"
+ "		WHEN f.ETAT=1"
+ "		THEN 'CREE'"
+ "		WHEN f.ETAT=11"
+ "		THEN 'VALIDEE'"
+ "		WHEN f.ETAT=0"
+ "		THEN 'ANNULEE'"
+ "	    WHEN f.ETAT=21"
+ "		THEN 'ENTAME'"
+ "	    WHEN f.ETAT=31"
+ "		THEN 'BLOQUE'"
+ "	    WHEN f.ETAT=41"
+ "		THEN 'TERMINEE'"
+ "	END AS ETATLIB"
+ "FROM FABRICATION f"
+ "LEFT JOIN POINT p ON p.id = f.lancepar"
+ "LEFT JOIN POINT p2 ON p2.id = f.cible"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."FABRICATIONFILLECPL"                        ("
+ ""ID","IDINGREDIENTS","LIBELLE","REMARQUE","IDMERE","DATYBESOIN","QTE","IDUN"
+ "ITE","PU","IDINGREDIENTSLIB") AS "
+ "SELECT"
+ "f."ID",f."IDINGREDIENTS",f."LIBELLE",f."REMARQUE",f."IDMERE",f."DATYBESOIN""
+ ",f."QTE",f."IDUNITE",f."PU","
+ "ai.LIBELLE AS idingredientsLib"
+ "FROM FABRICATIONFILLE f"
+ "LEFT JOIN AS_INGREDIENTS ai ON ai.id = f.IDINGREDIENTS"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."FABRICATIONFILLECPL2"                        "
+ "("ID","IDINGREDIENTS","LIBELLE","REMARQUE","IDMERE","DATYBESOIN","QTE","IDU"
+ "NITE","PU","REVIENT","IDINGREDIENTSLIB","DATY") AS "
+ "SELECT"
+ "    f.ID,"
+ "    f.IDINGREDIENTS,"
+ "    f.LIBELLE,"
+ "    f.REMARQUE,"
+ "    f.IDMERE,"
+ "    f.DATYBESOIN,"
+ "    f.QTE,"
+ "    f.IDUNITE,"
+ "    f.PU,"
+ "    CAST(f.QTE * f.PU AS NUMBER(10,2)) AS revient,"
+ "    ai.LIBELLE AS idingredientsLib,"
+ "    ff.DATY"
+ "FROM FABRICATIONFILLE f"
+ "LEFT JOIN AS_INGREDIENTS ai ON ai.ID = f.IDINGREDIENTS"
+ "JOIN FABRICATION ff ON f.IDMERE = ff.ID"
+ "WHERE ETAT >= 11"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."FABRICATIONFILLEPU"                        (""
+ "ID","IDINGREDIENTS","LIBELLE","REMARQUE","IDMERE","DATYBESOIN","QTE","IDUNI"
+ "TE","PU") AS "
+ "select f.id, f.idingredients, f.libelle, f.remarque, f.idmere, f.datybesoin"
+ ", f.qte, f.idunite, a.pu from FABRICATIONFILLE f left join AS_INGREDIENTS a"
+ " on f.IDINGREDIENTS=a.id"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."FACTURECLIENTMONTANT"                        "
+ "("ID","MONTANTTOTAL","MONTANTTVA","MONTANTTTC") AS "
+ "SELECT "
+ "f.id ,"
+ "CAST( sum( fc.qte * fc.pu * (1  - CAST( (fc.remises /100) AS number(30,2)) "
+ ") ) AS number(30,2))  AS montanttotal,"
+ "CAST( sum( fc.qte * fc.pu * (1  - CAST( (fc.remises /100) AS number(30,2)) "
+ ") * (nvl(fc.tva,0) /100) ) AS number(30,2))  AS montanttva,"
+ "CAST( sum( fc.qte * fc.pu * (1  - CAST( (fc.remises /100) AS number(30,2)) "
+ ") ) AS number(30,2)) + CAST( sum( fc.qte * fc.pu * (1  - CAST( (fc.remises "
+ "/100) AS number(30,2)) ) * (nvl(fc.tva,0) /100) ) AS number(30,2))  AS mont"
+ "antttc"
+ "FROM FACTURECLIENTDETAILS fc "
+ "LEFT JOIN FACTURECLIENT f ON f.id = fc.idfactureclient"
+ "GROUP BY f.ID "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."FACTURECLIENTDETAILSLIB"                     "
+ "   ("ID","IDFACTURECLIENT","IDACTE","LIBELLE","QTE","PU","REMISES","TVA","C"
+ "OMPTE","IDPRODUIT","IDPRODUITLIB","MONTANT") AS "
+ "SELECT"
+ "	f.ID,"
+ "	f.IDFACTURECLIENT,"
+ "	f.idacte,"
+ "	a.libelle,"
+ "	f.QTE,"
+ "	f.PU,"
+ "	f.REMISES,"
+ "	f.TVA,"
+ "	f.COMPTE,"
+ "	f.IDPRODUIT,"
+ "	p.LIBELLE AS idproduitlib,"
+ "	CAST(  f.qte * f.pu * (1  - CAST( (f.remises /100) AS number(30,2)) )  AS "
+ "number(30,2)) + CAST(  f.qte * f.pu * (1  - CAST( (f.remises /100) AS numbe"
+ "r(30,2)) ) * (nvl(f.tva,0) /100)  AS number(30,2)) AS montant"
+ "FROM"
+ "	FACTURECLIENTDETAILS f"
+ "LEFT JOIN AS_INGREDIENTS p ON"
+ "	p.id = f.idproduit"
+ "LEFT JOIN acte a ON a.id = f.idacte "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."VERSEMENTCHEQUEDETAILSCPL"                   "
+ "     ("ID","IDVERSEMENTCHEQUE","IDVERSEMENTCHEQUELIB","IDCHEQUE","IDCHEQUEL"
+ "IB","REMARQUE","IDCAISSECHEQUE","MONTANT","DATY","IDCAISSEVERSEMENT") AS "
+ "SELECT "
+ "v.ID ,"
+ "v.IDVERSEMENTCHEQUE ,"
+ "v2.DESIGNATION AS IDVERSEMENTCHEQUELIB,"
+ "v.IDCHEQUE ,"
+ "c.REFERENCE AS IDCHEQUELIB,"
+ "v.REMARQUE ,"
+ "c.IDCAISSE AS idcaissecheque ,"
+ "c.MONTANT ,"
+ "v2.DATY ,"
+ "v2.IDCAISSE AS idcaisseversement"
+ "FROM VERSEMENTCHEQUEDETAILS v "
+ "LEFT JOIN VERSEMENTCHEQUE v2 ON v2.ID = v.IDVERSEMENTCHEQUE "
+ "LEFT JOIN CHEQUE c ON c.ID = v.IDCHEQUE "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."MONTANTENCAISSEMENT"                        ("
+ ""IDENCAISSEMENT","IDORIGINE","MONTANTTOTALENCAISSEMENT") AS "
+ "SELECT "
+ "ed.IDENCAISSEMENT ,"
+ "ed.IDORIGINE,"
+ "sum( nvl( ed.MONTANT ,0 ) ) AS montantTotalEncaissement"
+ "FROM ENCAISSEMENT_DETAILS ed "
+ "GROUP BY ed.IDENCAISSEMENT,ed.IDORIGINE "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."MONTANTPRECISIONENCAISSEMENT"                "
+ "        ("IDENCAISSEMENT","IDCATEGORIECAISSE","MONTANTTOTALPRECISION") AS "
+ "SELECT "
+ "pde.IDENCAISSEMENT ,"
+ "pde.IDCATEGORIECAISSE ,"
+ "sum( nvl(pde.MONTANT , 0) ) AS montantTotalPrecision "
+ "FROM PRECISION_DETAIL_ENCAISSEMENT pde "
+ "GROUP BY pde.IDENCAISSEMENT , pde.IDCATEGORIECAISSE "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."VENTELUBRIFIANT_VALIDEE"                     "
+ "   ("IDENCAISSEMENT","VENTELUBRIFIANT") AS "
+ "SELECT "
+ "v.IDENCAISSEMENT ,"
+ "sum( nvl(v.QTE  * v.PU ,0) ) AS ventelubrifiant"
+ "FROM VENTELUBRIFIANT v "
+ "WHERE v.ETAT > 1 "
+ "GROUP BY v.IDENCAISSEMENT "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."DEPENSE_VALIDEE"                        ("IDO"
+ "RIGINE","DEPENSE") AS "
+ "SELECT "
+ "d.IDORIGINE ,"
+ "sum(nvl(d.MONTANT,0) ) AS depense"
+ "FROM DEPENSE d "
+ "WHERE d.ETAT > 1 "
+ "GROUP BY d.IDORIGINE "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."ENCAISSEMENT_VALIDEE"                        "
+ "("IDENCAISSEMENT","TOTALENCAISSEMENT") AS "
+ "SELECT "
+ "ed.IDENCAISSEMENT ,"
+ "sum( nvl(ed.MONTANT,0) ) AS totalencaissement  "
+ "FROM ENCAISSEMENT_DETAILS ed "
+ "GROUP BY ed.IDENCAISSEMENT "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."ENCAISSEMENT_BON"                        ("ID"
+ "ENCAISSEMENT","MONTANTCATEGORIE") AS "
+ "SELECT "
+ "ed.IDENCAISSEMENT ,"
+ "sum( nvl(ed.MONTANT,0) ) AS montantcategorie"
+ "FROM ENCAISSEMENT_DETAILS ed"
+ "WHERE ed.IDCATEGORIECAISSE = 'CTC001' "
+ "GROUP BY ed.IDENCAISSEMENT "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."ENCAISSEMENT_CHEQUE"                        ("
+ ""IDENCAISSEMENT","MONTANTCATEGORIE") AS "
+ "SELECT "
+ "ed.IDENCAISSEMENT ,"
+ "sum( nvl(ed.MONTANT,0) ) AS montantcategorie"
+ "FROM ENCAISSEMENT_DETAILS ed"
+ "WHERE ed.IDCATEGORIECAISSE = 'CTC002' "
+ "GROUP BY ed.IDENCAISSEMENT "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."ENCAISSEMENT_MVOLA"                        (""
+ "IDENCAISSEMENT","MONTANTCATEGORIE") AS "
+ "SELECT "
+ "ed.IDENCAISSEMENT ,"
+ "sum( nvl(ed.MONTANT,0) ) AS montantcategorie"
+ "FROM ENCAISSEMENT_DETAILS ed"
+ "WHERE ed.IDCATEGORIECAISSE = 'CTC003' "
+ "GROUP BY ed.IDENCAISSEMENT "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."ENCAISSEMENT_ESPECES"                        "
+ "("IDENCAISSEMENT","MONTANTCATEGORIE") AS "
+ "SELECT "
+ "ed.IDENCAISSEMENT ,"
+ "sum( nvl(ed.MONTANT,0) ) AS montantcategorie"
+ "FROM ENCAISSEMENT_DETAILS ed"
+ "WHERE ed.IDCATEGORIECAISSE = 'CTC003' "
+ "GROUP BY ed.IDENCAISSEMENT "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."ENCAISSEMENT_ORANGEMONEY"                    "
+ "    ("IDENCAISSEMENT","MONTANTCATEGORIE") AS "
+ "SELECT "
+ "ed.IDENCAISSEMENT ,"
+ "sum( nvl(ed.MONTANT,0) ) AS montantcategorie"
+ "FROM ENCAISSEMENT_DETAILS ed"
+ "WHERE ed.IDCATEGORIECAISSE = 'CTC005' "
+ "GROUP BY ed.IDENCAISSEMENT "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."ENCAISSEMENT_FANILO"                        ("
+ ""IDENCAISSEMENT","MONTANTCATEGORIE") AS "
+ "SELECT "
+ "ed.IDENCAISSEMENT ,"
+ "sum( nvl(ed.MONTANT,0) ) AS montantcategorie"
+ "FROM ENCAISSEMENT_DETAILS ed"
+ "WHERE ed.IDCATEGORIECAISSE = 'CTC006' "
+ "GROUP BY ed.IDENCAISSEMENT "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."ENCAISSEMENT_TPE"                        ("ID"
+ "ENCAISSEMENT","MONTANTCATEGORIE") AS "
+ "SELECT "
+ "ed.IDENCAISSEMENT ,"
+ "sum( nvl(ed.MONTANT,0) ) AS montantcategorie"
+ "FROM ENCAISSEMENT_DETAILS ed"
+ "WHERE ed.IDCATEGORIECAISSE = 'CTC007' "
+ "GROUP BY ed.IDENCAISSEMENT "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."ENCAISSEMENT_VISA"                        ("I"
+ "DENCAISSEMENT","MONTANTCATEGORIE") AS "
+ "SELECT "
+ "ed.IDENCAISSEMENT ,"
+ "sum( nvl(ed.MONTANT,0) ) AS montantcategorie"
+ "FROM ENCAISSEMENT_DETAILS ed"
+ "WHERE ed.IDCATEGORIECAISSE = 'CTC008' "
+ "GROUP BY ed.IDENCAISSEMENT "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."RESERVATIONDETSANSCI"                        "
+ "("ID","IDMERE","IDPRODUIT","QTE","DATY","PU","REMARQUE","ETAT","IDCLIENT",""
+ "IDBC","DUREE","REMISE","IDBCFILLE") AS "
+ "SELECT"
+ "	rd.ID,"
+ "	rd.IDMERE,"
+ "	rd.IDPRODUIT,"
+ "	rd.QTE,"
+ "	rd.DATY,"
+ "	rd.PU,"
+ "	rd.REMARQUE,"
+ "	rd.ETAT,"
+ "	r.IDCLIENT,"
+ "	r.idbc,"
+ "	rd.duree,"
+ "	rd.remise,"
+ "	rd.idbcfille"
+ "FROM"
+ "	reservationDetails rd"
+ "	JOIN RESERVATION r"
+ "	ON rd.IDMERE = r.ID"
+ "WHERE"
+ "	rd.idmere NOT IN ("
+ "	SELECT"
+ "		c.reservation"
+ "	FROM"
+ "		checkin c"
+ "	WHERE"
+ "		c.etat >= 11"
+ "		AND c.IDPRODUIT = rd.idproduit)"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."CHECKINSANSCHEKOUT"                        (""
+ "ID","RESERVATION","DATY","HEURE","REMARQUE","CLIENT","IDPRODUIT","ETAT","ID"
+ "CLIENT") AS "
+ "select c."ID",c."RESERVATION",c."DATY",c."HEURE",c."REMARQUE",c."CLIENT",c."
+ ""IDPRODUIT",c."ETAT",c."IDCLIENT" from CHECKIN c where c.id not in (select "
+ "o.reservation from CHECKOUT o where o.ETAT>=11)"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."CHECKINAVECCHEKOUT"                        (""
+ "ID","RESERVATION","DATY","HEURE","REMARQUE","CLIENT","IDPRODUIT","ETAT","ID"
+ "CLIENT","CHECKOUT") AS "
+ "select c."ID",c."RESERVATION",c."DATY",c."HEURE",c."REMARQUE",c."CLIENT",c."
+ ""IDPRODUIT",c."ETAT",c."IDCLIENT",o.id as checkOut from CHECKIN c left join"
+ " CHECKOUT o on c.id=o.RESERVATION"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."CHECKINAVECCHEKOUTCOMPLET"                   "
+ "     ("RESERVATION","ID","DATY","ETAT","HEURE","REMARQUE","CHECKOUT") AS "
+ "select c.RESERVATION ,o.id,o.DATY,o.ETAT,  o.HEURE,o.REMARQUE, o.RESERVATIO"
+ "N as checkOut from CHECKIN c left join CHECKOUT o on c.id=o.RESERVATION"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."CHECKOUTAVECRESERVATION"                     "
+ "   ("RESERVATION","ID","DATY","ETAT","HEURE","REMARQUE","CHECKOUT","ETATLIB"
+ "") AS "
+ "select c.RESERVATION ,o.id,o.DATY,o.ETAT,  o.HEURE,o.REMARQUE, o.RESERVATIO"
+ "N as checkOut,"
+ "       case when o.ETAT = 1 then 'CREE'"
+ "            when o.ETAT = 11 then 'VALIDEE'"
+ "           end as etatlib"
+ "from CHECKOUT o left join CHECKIN c on c.id=o.RESERVATION"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."DUREEMAXSPOT_CPL"                        ("ID"
+ "","HEUREDEBUT","HEUREFIN","JOUR","MAX","IDSUPPORT","IDSUPPORTLIB","IDCATEGO"
+ "RIEINGREDIENT","IDCATEGORIEINGREDIENTLIB") AS "
+ "SELECT"
+ "d."ID",d."HEUREDEBUT",d."HEUREFIN",d."JOUR",d."MAX",d."IDSUPPORT","
+ "s.val AS idsupportLib , d.IDCATEGORIEINGREDIENT , c.VAL AS IDCATEGORIEINGRE"
+ "DIENTLIB"
+ "FROM DUREEMAXSPOT d"
+ "LEFT JOIN SUPPORT s ON s.id = d.idsupport"
+ "LEFT JOIN CATEGORIEINGREDIENT c ON c.ID = d.IDCATEGORIEINGREDIENT"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."BLGROUPBYIDBC"                        ("IDBC_"
+ "FILLE","QUANTITE") AS "
+ "SELECT "
+ "    f.IDBC_FILLE,"
+ "    SUM(f.QUANTITE) AS quantite"
+ "FROM AS_BONDELIVRAISON_CLIENT_FILLE f"
+ "LEFT JOIN AS_BONDELIVRAISON_CLIENT m ON m.ID = f.NUMBL"
+ "WHERE m.ETAT >= 11"
+ "GROUP BY f.IDBC_FILLE"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."FABRGROUPBYIDBC"                        ("IDB"
+ "CFILLE","QTE") AS "
+ "SELECT "
+ "    f.IDBCFILLE,"
+ "    SUM(f.QTE) AS qte"
+ "FROM FABRICATIONFILLE f"
+ "LEFT JOIN FABRICATION m ON m.ID = f.IDMERE"
+ "WHERE m.ETAT >= 11"
+ "GROUP BY f.IDBCFILLE"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."OFGROUPBYIDBC"                        ("IDBCF"
+ "ILLE","QTE") AS "
+ "SELECT "
+ "    f.IDBCFILLE,"
+ "    SUM(f.QTE) AS qte"
+ "FROM OFFILLE f"
+ "LEFT JOIN OFAB m ON m.ID = f.IDMERE"
+ "WHERE m.ETAT >= 11"
+ "GROUP BY f.IDBCFILLE"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."BONCOMMANDEFABDETAILS"                       "
+ " ("IDINGREDIENTS","LIBELLEEXTACTE","IDBC","QTE","IDFABRICATION") AS "
+ "SELECT"
+ "	fl.IDINGREDIENTS ,"
+ "	i.LIBELLE,"
+ "	bc.ID,"
+ "	sum(fl.QTE) qte,"
+ "	fl.IDMERE AS IDFABRICATION"
+ "FROM FABRICATIONFILLE fl"
+ "LEFT JOIN BONDECOMMANDE_CLIENT_FILLE bcf ON bcf.ID = fl.IDBCFILLE"
+ "LEFT JOIN BONDECOMMANDE_CLIENT bc ON bc.ID = bcf.IDBC"
+ "LEFT JOIN FABRICATION f"
+ "ON f.ID = fl.IDMERE"
+ "JOIN AS_INGREDIENTS i"
+ "ON fl.IDINGREDIENTS = i.ID"
+ "WHERE f.ETAT >= 11"
+ "GROUP BY fl.IDINGREDIENTS ,i.LIBELLE,bc.ID, fl.IDMERE"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."BL_CLIENT_FILLE_BC"                        (""
+ "ID","IDBC","PRODUIT","IDPRODUIT","QUANTITE","DATY") AS "
+ "SELECT"
+ "	ABCF.id,"
+ "	ABC.IDBC ,"
+ "	pl.LIBELLE AS PRODUIT,"
+ "	ABCF.PRODUIT AS IDPRODUIT,"
+ "	ABCF.QUANTITE ,"
+ "	ABC.DATY "
+ " FROM AS_BONDELIVRAISON_CLIENT_FILLE abcf "
+ "	JOIN BONDECOMMANDE_CLIENT_FILLE bcfc ON BCFC.ID = ABCF.IDBC_FILLE "
+ "	JOIN AS_BONDELIVRAISON_CLIENT abc ON abc.ID = ABCF.NUMBL "
+ "	JOIN AS_INGREDIENTS pl ON pl.ID = ABCF.PRODUIT "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."BONCOMMANDEDETAILSCARTON_CPL"                "
+ "        ("ID","IDBC","PRODUITLIB","PRODUIT","QUANTITEBF","QUANTITECF","REST"
+ "ECF") AS "
+ "SELECT "
+ "bc.ID ,"
+ "bc.idbc AS idbc ,"
+ "ai.LIBELLE AS produitlib,"
+ "ai.id AS produit,"
+ "nvl(bc.QUANTITE,0) AS quantitebf ,"
+ "nvl(c.QUANTITE,0) AS quantitecf,"
+ "nvl(bc.QUANTITE,0) - nvl(c.QUANTITE,0) AS restecf"
+ "FROM BONDECOMMANDE_CLIENT_FILLE bc "
+ "LEFT JOIN CARTONFILLE c  ON c.IDBCFILLE = bc.ID "
+ "LEFT JOIN AS_INGREDIENTS ai ON ai.ID = bc.PRODUIT"
+ "GROUP BY bc.ID, bc.idbc, ai.LIBELLE, ai.id, bc.QUANTITE, c.QUANTITE"
+ " "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."BONDECOMMANDE_OFDETAILS"                     "
+ "   ("IDINGREDIENTS","LIBELLEEXACTE","IDBC","QTE","DATY") AS "
+ "SELECT off.IDINGREDIENTS,i.LIBELLEEXTACTE,bc.IDBC, sum(off.QTE) qte, o.DATY"
+ "  FROM "
+ "OFFILLE off "
+ "LEFT JOIN BONDECOMMANDE_CLIENT_FILLE bc "
+ "ON bc.ID = off.IDBCFILLE "
+ "LEFT JOIN OFAB o "
+ "ON o.ID = off.IDMERE "
+ "JOIN AS_INGREDIENTS i"
+ "ON off.IDINGREDIENTS = i.ID "
+ "WHERE o.ETAT >= 11"
+ "GROUP BY off.IDINGREDIENTS,i.LIBELLEEXTACTE,bc.IDBC,o.DATY "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."PRODUITCOMMANDEFILLECARTON"                  "
+ "      ("ID","IDBC","PRODUITLIB","PRODUIT","QUANTITEBCF","QUANTITECARTONFILL"
+ "E","RESTECARTONFILLE") AS "
+ "SELECT "
+ "bc.ID ,"
+ "bc.idbc AS idbc ,"
+ "ai.LIBELLE AS produitlib,"
+ "ai.id AS produit,"
+ "nvl(bc.QUANTITE,0) AS quantiteBCF ,"
+ "nvl(c.QUANTITE,0) AS quantitecartonfille,"
+ "nvl(bc.QUANTITE,0) - nvl(c.QUANTITE,0) AS restecartonfille"
+ "FROM BONDECOMMANDE_CLIENT_FILLE bc "
+ "LEFT JOIN CARTONFILLE c  ON c.IDBCFILLE = bc.ID "
+ "LEFT JOIN AS_INGREDIENTS ai ON ai.ID = bc.PRODUIT"
+ "GROUP BY bc.ID, bc.idbc, ai.LIBELLE, ai.id, bc.QUANTITE, c.QUANTITE"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."QTEFABANDRESTFABBYIDBC"                      "
+ "  ("IDFABFILLE","IDBCFILLE","IDMERE","QTEFAB","QTEFABRESTANTE") AS "
+ "SELECT  "
+ "	f.ID AS IDFABFILLE,"
+ "	f.IDBCFILLE ,"
+ "	f.IDMERE ,"
+ "	f.QTE AS QTEFAB, "
+ "    NVL(f.QTE, 0) - NVL(bcf.QUANTITE, 0) AS QTEFABRESTANTE"
+ "FROM FABRICATIONFILLE f "
+ "LEFT JOIN BONDECOMMANDE_CLIENT_FILLE bcf "
+ "	ON bcf.ID = f.IDBCFILLE "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."QTEOFANDRESTOFBYIDBC"                        "
+ "("IDOFFILLE","IDBCFILLE","IDMERE","QTEOF","QTEOFRESTANTE") AS "
+ "SELECT  "
+ "    o.ID AS IDOFFILLE, "
+ "    o.IDBCFILLE, "
+ "    o.IDMERE, "
+ "    o.QTE AS QTEOF, "
+ "    NVL(o.QTE, 0) - NVL(bcf.QUANTITE, 0) AS QTEOFRESTANTE"
+ "FROM OFFILLE o "
+ "LEFT JOIN BONDECOMMANDE_CLIENT_FILLE bcf "
+ "    ON bcf.ID = o.IDBCFILLE"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."VUE_SUIVI_CARTON"                        ("ID"
+ "","IDBC_MERE","PRODUITLIB","QUANTITEBCF","QUANTITECARTONFILLE","RESTECARTON"
+ "FILLE") AS "
+ "SELECT "
+ "    bcf.ID AS id,"
+ "    bcf.IDBC AS idbc_mere,"
+ "    ai.LIBELLE AS produitlib,"
+ "    NVL(bcf.QUANTITE, 0) AS quantitebcf,"
+ "    NVL(SUM(cf.QUANTITE), 0) AS quantitecartonfille,"
+ "    NVL(bcf.QUANTITE, 0) - NVL(SUM(cf.QUANTITE), 0) AS restecartonfille"
+ "FROM BONDECOMMANDE_CLIENT_FILLE bcf"
+ "LEFT JOIN CARTONFILLE cf ON cf.IDBCFILLE = bcf.ID"
+ "LEFT JOIN CARTON c ON c.ID = cf.IDMERE AND c.ETAT > 11"
+ "LEFT JOIN AS_INGREDIENTS ai ON ai.ID = bcf.PRODUIT"
+ "GROUP BY "
+ "    bcf.ID,"
+ "    bcf.IDBC,"
+ "    ai.LIBELLE,"
+ "    bcf.QUANTITE"
+ "   "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."VUE_CARTONFILLE_IDMERE"                      "
+ "  ("IDBCFILLE","ID_CARTON_MERE") AS "
+ "SELECT"
+ "  cf.IDBCFILLE,"
+ "  MIN(cf.IDMERE) AS ID_CARTON_MERE"
+ "FROM CARTONFILLE cf"
+ "JOIN CARTON c ON c.ID = cf.IDMERE AND c.ETAT >= 11"
+ "GROUP BY cf.IDBCFILLE"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."VUE_CARTONFILLE_SUM"                        ("
+ ""IDBCFILLE","QUANTITE_CARTONFILLE") AS "
+ "SELECT"
+ "  cf.IDBCFILLE,"
+ "  SUM(cf.QUANTITE) AS QUANTITE_CARTONFILLE"
+ "FROM CARTONFILLE cf"
+ "JOIN CARTON c ON c.ID = cf.IDMERE AND c.ETAT >= 11"
+ "GROUP BY cf.IDBCFILLE"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."PARTICIPANTEMISSION_CPL"                     "
+ "   ("ID","NOM","CONTACT","ADRESSE","DATEDENAISSANCE","IDEMISSION","IDEMISSI"
+ "ONLIB") AS "
+ "SELECT pe.id,"
+ "pe.nom,"
+ "pe.contact,"
+ "pe.adresse,pe.datedenaissance,pe.idemission,"
+ "e.nom AS idemissionlib"
+ "FROM PARTICIPANTEMISSION pe"
+ "LEFT JOIN emission e ON e.id=pe.idemission"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."RECETTEMONTANT"                        ("ID","
+ ""IDPRODUITS","IDINGREDIENTS","QUANTITE","UNITE","LIBINGREDIENTS","QTEAV","Q"
+ "TETOTAL") AS "
+ "select"
+ "rec."ID",rec."IDPRODUITS",rec."IDINGREDIENTS",rec."QUANTITE",rec."UNITE",'-"
+ "' as libIngredients,"
+ "cast(0 as number(12,2)) as qteav,"
+ "cast(0 as number(12,2)) as qtetotal"
+ "from as_recette rec"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."ENCAISSEMENT_LIB"                        ("ID"
+ "","DESIGNATION","IDCAISSE","IDCAISSELIB","ETAT","ETATLIB","DATY","IDPOMPIST"
+ "E","IDPOMPISTELIB","IDPOINT","IDPOINTLIB","IDCATEGORIECAISSE","VENTECARBURA"
+ "NT","VENTELUBRIFIANT","DEPENSE","TOTALRECETTE","TOTALENCAISSEMENT","TOTALVE"
+ "RSEMENT","ECART","TOTALESPECE","TOTALORANGEMONEY") AS "
+ "SELECT "
+ "e.ID ,"
+ "e.DESIGNATION ,"
+ "e.IDCAISSE ,"
+ "c.VAL AS IDCAISSELIB,"
+ "e.ETAT ,"
+ "CASE "
+ "	WHEN e.ETAT = 1 "
+ "	THEN 'CREE'"
+ "	WHEN e.ETAT = 11 "
+ "	THEN 'VALIDEE'"
+ "	WHEN e.ETAT = 0 "
+ "	THEN 'ANNULEE'"
+ "END AS ETATLIB, "
+ "e.DATY ,"
+ "c.IDPOMPISTE ,"
+ "p.NOMUSER AS IDPOMPISTELIB,"
+ "c.IDPOINT ,"
+ "p2.VAL AS IDPOINTLIB ,"
+ "c.IDCATEGORIECAISSE ,"
+ "nvl(ev.ventecarburant,0) AS ventecarburant ,"
+ "nvl(vv.ventelubrifiant,0) AS ventelubrifiant ,"
+ "nvl(dv.depense,0) AS depense ,"
+ "nvl(ev.ventecarburant,0) + nvl(vv.ventelubrifiant,0) AS totalrecette ,"
+ "nvl(ev2.totalencaissement,0) AS totalencaissement ,"
+ "nvl(ev2.totalencaissement,0) - nvl(dv.depense,0) AS totalversement ,"
+ "nvl(ev2.totalencaissement,0) - ( nvl(ev.ventecarburant,0) + nvl(vv.ventelub"
+ "rifiant,0) ) AS ecart ,"
+ "nvl(ee.montantcategorie , 0) AS totalEspece,"
+ "nvl(eo.montantcategorie , 0) AS totalOrangeMoney"
+ "FROM ENCAISSEMENT e "
+ "LEFT JOIN CAISSE c ON c.ID = e.IDCAISSE "
+ "LEFT JOIN POMPISTELIB p ON p.REFUSER = c.IDPOMPISTE "
+ "LEFT JOIN encaissementvente ev ON ev.IDENCAISSEMENT = e.ID "
+ "LEFT JOIN ventelubrifiant_validee vv ON vv.IDENCAISSEMENT = e.ID"
+ "LEFT JOIN depense_validee dv ON dv.IDORIGINE = e.ID"
+ "LEFT JOIN encaissement_validee ev2 ON ev2.IDENCAISSEMENT = e.ID"
+ "LEFT JOIN POINT p2 ON p2.ID = c.IDPOINT "
+ "LEFT JOIN ENCAISSEMENT_ESPECES ee ON ee.IDENCAISSEMENT = e.ID"
+ "LEFT JOIN ENCAISSEMENT_ORANGEMONEY eo ON eo.IDENCAISSEMENT = e.ID"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."ACTE_LIB"                        ("ID","DATY""
+ ","IDPRODUIT","LIBELLEPRODUIT","QTE","PU","MONTANT","LIBELLE","IDCLIENT","ID"
+ "CLIENTLIB","IDRESERVATION","ETAT","ETATLIB","COMPTE_VENTE","COMPTE_ACHAT",""
+ "IDCHAMBRE","CHAMBRE","CHECKOUT","TVA","IDMEDIALIB","IDSUPPORTLIB","IDRESERV"
+ "ATIONFILLE","HEURE","DUREE","IDEMISSION","IDEMISSIONLIB") AS "
+ "SELECT"
+ "    a.ID,"
+ "    a.DATY,"
+ "    a.IDPRODUIT,"
+ "    ai.LIBELLE AS libelleproduit,"
+ "    a.QTE,"
+ "    a.PU,"
+ "    a.PU * a.QTE AS montant,"
+ "    nvl(a.LIBELLE,ai.LIBELLE) as libelle,"
+ "    a.IDCLIENT,"
+ "    c.NOM AS idclientlib,"
+ "    a.IDRESERVATION,"
+ "    a.ETAT,"
+ "    CASE"
+ "        WHEN a.ETAT = 0"
+ "            THEN 'ANNULEE'"
+ "        WHEN a.ETAT = 1"
+ "            THEN 'CREE'"
+ "        WHEN a.ETAT = 11"
+ "            THEN 'VISEE'"
+ "        END AS ETATLIB,"
+ "    ai.COMPTE_VENTE,"
+ "    ai.COMPTE_ACHAT,"
+ "    a.IDPRODUIT as IDCHAMBRE,"
+ "    ai.LIBELLE as chambre,"
+ "    cc.CHECKOUT,"
+ "    a.TVA,"
+ "    m.IDTYPEMEDIALIB || ' ' || m.DUREE as idmedialib,"
+ "    s.VAL as idsupportlib,"
+ "    a.IDRESERVATIONFILLE,"
+ "    a.HEURE,"
+ "    a.DUREE,"
+ "    a.IDEMISSION,"
+ "    em.NOM AS IDEMISSIONLIB"
+ "FROM ACTE a"
+ "         LEFT JOIN AS_INGREDIENTS ai  ON ai.id = a.IDPRODUIT"
+ "         LEFT JOIN CLIENT c ON c.id = a.IDCLIENT"
+ "         left join CHECKINAVECCHEKOUT cc on cc.id=a.IDRESERVATION"
+ "         LEFT JOIN MEDIA_CPL m on m.ID = a.IDMEDIA"
+ "         LEFT JOIN SUPPORT s on s.ID = a.IDSUPPORT"
+ "        LEFT JOIN emission em ON em.id=a.IDEMISSION "
+ "         "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."MVTSTOCKLIB"                        ("ID","DE"
+ "SIGNATION","IDMAGASIN","IDOBJET","IDMAGASINLIB","IDVENTE","IDVENTELIB","IDT"
+ "RANSFERT","IDTRANSFERTLIB","IDTYPEMVSTOCK","IDTYPEMVSTOCKLIB","DATY","ETAT""
+ ","ETATLIB","IDRESERVATION") AS "
+ "SELECT"
+ "m.ID ,"
+ "m.DESIGNATION ,"
+ "m.IDMAGASIN ,"
+ "m.IDOBJET ,"
+ "m2.VAL  AS idMagasinlib,"
+ "m.IDVENTE ,"
+ "v.DESIGNATION  AS idVentelib,"
+ "m.IDTRANSFERT ,"
+ "CAST('' AS VARCHAR2(255)) AS idTransfertlib,"
+ "m.IDTYPEMVSTOCK ,"
+ "t.VAL AS idTypeMvStocklib ,"
+ "m.DATY ,"
+ "m.ETAT ,"
+ "CASE"
+ "	WHEN m.ETAT = 0"
+ "	THEN 'ANNULEE'"
+ "	WHEN m.ETAT = 1"
+ "	THEN 'CREE'"
+ "	WHEN m.ETAT = 11"
+ "	THEN 'VALIDEE'"
+ "END AS etatlib,"
+ "v.IDRESERVATION"
+ "FROM MVTSTOCK m"
+ "LEFT JOIN TYPEMVTSTOCK t ON t.ID = m.IDTYPEMVSTOCK"
+ "LEFT JOIN VENTE v ON v.ID = m.IDVENTE"
+ "LEFT JOIN MAGASIN m2 ON m2.ID = m.IDMAGASIN"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."MVTSTOCKFILLELIB"                        ("ID"
+ "","IDMVTSTOCK","IDPRODUIT","IDPRODUITLIB","ENTREE","SORTIE","IDVENTEDETAIL""
+ ","IDVENTEDETAILLIB","IDTRANSFERTDETAIL","IDTRANSFERTDETAILLIB","DATY","IDMA"
+ "GASIN","IDMAGASINLIB","PU","MONTANT","LIBELLEEXACTE") AS "
+ "SELECT"
+ "	m.ID ,"
+ "	m.IDMVTSTOCK ,"
+ "	m.IDPRODUIT ,"
+ "	p.libelle  AS IDPRODUITLIB,"
+ "	m.ENTREE ,"
+ "	m.SORTIE ,"
+ "	m.IDVENTEDETAIL ,"
+ "	'' AS IDVENTEDETAILLIB,"
+ "	m.IDTRANSFERTDETAIL ,"
+ "	'' AS IDTRANSFERTDETAILLIB,"
+ "	m2.DATY ,"
+ "	m2.IDMAGASIN ,"
+ "	m3.VAL AS IDMAGASINLIB,"
+ "	m.pu,"
+ "    cast(m.pu*m.ENTREE+(m.pu*m.sortie) as number(20,2)) as montant,"
+ "    p.LIBELLEEXTACTE"
+ "	FROM MVTSTOCKFILLE m"
+ "	LEFT JOIN AS_INGREDIENTS  p ON p.ID = m.IDPRODUIT"
+ "	LEFT JOIN MVTSTOCK m2 ON m2.ID = m.IDMVTSTOCK"
+ "	LEFT JOIN MAGASIN m3 ON m3.ID = m2.IDMAGASIN"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."JAUGELIB"                        ("ID","IDMAG"
+ "ASIN","IDMAGASINLIB","QTE","DATY","ETAT","ETATLIB") AS "
+ "SELECT "
+ "j.ID ,"
+ "j.IDMAGASIN ,"
+ "m.VAL AS IDMAGASINLIB,"
+ "j.QTE ,"
+ "j.DATY ,"
+ "j.ETAT ,"
+ "CASE "
+ "	WHEN j.ETAT = 0 "
+ "	THEN 'ANNULEE'"
+ "	WHEN j.ETAT = 1 "
+ "	THEN 'CREE'"
+ "	WHEN j.ETAT = 11 "
+ "	THEN 'VALIDEE'"
+ "END AS ETATLIB"
+ "FROM JAUGE j "
+ "JOIN MAGASIN m ON m.ID  = j.IDMAGASIN "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."ETATSTOCKLIB"                        ("ID","I"
+ "DPRODUIT","IDPRODUITLIB","IDMAGASIN","IDMAGASINLIB","IDPOINT","IDPOINTLIB","
+ ""IDTYPEPRODUIT","IDTYPEPRODUITLIB","IDUNITE","IDUNITELIB","REPORT","ENTREE""
+ ","SORTIE","RESTE","DATY") AS "
+ "SELECT "
+ "e.ID ,"
+ "e.IDPRODUIT ,"
+ "p.LIBELLE AS IDPRODUITLIB,"
+ "e.IDMAGASIN ,"
+ "m.VAL AS IDMAGASINLIB,"
+ "e.IDPOINT ,"
+ "p2.VAL AS IDPOINTLIB,"
+ "e.IDTYPEPRODUIT ,"
+ "tp.VAL AS IDTYPEPRODUITLIB,"
+ "e.IDUNITE ,"
+ "u.VAL AS IDUNITELIB,"
+ "e.REPORT ,"
+ "e.ENTREE ,"
+ "e.SORTIE ,"
+ "e.RESTE ,"
+ "e.DATY "
+ "FROM ETATSTOCK e "
+ "LEFT JOIN AS_INGREDIENTS p ON p.ID = e.IDPRODUIT "
+ "LEFT JOIN MAGASIN m ON m.ID = e.IDMAGASIN "
+ "LEFT JOIN POINT p2 ON p2.ID = e.IDPOINT "
+ "LEFT JOIN TYPE_PRODUIT tp ON tp.ID = e.IDTYPEPRODUIT "
+ "LEFT JOIN AS_UNITE u ON u.ID = e.IDUNITE "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."PRELEVEMENTCPL"                        ("ID","
+ ""IDPRELEVEMENTANTERIEUR","COMPTEUR","DATY","HEURE","IDPOMPISTE","IDPOMPE",""
+ "ETAT","ETATLIB","IDCAISSE","IDMAGASIN","IDPRODUIT","PUVENTE","MAXPOMPE") AS"
+ " "
+ "SELECT "
+ "p.ID ,"
+ "p.IDPRELEVEMENTANTERIEUR ,"
+ "p.COMPTEUR ,"
+ "p.DATY ,"
+ "p.HEURE ,"
+ "p.IDPOMPISTE ,"
+ "p.IDPOMPE ,"
+ "p.ETAT ,"
+ "CASE "
+ "	WHEN p.ETAT = 0 "
+ "	THEN 'ANNULEE'"
+ "	WHEN p.ETAT = 1 "
+ "	THEN 'CREE'"
+ "	WHEN p.ETAT = 11 "
+ "	THEN 'VALIDEE'"
+ "END AS ETATLIB,"
+ "c.ID AS IDCAISSE,"
+ "p2.IDMAGASIN ,"
+ "p3.ID AS IDPRODUIT , "
+ "p3.PUVENTE,"
+ "p2.MAX AS maxPompe"
+ "FROM PRELEVEMENT p "
+ "LEFT JOIN CAISSE c ON c.IDPOMPISTE =  p.IDPOMPISTE "
+ "LEFT JOIN POMPE p2 ON p2.ID = p.IDPOMPE "
+ "LEFT JOIN MAGASIN m ON m.ID = p2.IDMAGASIN "
+ "LEFT JOIN PRODUIT p3 ON p3.ID  = m.IDPRODUIT "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."TRANSFERTSTOCKCPL"                        ("I"
+ "D","DESIGNATION","IDMAGASINDEPART","IDMAGASINDEPARTLIB","IDMAGASINARRIVE",""
+ "IDMAGASINARRIVELIB","DATY","ETAT","ETATLIB") AS "
+ "SELECT "
+ "t.ID ,"
+ "t.DESIGNATION ,"
+ "t.IDMAGASINDEPART ,"
+ "m.VAL AS IDMAGASINDEPARTLIB,"
+ "t.IDMAGASINARRIVE ,"
+ "m2.VAL AS IDMAGASINARRIVELIB,"
+ "t.DATY ,"
+ "t.ETAT ,"
+ "CASE "
+ "	WHEN t.ETAT = 0 "
+ "	THEN 'ANNULEE'"
+ "	WHEN t.ETAT = 1 "
+ "	THEN 'CREE'"
+ "	WHEN t.ETAT = 11 "
+ "	THEN 'VISEE'"
+ "END AS ETATLIB"
+ "FROM TRANSFERTSTOCK t "
+ "LEFT JOIN MAGASIN m ON m.ID = t.IDMAGASINDEPART "
+ "LEFT JOIN MAGASIN m2 ON m2.ID = t.IDMAGASINARRIVE "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."VENTELUBRIFIANTLIB"                        (""
+ "ID","IDPRODUIT","IDPRODUITLIB","QTE","PU","TAUXREMISE","IDENCAISSEMENT","ID"
+ "ENCAISSEMENTLIB","IDMAGASIN","DATY","REMARQUE","IDMAGASINLIB","ETAT","ETATL"
+ "IB","MONTANT") AS "
+ "SELECT "
+ "v.ID ,"
+ "v.IDPRODUIT ,"
+ "p.VAL AS IDPRODUITLIB,"
+ "v.QTE ,"
+ "v.PU ,"
+ "v.TAUXREMISE ,"
+ "v.IDENCAISSEMENT ,"
+ "e.DESIGNATION AS IDENCAISSEMENTLIB,"
+ "v.IDMAGASIN ,"
+ "v.DATY ,"
+ "v.REMARQUE ,"
+ "v.IDMAGASINLIB,"
+ "v.ETAT ,"
+ "CASE "
+ "	WHEN v.ETAT = 0 "
+ "	THEN 'ANNULEE'"
+ "	WHEN v.ETAT = 1 "
+ "	THEN 'CREE'"
+ "	WHEN v.ETAT = 11 "
+ "	THEN 'VISEE'"
+ "END AS ETATLIB ,"
+ "CAST(v.QTE * v.PU AS NUMBER(30,2)) AS montant"
+ "FROM VENTELUBRIFIANT v "
+ "LEFT JOIN PRODUIT p ON v.IDPRODUIT = p.ID "
+ "LEFT JOIN ENCAISSEMENT e ON v.IDENCAISSEMENT = e.ID "
+ "LEFT JOIN MAGASIN m ON  v.IDMAGASIN  = m.ID "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."AS_BONDELIVRAISON_LIBCPL"                    "
+ "    ("ID","PRODUIT","NUMBL","QUANTITE","IDDETAILSFACTUREFOURNISSEUR","UNITE"
+ "","IDBC_FILLE","REMARQUE","IDBC","DATY","ETAT","MAGASIN","PRODUITLIB","UNIT"
+ "ELIB","MAGASINLIB","LIBELLEEXACTE","COMPTE","PU","TVA") AS "
+ "SELECT"
+ "	bl.ID,"
+ "	bl.PRODUIT,"
+ "	bl.NUMBL,"
+ "	bl.QUANTITE,"
+ "	bl.IDDETAILSFACTUREFOURNISSEUR,"
+ "	bl.UNITE,"
+ "	bl.IDBC_FILLE,"
+ "	AB.REMARQUE,"
+ "	AB.IDBC,"
+ "	AB.DATY,"
+ "	AB.ETAT,"
+ "	AB.MAGASIN,"
+ "	p.libelle AS PRODUITlib,"
+ "	u.VAL AS UNITElib,"
+ "	m.VAL AS magasinlib,"
+ "	p.LIBELLEEXTACTE,"
+ "	p.COMPTE_ACHAT AS compte,"
+ "	p.pu,"
+ "	p.tva"
+ "FROM"
+ "	As_BonDeLivraison_Fille bl"
+ "LEFT JOIN AS_BONDELIVRAISON AB ON"
+ "	AB.ID = bl.NUMBL"
+ "LEFT JOIN AS_INGREDIENTS p ON"
+ "	bl.PRODUIT = p.ID"
+ "LEFT JOIN AS_UNITE u ON"
+ "	bl.UNITE = u.ID"
+ "LEFT JOIN MAGASIN m ON"
+ "	ab.MAGASIN = m.ID"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."AS_BONDELIVRAISON_LIB"                       "
+ " ("ID","REMARQUE","IDBC","DATY","ETAT","MAGASIN","MAGASINLIB","ETATLIB","ID"
+ "FOURNISSEUR","IDFOURNISSEURLIB") AS "
+ "select bl.ID,"
+ "       bl.REMARQUE,"
+ "       bl.IDBC,"
+ "       bl.DATY,"
+ "       bl.ETAT,"
+ "       bl.MAGASIN,"
+ "       m.VAL as MAGASINlib,"
+ "       case"
+ "           when bl.etat = 1 then 'CREE(E)'"
+ "           when bl.etat = 11 then 'VISE(E)'"
+ "           end as etatlib,"
+ "           bl.idfournisseur,"
+ "           f.nom AS idfournisseurlib"
+ "from AS_BONDELIVRAISON bl"
+ "    left join MAGASIN m on bl.MAGASIN = m.ID"
+ "    LEFT JOIN fournisseur f ON f.id=bl.idfournisseur"
+ "    "
+ "         "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."MVTSTOCKFILLELIB_VISE"                       "
+ " ("ID","IDMVTSTOCK","IDPRODUIT","IDPRODUITLIB","ENTREE","SORTIE","IDVENTEDE"
+ "TAIL","IDVENTEDETAILLIB","IDTRANSFERTDETAIL","IDTRANSFERTDETAILLIB","DATY","
+ ""IDMAGASIN","IDMAGASINLIB") AS "
+ "SELECT m.ID,"
+ "       m.IDMVTSTOCK,"
+ "       m.IDPRODUIT,"
+ "       p.LIBELLE  AS IDPRODUITLIB,"
+ "       m.ENTREE,"
+ "       m.SORTIE,"
+ "       m.IDVENTEDETAIL,"
+ "       ''     AS IDVENTEDETAILLIB,"
+ "       m.IDTRANSFERTDETAIL,"
+ "       ''     AS IDTRANSFERTDETAILLIB,"
+ "       m2.DATY,"
+ "       m2.IDMAGASIN,"
+ "       m3.VAL AS IDMAGASINLIB"
+ "FROM MVTSTOCKFILLE m"
+ "         LEFT JOIN AS_INGREDIENTS  p ON p.ID = m.IDPRODUIT"
+ "         LEFT JOIN MVTSTOCK m2 ON m2.ID = m.IDMVTSTOCK"
+ "         LEFT JOIN MAGASIN m3 ON m3.ID = m2.IDMAGASIN"
+ "where m2.ETAT=11"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."AS_BONDELIVRAISONCLIENT_LIBCPL"              "
+ "          ("ID","REMARQUE","IDVENTE","IDBC","DATY","ETAT","MAGASIN","IDORIG"
+ "INE","IDCLIENT","IDMAGASINLIB","IDCLIENTLIB","ETATLIB") AS "
+ "select ab.ID,ab.REMARQUE,ab.IDVENTE,ab.IDBC,ab.DATY,ab.ETAT,ab.MAGASIN,ab.I"
+ "DORIGINE,ab.IDCLIENT, "
+ "m.val AS idmagasinlib,"
+ " c.nom AS idclientlib,"
+ "CASE"
+ "    WHEN ab.ETAT = 0 THEN '<span style="color: green;">ANNULEE</span>'"
+ "    WHEN ab.ETAT = 1 THEN '<span style="color: green;">CREE</span>'"
+ "    WHEN ab.ETAT = 11 THEN '<span style="color: green;">VALIDEE</span>'"
+ "END AS ETATLIB"
+ ""
+ "from  AS_BONDELIVRAISON_CLIENT  AB"
+ "left join MAGASIN m on ab.MAGASIN = m.ID"
+ "LEFT JOIN client c ON c.id = ab.idclient"
+ "         "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."AS_BONDELIVRAISONCLIENT_lib"                 "
+ "       ("ID","REMARQUE","IDBC","DATY","ETAT","MAGASIN","MAGASINLIB","ETATLI"
+ "B") AS "
+ "select bl.ID,"
+ "       bl.REMARQUE,"
+ "       bl.IDBC,"
+ "       bl.DATY,"
+ "       bl.ETAT,"
+ "       bl.MAGASIN,"
+ "       m.VAL as MAGASINlib,"
+ "       case"
+ "           when bl.etat = 1 then 'CREE(E)'"
+ "           when bl.etat = 11 then 'VISE(E)'"
+ "           end as etatlib"
+ "from AS_BONDELIVRAISON_CLIENT bl"
+ "    left join MAGASIN m on bl.MAGASIN = m.ID"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."AS_BONDELIVRAISONCLIENT_LIB"                 "
+ "       ("ID","REMARQUE","IDBC","DATY","ETAT","MAGASIN","MAGASINLIB","ETATLI"
+ "B","IDVENTE","IDVENTELIB","IDORIGINE","IDCLIENT","IDCLIENTLIB","IDRESERVATI"
+ "ON") AS "
+ "select bl.ID,"
+ "       bl.REMARQUE,"
+ "       bl.IDBC,"
+ "       bl.DATY,"
+ "       bl.ETAT,"
+ "       bl.MAGASIN,"
+ "       m.VAL as MAGASINlib,"
+ "       case"
+ "           when bl.etat = 1 then 'CREE(E)'"
+ "           when bl.etat = 11 then 'VISE(E)'"
+ "           end as etatlib,"
+ "       bl.idvente,"
+ "       v.designation AS idventelib ,"
+ "       bl.idOrigine ,"
+ "       bl.IDCLIENT ,"
+ "       c.NOM AS IDCLIENTLIB,"
+ "       v.IDRESERVATION"
+ "       from AS_BONDELIVRAISON_CLIENT bl"
+ "    left join MAGASIN m on bl.MAGASIN = m.ID"
+ "    LEFT JOIN vente v ON bl.idvente=v.id"
+ "    LEFT JOIN CLIENT c ON c.ID = bl.IDCLIENT"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."AS_BONDELIVRAISON_CLIENT_CPL"                "
+ "        ("ID","REMARQUE","IDVENTE","DESIGNATION","IDBC","DATY","ETAT","IDMA"
+ "GASIN","MAGASIN","IDRESERVATION") AS "
+ "SELECT bl.id, bl.remarque,"
+ "v.id AS idvente,"
+ "v.designation,"
+ "bl.idbc, bl.daty, bl.etat,"
+ "m.id AS idmagasin,"
+ "m.val AS magasin,"
+ "v.IDRESERVATION"
+ "FROM AS_BONDELIVRAISON_CLIENT bl"
+ "LEFT JOIN magasin m ON bl.magasin=m.id"
+ "LEFT JOIN vente v ON v.id=bl.idvente"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."AS_BONDECOMMANDE_MERECPL"                    "
+ "    ("ID","DATY","ETAT","REMARQUE","DESIGNATION","MODEPAIEMENT","FOURNISSEU"
+ "R","REFERENCE","MODEPAIEMENTLIB","FOURNISSEURLIB","MONTANTTVA","MONTANTHT","
+ ""MONTANTTTC","MONTANTTTCARIARY","IDDEVISELIB","IDDEVISE") AS "
+ "SELECT"
+ "	ab.ID,"
+ "	ab.DATY,"
+ "	ab.ETAT,"
+ "	ab.REMARQUE,"
+ "	ab.DESIGNATION,"
+ "	ab.MODEPAIEMENT,"
+ "	ab.FOURNISSEUR,"
+ "	ab.REFERENCE,"
+ "	mp.VAL AS MODEPAIEMENTLIB,"
+ "	F.NOM AS FOURNISSEURLIB,"
+ "	abf.montantTVA,"
+ "	abf.montantHT,"
+ "	CAST(nvl((abf.montantHT + abf.montantTVA),0) AS NUMBER(30,2)) AS montantTT"
+ "C ,"
+ "	CAST(nvl((abf.montantHT + abf.montantTVA) * abf.TAUXDECHANGE,0) AS NUMBER("
+ "30,2)) AS montantTTCAriary,"
+ "	d.val AS idDeviselib,"
+ "	d.id AS IDDEVISE"
+ "from  AS_BONDECOMMANDE AB"
+ "         left join MODEPAIEMENT mp on AB.MODEPAIEMENT = mp.id"
+ "         left join FOURNISSEUR F on AB.FOURNISSEUR = F.id"
+ "         LEFT JOIN AS_BONDECOMMANDEFILLE_CPL abf ON abf.IDBC = ab.ID"
+ "         LEFT JOIN DEVISE d ON d.id = ab.IDDEVISE"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."DEPENSELIB_CREE"                        ("ID""
+ ","DESIGNATION","IDCAISSE","IDCAISSELIB","IDOP","IDORIGINE","DATY","MONTANT""
+ ","ETAT","ETATLIB") AS "
+ "SELECT "
+ "d."ID",d."DESIGNATION",d."IDCAISSE",d."IDCAISSELIB",d."IDOP",d."IDORIGINE","
+ "d."DATY",d."MONTANT",d."ETAT",d."ETATLIB""
+ "FROM depenseLib d "
+ "WHERE d.ETAT = 1 "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."DEPENSELIB_VISEE"                        ("ID"
+ "","DESIGNATION","IDCAISSE","IDCAISSELIB","IDOP","IDORIGINE","DATY","MONTANT"
+ "","ETAT","ETATLIB") AS "
+ "SELECT "
+ "d."ID",d."DESIGNATION",d."IDCAISSE",d."IDCAISSELIB",d."IDOP",d."IDORIGINE","
+ "d."DATY",d."MONTANT",d."ETAT",d."ETATLIB""
+ "FROM depenseLib d "
+ "WHERE d.ETAT = 11 "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."ENCAISSEMENTVENTE"                        ("I"
+ "DENCAISSEMENT","VENTECARBURANT") AS "
+ "SELECT "
+ "pe.IDENCAISSEMENT ,"
+ "sum( nvl(v.QTE * v.PU ,0) ) AS ventecarburant "
+ "FROM PRELEVEMENT_ENCAISSE pe "
+ "LEFT JOIN vente_validee v ON v.IDORIGINE =  pe.IDPRELEVEMENT "
+ "GROUP BY pe.IDENCAISSEMENT "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."AS_BONDELIVRAISON_LIVRE"                     "
+ "   ("IDBC_FILLE","QTE_LIVRE") AS "
+ "select IDBC_FILLE, sum(QUANTITE) as qte_livre"
+ "from AS_BONDELIVRAISON_MF"
+ "group by IDBC_FILLE"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."FFFILLERESTEALIVRERLIB"                      "
+ "  ("ID","IDFACTUREFOURNISSEUR","IDPRODUIT","IDPRODUITLIB","QTE","PU","REMIS"
+ "ES","IDBCDETAIL","TVA","IDUNITE") AS "
+ "SELECT "
+ "f.ID ,"
+ "f.IDFACTUREFOURNISSEUR ,"
+ "f.IDPRODUIT ,"
+ "p.LIBELLE AS IDPRODUITLIB,"
+ "f.QTE ,"
+ "f.PU ,"
+ "f.REMISES ,"
+ "f.IDBCDETAIL ,"
+ "f.TVA , "
+ "p.unite"
+ "FROM FFFILLERESTEALIVRER f "
+ "LEFT JOIN FACTUREFOURNISSEUR f2 ON f2.ID = f.IDFACTUREFOURNISSEUR "
+ "LEFT JOIN AS_INGREDIENTS p ON p.ID = f.IDPRODUIT "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."VENTE_CPL_AVEC_MONTANT"                      "
+ "  ("ID","DESIGNATION","IDMAGASIN","DATY","REMARQUE","ETAT","IDORIGINE","IDC"
+ "LIENT","IDCLIENTLIB","IDMAGASINLIB","MONTANTTC","MONTANTTTC","MONTANTPAYE","
+ ""ENCAISSEMENTCHANGE","MONTANTRESTE","IDDEVISE","IDRESERVATION") AS "
+ "SELECT"
+ "v.ID,v.DESIGNATION,v.IDMAGASIN,v.DATY,v.REMARQUE,v.ETAT,v.IDORIGINE,v.IDCLI"
+ "ENT,"
+ "c.NOM AS idClientLib,"
+ "m.VAL AS idMagasinLib,"
+ "nvl(vg.montanttc,0) AS montanttc,"
+ "nvl(vg.montanttc,0) AS montantttc,"
+ "nvl(ve.montantpaye*vg.TAUXDECHANGE,0) AS montantpaye,"
+ "nvl(ve.montantpaye * vg.TAUXDECHANGE ,0) AS encaissementchange,"
+ "nvl(vg.montanttc,0) - nvl(ve.montantpaye*vg.TAUXDECHANGE,0)  AS montantrest"
+ "e,"
+ "vg.idDevise,"
+ "v.IDRESERVATION"
+ "FROM ventedetails_grp vg"
+ "LEFT JOIN VENTE v ON v.id = vg.IDVENTE"
+ "LEFT JOIN vente_encaisse ve ON ve.IDVENTE = v.id"
+ "LEFT JOIN CLIENT c ON c.id = v.idclient"
+ "LEFT JOIN MAGASIN m ON m.id  = v.idmagasin"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."AS_BONLIVRFILLE_CLIENT_CPL"                  "
+ "      ("ID","PRODUIT","NUMBL","QUANTITE","IDVENTEDETAIL","UNITE","IDBC_FILL"
+ "E","IDPRODUITLIB","IDVENTE","IDBC","QTELIVREE","QTERESTEALIVRER") AS "
+ "SELECT"
+ "	abcf.ID,"
+ "	abcf.PRODUIT,"
+ "	abcf.NUMBL,"
+ "	abcf.QUANTITE,"
+ "	abcf.IDVENTEDETAIL,"
+ "	abcf.UNITE,"
+ "	abcf.IDBC_FILLE,"
+ "	p.LIBELLE AS idproduitlib,"
+ "	vd.idvente,"
+ "	abc.idbc,"
+ "	CAST(nvl(s.qtelivree ,0)AS NUMBER(30,2)) AS qtelivree,"
+ "	CAST(nvl(abcf.QUANTITE - CAST(nvl(s.qtelivree ,0)AS NUMBER(30,2))  ,0)AS N"
+ "UMBER(30,2)) AS qteResteALivrer"
+ "FROM AS_BONDELIVRAISON_CLIENT_FILLE abcf "
+ "LEFT JOIN AS_INGREDIENTS p ON p.id = abcf.produit"
+ "LEFT JOIN VENTE_DETAILS vd ON vd.id = abcf.IDVENTEDETAIL"
+ "LEFT JOIN AS_BONDELIVRAISON_CLIENT abc ON abc.id = abcf.numbl"
+ "LEFT JOIN sortiestockfille s ON s.IDPRODUIT = abcf.produit AND s.IDVENTEDET"
+ "AIL =abcf.IDVENTEDETAIL "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."AS_BL_CLIENTFILLE_BC_RESTE"                  "
+ "      ("ID","PRODUIT","NUMBL","QUANTITE","IDVENTEDETAIL","UNITE") AS "
+ "SELECT "
+ "bc.ID,"
+ "b.PRODUIT,"
+ "b.NUMBL,"
+ "nvl((bc.QUANTITE - b.QUANTITE),0) AS QUANTITE,"
+ "b.IDVENTEDETAIL,"
+ "b.UNITE"
+ "FROM BCClient_Fille_GRP bc "
+ "JOIN BLClient_Fille_GRP b ON b.IDBC = bc.ID"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."AS_BLCF_VENTE_RESTE"                        ("
+ ""ID","IDPRODUIT","QUANTITE","IDVENTEDETAIL","UNITE","IDBC_FILLE") AS "
+ "SELECT "
+ "v.id,"
+ "v.idproduit,"
+ "v.qte -nvl(b.quantite,0) AS quantite,"
+ "v.id AS idventedetail,"
+ "NULL AS unite,"
+ "NULL AS idbc_fille "
+ "FROM VENTE_DETAILS v"
+ "LEFT JOIN blcf_grpventedet b ON  b.idventedetail=v.ID "
+ ""
+ ""
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."VENTE_DETAILS_RESTE"                        ("
+ ""ID","IDPRODUIT","IDUNITE","QTE","RESTE","IDVENTE") AS "
+ "SELECT "
+ "vd.id AS id,"
+ "vd.idProduit,"
+ "p.idUnite,"
+ "vd.qte AS QTE,"
+ "nvl(vd.QTE,0) - nvl(bl.QUANTITE,0) AS reste,"
+ "vd.IDVENTE AS IDVENTE"
+ "FROM "
+ "VENTE_DETAILS vd LEFT JOIN "
+ "BL_CLIENT_FILLE_grp_vente bl ON vd.ID = bl.idventedetail"
+ "LEFT JOIN PRODUIT p ON"
+ "p.id = vd.IDPRODUIT"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."AS_BLCLIENTFILLEINSERTION"                   "
+ "     ("PRODUITLIB","ID","PRODUIT","NUMBL","QUANTITE","UNITELIB","IDVENTEDET"
+ "AIL","UNITE","IDBC_FILLE") AS "
+ "SELECT"
+ "pl.VAL AS PRODUITLIB,"
+ "bl.id,"
+ "bl.PRODUIT,"
+ "bl.NUMBL,"
+ "bl.QUANTITE,"
+ "pl.IDUNITELIB AS UNITELIB,"
+ "bl.IDVENTEDETAIL,"
+ "bl.UNITE,"
+ "bl.IDBC_FILLE"
+ "FROM "
+ "AS_BONDELIVRAISON_CLIENT_FILLE bl"
+ "JOIN PRODUIT_LIB pl ON bl.PRODUIT = pl.ID"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."BC_DETAILS_RESTE"                        ("ID"
+ "","PRODUIT","UNITE","QUANTITE","RESTE","IDBC") AS "
+ "SELECT "
+ "bcf.id AS id,"
+ "bcf.produit,"
+ "bcf.UNITE AS unite,"
+ "bcf.QUANTITE  AS QUANTITE,"
+ "nvl(bcf.QUANTITE,0) - nvl(bl.QUANTITE,0) AS reste,"
+ "bcf.IDBC AS IDBC"
+ "FROM "
+ "BONDECOMMANDE_CLIENT_FILLE bcf LEFT JOIN "
+ "BL_CLIENT_FILLE_grp_bc bl ON bcf.ID = bl.idbc_fille"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."AVOIRFCLIB"                        ("ID","DES"
+ "IGNATION","IDMAGASIN","IDMAGASINLIB","DATY","REMARQUE","ETAT","IDORIGINE",""
+ "IDCLIENT","COMPTE","IDVENTE","IDVENTELIB","IDMOTIF","IDMOTIFLIB","IDCATEGOR"
+ "IE","IDCATEGORIELIB","IDDEVISE","TAUXDECHANGE","MONTANTHT","MONTANTTVA","MO"
+ "NTANTTTC","MONTANTHTAR","MONTANTTVAAR","MONTANTTTCAR","IDRESERVATION") AS "
+ "SELECT a.ID,"
+ "       a.DESIGNATION,"
+ "       a.IDMAGASIN,"
+ "       m.VAL         AS IDMAGASINLIB,"
+ "       a.DATY,"
+ "       a.REMARQUE,"
+ "       a.ETAT,"
+ "       a.IDORIGINE,"
+ "       a.IDCLIENT,"
+ "       t.COMPTE,"
+ "       a.IDVENTE,"
+ "       v.DESIGNATION AS IDVENTELIB,"
+ "       a.IDMOTIF,"
+ "       ma.VAL        AS IDMOTIFLIB,"
+ "       a.IDCATEGORIE,"
+ "       c.VAL         AS IDCATEGORIELIB,"
+ "       ag.IDDEVISE,"
+ "       ag.TAUXDECHANGE,"
+ "       ag.MONTANTHT,"
+ "       ag.MONTANTTVA,"
+ "       ag.MONTANTTTC,"
+ "       ag.MONTANTHTAR,"
+ "       ag.MONTANTTVAAR,"
+ "       ag.MONTANTTTCAR,"
+ "       v.IDRESERVATION"
+ "FROM AVOIRFC a"
+ "         LEFT JOIN MAGASIN m ON m.id = a.IDMAGASIN"
+ "         LEFT JOIN VENTE v ON v.id = a.IDVENTE"
+ "         LEFT JOIN MOTIFAVOIRFC ma ON ma.id = a.IDMOTIF"
+ "         LEFT JOIN CATEGORIEAVOIRFC c ON c.id = a.IDCATEGORIE"
+ "         JOIN AVOIRFCFILLE_GRP ag ON ag.idavoirfc = a.id"
+ "        LEFT JOIN TIERS T ON T.ID = A.IDCLIENT"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."MVTCAISSESOMPREVISIONGROUP"                  "
+ "      ("ID","ID1","ID2","ETAT","REMARQUE","MONTANTMERE","MONTANTCREDIT","TA"
+ "UX","DEVISE") AS "
+ "SELECT '-' AS id, '' AS id1,id2,etat,'-' AS remarque,sum(montantMere) AS mo"
+ "ntantMere,sum(montantCredit) AS montantCredit,nvl(max(taux),1) AS taux,devi"
+ "se  "
+ "FROM MVTCAISSEPREVISIONVise GROUP BY id2,etat,devise"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."MVTCAISSEGROUPPREVISIONSOM"                  "
+ "      ("ID","ID1","ID2","ETAT","REMARQUE","MONTANTMERE","MONTANTCREDIT","TA"
+ "UX","DEVISE") AS "
+ "SELECT '-' AS id, id1,'' AS id2,etat,'-' AS remarque,sum(montantMere) AS mo"
+ "ntantMere,sum(montantCredit) AS montantCredit,nvl(max(taux),1) AS taux,devi"
+ "se "
+ "FROM MVTCAISSEPREVISIONVise GROUP BY id1,etat,devise"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."AS_INGREDIENTS_LIB"                        (""
+ "ID","LIBELLE","SEUIL","UNITE","QUANTITEPARPACK","PU","ACTIF","PHOTO","CALOR"
+ "IE","DURRE","COMPOSE","IDCATEGORIEINGREDIENT","CATEGORIEINGREDIENT","IDCATE"
+ "GORIE","IDFOURNISSEUR","DATY","BIENOUSERV","ETATLIB","COMPTE_VENTE","COMPTE"
+ "_ACHAT","PV","TVA","IDSUPPORT","IDPOINT","PU1","PU2") AS "
+ "SELECT"
+ "    ing.id,"
+ "    ing.LIBELLE,"
+ "    ing.SEUIL,"
+ "    au.VAL AS unite,"
+ "    ing.QUANTITEPARPACK,"
+ "    ing.pu,"
+ "    ing.ACTIF,"
+ "    ing.PHOTO,"
+ "    ing.CALORIE,"
+ "    ing.DURRE,"
+ "    ing.COMPOSE,"
+ "    cating.id AS IDCATEGORIEINGREDIENT ,"
+ "    catIng.VAL AS CATEGORIEINGREDIENT,"
+ "    ing.CATEGORIEINGREDIENT AS idcategorie,"
+ "    ing.idfournisseur,"
+ "    ing.daty,"
+ "    catIng.desce AS bienOuServ,"
+ "    CASE"
+ "        WHEN ing.id IN ("
+ "            SELECT"
+ "                idproduit"
+ "            FROM"
+ "                INDISPONIBILITE i ) THEN 'INDISPONIBLE'"
+ "        WHEN ing.id NOT IN ("
+ "            SELECT"
+ "                idproduit"
+ "            FROM"
+ "                INDISPONIBILITE i ) THEN 'DISPONIBLE'"
+ "        END AS etatlib,"
+ "    ing.COMPTE_VENTE,"
+ "    ing.COMPTE_ACHAT,"
+ "    ing.pv,"
+ "    ing.tva,"
+ "    ing.IDSUPPORT,"
+ "    sup.IDPOINT,"
+ "    ing.pu1,"
+ "    ing.pu2"
+ "FROM"
+ "    as_ingredients ing"
+ "        LEFT JOIN AS_UNITE AU ON"
+ "        ing.UNITE = AU.ID"
+ "        LEFT JOIN CATEGORIEINGREDIENTLIB catIng ON"
+ "        catIng.id = ing.CATEGORIEINGREDIENT"
+ "        LEFT JOIN SUPPORT sup ON"
+ "        sup.id = ing.IDSUPPORT"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."FABRICATIONMEREFILLE"                        "
+ "("IDINGREDIENTS","IDINGREDIENTSLIB","QTE","IDUNITE","IDOF","LIBELLE","DATY""
+ ") AS "
+ "SELECT ff.IDINGREDIENTS,ff.IDINGREDIENTSLIB ,sum(ff.QTE) qte,ff.IDUNITE ,f."
+ "IDOF,f.LIBELLE,f.DATY FROM FabricationFilleCpl ff "
+ "    JOIN FABRICATION f ON f.id=ff.IDMERE WHERE f.etat=11 GROUP BY ff.IDINGR"
+ "EDIENTS,ff.IDINGREDIENTSLIB ,ff.IDUNITE ,f.IDOF,f.LIBELLE,f.DATY"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."FACTURECLIENTCPL"                        ("ID"
+ "","IDCLIENT","DATY","DESIGNATION","DATEECHEANCEPAIEMENT","ETAT","ETATLIB",""
+ "MONTANTTOTAL","MONTANTHT","MONTANTTVA","MONTANTTTC","IDCLIENTLIB","NUMEROCL"
+ "IENT","MONTANTPAYE","IDRESERVATION","RESTEAPAYERTTC") AS "
+ "SELECT"
+ "    f.ID,f.IDCLIENT,f.DATY,f.DESIGNATION,f.DATEECHEANCEPAIEMENT,f.ETAT,"
+ "    CASE"
+ "        WHEN f.etat=0 THEN 'ANNULE'"
+ "        WHEN f.etat=1 THEN 'CREE'"
+ "        WHEN f.etat=11 THEN 'VISEE'"
+ "        ELSE 'AUTRE'"
+ "        END AS etatlib,"
+ "    fm.montanttotal,"
+ "    fm.montanttotal - fm.montantTva AS montantHT,"
+ "    fm.montantTva,"
+ "    fm.montantTTC,"
+ "    c.NOM AS idClientLib,"
+ "    c.TELEPHONE AS numeroClient,"
+ "    nvl(fp.credit,0) as montantPaye,"
+ "    f.idreservation,"
+ "    (fm.montantTTC - nvl(fp.credit,0)) as resteapayerTTC"
+ "FROM FactureClient f"
+ "         LEFT JOIN FACTURECLIENTMONTANT fm ON fm.id = f.id"
+ "         LEFT JOIN CLIENT c ON c.id = f.IDCLIENT"
+ "         LEFT JOIN factureclientpaye fp ON fp.IDORIGINE = f.ID"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."PRELEVEMENT_POMPISTE"                        "
+ "("INDEXF","INDEXO","VENTE","PRODUIT","PU","MONTANT","ID") AS "
+ "SELECT "
+ "p2.compteur AS indexF,"
+ "p.compteur AS indexO,"
+ "p.compteur - p2.compteur AS vente ,"
+ "pro.val AS produit,"
+ "pro.puvente AS pu,"
+ "(p.compteur - p2.compteur) * pro.puvente AS montant,"
+ "pe.IDENCAISSEMENT AS ID"
+ "FROM PRELEVEMENT p "
+ "JOIN PRELEVEMENT p2 ON p2.id = p.idprelevementanterieur "
+ "JOIN POMPE po ON po.id = p.idpompe "
+ "JOIN MAGASIN m ON m.id = po.idmagasin"
+ "JOIN PRODUIT pro ON pro.id = m.idproduit"
+ "JOIN PRELEVEMENT_ENCAISSE pe ON pe.IDPRELEVEMENT = p.ID"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."CHEQUECPL_CREE"                        ("ID","
+ ""REFERENCE","IDCAISSE","IDCAISSELIB","MONTANT","DATY","ETAT","ETATLIB","REM"
+ "ARQUE") AS "
+ "SELECT "
+ "c."ID",c."REFERENCE",c."IDCAISSE",c."IDCAISSELIB",c."MONTANT",c."DATY",c."E"
+ "TAT",c."ETATLIB",c."REMARQUE""
+ "FROM CHEQUECPL c "
+ "WHERE c.ETAT = 1 "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."CHEQUECPL_VISEE"                        ("ID""
+ ","REFERENCE","IDCAISSE","IDCAISSELIB","MONTANT","DATY","ETAT","ETATLIB","RE"
+ "MARQUE") AS "
+ "SELECT "
+ "c."ID",c."REFERENCE",c."IDCAISSE",c."IDCAISSELIB",c."MONTANT",c."DATY",c."E"
+ "TAT",c."ETATLIB",c."REMARQUE""
+ "FROM CHEQUECPL c "
+ "WHERE c.ETAT = 11 "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."CHEQUECPL_TOUCHEE"                        ("I"
+ "D","REFERENCE","IDCAISSE","IDCAISSELIB","MONTANT","DATY","ETAT","ETATLIB",""
+ "REMARQUE") AS "
+ "SELECT "
+ "c."ID",c."REFERENCE",c."IDCAISSE",c."IDCAISSELIB",c."MONTANT",c."DATY",c."E"
+ "TAT",c."ETATLIB",c."REMARQUE""
+ "FROM CHEQUECPL c "
+ "WHERE c.ETAT = 20 "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."ENCAISSEMENT_PRECISION_TOTAL"                "
+ "        ("ID","IDENCAISSEMENT","IDCATEGORIECAISSE","MONTANT","REMARQUE","MO"
+ "NTANTTOTALPRECISION") AS "
+ "SELECT "
+ "ed.ID ,"
+ "ed.IDENCAISSEMENT ,"
+ "ed.IDCATEGORIECAISSE ,"
+ "ed.MONTANT ,"
+ "ed.REMARQUE ,"
+ "nvl(pde.montantTotalPrecision,0) AS montantTotalPrecision"
+ "FROM ENCAISSEMENT_DETAILS ed "
+ "LEFT JOIN MONTANTPRECISIONENCAISSEMENT pde ON pde.IDENCAISSEMENT = ed.IDENC"
+ "AISSEMENT AND pde.IDCATEGORIECAISSE = ed.IDCATEGORIECAISSE "
+ "WHERE ed.IDCATEGORIECAISSE != 'CTC004'"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."V_DETAILSBONCAISSECLIENTRESTE"               "
+ "         ("ID","IDCLIENTLIB","IDCAISSE","IDCAISSELIB","IDPOINT","IDPOINTLIB"
+ "","DEBIT","CREDIT","RESTE") AS "
+ "SELECT"
+ "	d.IDCLIENT as ID,"
+ "	d.IDCLIENTLIB,"
+ "	d.IDCAISSE,"
+ "	d.IDCAISSELIB,"
+ "	d.IDPOINT,"
+ "	d.IDPOINTLIB,"
+ "	sum(d.DEBIT) as DEBIT,"
+ "	sum(d.CREDIT) as CREDIT,"
+ "	sum(d.CREDIT)-sum(d.DEBIT) AS reste"
+ "FROM"
+ "	DetailsBonCaisseCpl d"
+ "GROUP by"
+ "	d.IDCAISSE,"
+ "	d.IDCAISSELIB,"
+ "	d.IDPOINT,"
+ "	d.IDPOINTLIB,"
+ "	d.IDCLIENT,"
+ "	d.IDCLIENTLIB"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."DEPENSELIB_ANNULEE"                        (""
+ "ID","DESIGNATION","IDCAISSE","IDCAISSELIB","IDOP","IDORIGINE","DATY","MONTA"
+ "NT","ETAT","ETATLIB") AS "
+ "SELECT "
+ "d."ID",d."DESIGNATION",d."IDCAISSE",d."IDCAISSELIB",d."IDOP",d."IDORIGINE","
+ "d."DATY",d."MONTANT",d."ETAT",d."ETATLIB""
+ "FROM depenseLib d "
+ "WHERE d.ETAT = 0 "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."VENTE_CPL_AVEC_MONTANT_MGA"                  "
+ "      ("ID","DESIGNATION","IDMAGASIN","DATY","REMARQUE","ETAT","IDORIGINE","
+ ""IDCLIENT","IDCLIENTLIB","IDMAGASINLIB","MONTANTTC","MONTANTTTC","MONTANTPA"
+ "YE","ENCAISSEMENTCHANGE","MONTANTRESTE","IDDEVISE","IDRESERVATION") AS "
+ "SELECT"
+ "v.ID,v.DESIGNATION,v.IDMAGASIN,v.DATY,v.REMARQUE,v.ETAT,v.IDORIGINE,v.IDCLI"
+ "ENT,"
+ "c.NOM AS idClientLib,"
+ "m.VAL AS idMagasinLib,"
+ "nvl(vg.montanttc,0) AS montanttc,"
+ "nvl(vg.montanttc,0) AS montantttc,"
+ "nvl(ve.montantpaye,0) AS montantpaye,"
+ "nvl(ve.montantpaye,0) AS encaissementchange,"
+ "nvl(vg.montanttc,0) - nvl(ve.montantpaye,0)  AS montantreste,"
+ "vg.idDevise,"
+ "v.IDRESERVATION"
+ "FROM ventedetails_grp vg"
+ "LEFT JOIN VENTE v ON v.id = vg.IDVENTE"
+ "LEFT JOIN vente_encaisse ve ON ve.IDVENTE = v.id"
+ "LEFT JOIN CLIENT c ON c.id = v.idclient"
+ "LEFT JOIN MAGASIN m ON m.id  = v.idmagasin"
+ "WHERE vg.idDevise='AR'"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."VENTE_CPL_AVEC_MONTANT_USD"                  "
+ "      ("ID","DESIGNATION","IDMAGASIN","DATY","REMARQUE","ETAT","IDORIGINE","
+ ""IDCLIENT","IDCLIENTLIB","IDMAGASINLIB","MONTANTTC","MONTANTTTC","MONTANTPA"
+ "YE","ENCAISSEMENTCHANGE","MONTANTRESTE","IDDEVISE","IDRESERVATION") AS "
+ "SELECT"
+ "v.ID,v.DESIGNATION,v.IDMAGASIN,v.DATY,v.REMARQUE,v.ETAT,v.IDORIGINE,v.IDCLI"
+ "ENT,"
+ "c.NOM AS idClientLib,"
+ "m.VAL AS idMagasinLib,"
+ "nvl(vg.montanttc,0) AS montanttc,"
+ "nvl(vg.montanttc,0) AS montantttc,"
+ "nvl(ve.montantpaye,0) AS montantpaye,"
+ "nvl(ve.montantpaye,0) AS encaissementchange,"
+ "nvl(vg.montanttc,0) - nvl(ve.montantpaye,0)  AS montantreste,"
+ "vg.idDevise,"
+ "v.IDRESERVATION"
+ "FROM ventedetails_grp vg"
+ "LEFT JOIN VENTE v ON v.id = vg.IDVENTE"
+ "LEFT JOIN vente_encaisse ve ON ve.IDVENTE = v.id"
+ "LEFT JOIN CLIENT c ON c.id = v.idclient"
+ "LEFT JOIN MAGASIN m ON m.id  = v.idmagasin"
+ "WHERE vg.idDevise='USD'"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."VENTE_CPL_AVEC_MONTANT_EUR"                  "
+ "      ("ID","DESIGNATION","IDMAGASIN","DATY","REMARQUE","ETAT","IDORIGINE","
+ ""IDCLIENT","IDCLIENTLIB","IDMAGASINLIB","MONTANTTC","MONTANTTTC","MONTANTPA"
+ "YE","ENCAISSEMENTCHANGE","MONTANTRESTE","IDDEVISE","IDRESERVATION") AS "
+ "SELECT"
+ "v.ID,v.DESIGNATION,v.IDMAGASIN,v.DATY,v.REMARQUE,v.ETAT,v.IDORIGINE,v.IDCLI"
+ "ENT,"
+ "c.NOM AS idClientLib,"
+ "m.VAL AS idMagasinLib,"
+ "nvl(vg.montanttc,0) AS montanttc,"
+ "nvl(vg.montanttc,0) AS montantttc,"
+ "nvl(ve.montantpaye,0) AS montantpaye,"
+ "nvl(ve.montantpaye,0) AS encaissementchange,"
+ "nvl(vg.montanttc,0) - nvl(ve.montantpaye,0)  AS montantreste,"
+ "vg.idDevise,"
+ "v.IDRESERVATION"
+ "FROM ventedetails_grp vg"
+ "LEFT JOIN VENTE v ON v.id = vg.IDVENTE"
+ "LEFT JOIN vente_encaisse ve ON ve.IDVENTE = v.id"
+ "LEFT JOIN CLIENT c ON c.id = v.idclient"
+ "LEFT JOIN MAGASIN m ON m.id  = v.idmagasin"
+ "WHERE vg.idDevise='EUR'"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."VENTE_CPL_AVEC_MONTANT_SANSDEV"              "
+ "          ("ID","DESIGNATION","IDMAGASIN","DATY","REMARQUE","ETAT","IDORIGI"
+ "NE","IDCLIENT","IDCLIENTLIB","IDMAGASINLIB","MONTANTTTC","MONTANTPAYE","ENC"
+ "AISSEMENTCHANGE","MONTANTRESTE","IDDEVISE","IDRESERVATION") AS "
+ "SELECT"
+ "v.ID,v.DESIGNATION,v.IDMAGASIN,v.DATY,v.REMARQUE,v.ETAT,v.IDORIGINE,v.IDCLI"
+ "ENT,"
+ "c.NOM AS idClientLib,"
+ "m.VAL AS idMagasinLib,"
+ "nvl(vg.montanttc,0) AS montantttc,"
+ "nvl(ve.montantpaye,0) AS montantpaye,"
+ "0 AS encaissementchange,"
+ "nvl(vg.montanttc,0) - nvl(ve.montantpaye ,0) AS montantreste,"
+ "vg.idDevise,"
+ "v.IDRESERVATION"
+ "FROM vente_grp_sansdevise vg"
+ "LEFT JOIN VENTE v ON v.id = vg.IDVENTE"
+ "LEFT JOIN vente_encaisse ve ON ve.IDVENTE = v.id"
+ "LEFT JOIN CLIENT c ON c.id = v.idclient"
+ "LEFT JOIN MAGASIN m ON m.id  = v.idmagasin"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."CHECKINLIBELLE"                        ("ID","
+ ""RESERVATION","DATY","HEURE","REMARQUE","CLIENT","IDPRODUIT","ETAT","IDCLIE"
+ "NT","CHECKOUT","PRODUITLIBELLE","PU","TVA","ETATLIB") AS "
+ "select c."ID",c."RESERVATION",c."DATY",c."HEURE",c."REMARQUE",c."CLIENT",c."
+ ""IDPRODUIT",c."ETAT",c."IDCLIENT",c."CHECKOUT",i.LIBELLE as produitLibelle,"
+ "i.pu,i.tva,"
+ "           CASE"
+ "        WHEN c.ETAT = 0"
+ "            THEN 'ANNULEE'"
+ "        WHEN c.ETAT = 1"
+ "            THEN 'CREE'"
+ "        WHEN c.ETAT = 11"
+ "            THEN 'VISEE'"
+ "        END AS ETATLIB from checkInAvecChekOut c left join AS_INGREDIENTS i"
+ " on c.IDPRODUIT=i.id"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."CHECKINSANSCHEKOUTCPL"                       "
+ " ("ID","RESERVATION","DATY","HEURE","REMARQUE","CLIENT","IDPRODUIT","ETAT","
+ ""IDCLIENT","CHAMBRE") AS "
+ "select"
+ "    ch."ID",ch."RESERVATION",ch."DATY",ch."HEURE",ch."REMARQUE",ch."CLIENT""
+ ",ch."IDPRODUIT",ch."ETAT",ch."IDCLIENT","
+ "    ing.LIBELLE as chambre"
+ "from CHECKINSANSCHEKOUT ch"
+ "         join AS_INGREDIENTS ing on ch.idproduit = ing.id"
+ "where ing.CATEGORIEINGREDIENT = 'CAT001'"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."RESERVATIONDETSANSCIGROUP"                   "
+ "     ("ID","IDMERE","IDPRODUIT","QTE","DATY","PU","REMARQUE","ETAT","IDCLIE"
+ "NT") AS "
+ "select max(id) as id,"
+ "       rd."IDMERE","
+ "	rd."IDPRODUIT","
+ "	sum(rd."QTE") as qte,"
+ "	min(rd."DATY") as daty,"
+ "	avg(rd."PU") as pu,"
+ "	max(rd."REMARQUE") as remarque,"
+ "	max(rd."ETAT") as etat,"
+ "	rd."IDCLIENT""
+ "from RESERVATIONDETSANSCI rd group by rd.IDMERE,rd.IDPRODUIT,rd.IDCLIENT"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."BONDECOMMANDE_CLIENT_FILLE_CPL"              "
+ "          ("ID","IDBC","IDDEVISE","MONTANT","PRODUIT","PU","QUANTITE","REMI"
+ "SE","TVA","UNITE","QTEOF","QTEOFRESTANTE","QTEFAB","QTEFABRESTANTE","QTELIV"
+ "RE","QTENONLIVRE","LIBELLEPRODUIT") AS "
+ "SELECT"
+ "    bcf.id,"
+ "    bcf.IDBC,"
+ "    bcf.IDDEVISE,"
+ "    avg(bcf.MONTANT) as montant,"
+ "    bcf.PRODUIT,"
+ "    avg(bcf.PU) as pu,"
+ "    avg(bcf.QUANTITE) as quantite,"
+ "    avg(bcf.REMISE) as remise,"
+ "    avg(bcf.TVA) as tva,"
+ "    ing.UNITE as unite,"
+ ""
+ "    nvl(avg(o.QTE),0) AS QTEOF,"
+ "    NVL(sum(bcf.QUANTITE) - nvl(avg(o.QTE),0), 0) AS QTEOFRESTANTE,"
+ ""
+ "    nvl(avg(f.QTE),0) AS QTEFAB,"
+ "    NVL(sum(bcf.QUANTITE) - nvl(avg(f.QTE),0), 0) AS QTEFABRESTANTE,"
+ ""
+ "    AVG(NVL(abcf.QUANTITE, 0)) AS QTELIVRE,"
+ "	NVL(avg(bcf.QUANTITE) - AVG(NVL(abcf.QUANTITE,0)), 0) AS QTENONLIVRE,"
+ "	ing.LIBELLE as libelleProduit"
+ ""
+ "FROM BONDECOMMANDE_CLIENT_FILLE bcf"
+ ""
+ "LEFT JOIN OfGroupByIdbc o ON o.IDBCFILLE = bcf.ID"
+ ""
+ ""
+ "LEFT JOIN fabrGroupByIdbc f ON f.IDBCFILLE = bcf.ID"
+ ""
+ "LEFT JOIN BLGroupByIdbc abcf ON abcf.IDBC_FILLE = bcf.ID"
+ ""
+ "left join AS_INGREDIENTS ing on ing.id=bcf.PRODUIT"
+ ""
+ "GROUP BY"
+ "    bcf.IDBC,"
+ "    bcf.id,"
+ "    bcf.IDDEVISE,"
+ "    bcf.PRODUIT,"
+ "    ing.LIBELLE, ing.UNITE"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."TABLEAUBORDBC"                        ("PRODU"
+ "IT","MONTANT","PU","QUANTITE","REMISE","TVA","UNITE","QTEOF","QTEOFRESTANTE"
+ "","QTEFAB","QTEFABRESTANTE","QTELIVRE","QTENONLIVRE","LIBELLEPRODUIT","DATY"
+ "") AS "
+ "SELECT"
+ " 	bcf.PRODUIT,"
+ "    avg(bcf.MONTANT) as montant,"
+ "    avg(bcf.PU) as pu,"
+ "    avg(bcf.QUANTITE) as quantite,"
+ "    avg(bcf.REMISE) as remise,"
+ "    avg(bcf.TVA) as tva,"
+ "    ing.UNITE as unite,"
+ "    nvl(avg(o.QTE),0) AS QTEOF,"
+ "    NVL(sum(bcf.QUANTITE) - nvl(avg(o.QTE),0), 0) AS QTEOFRESTANTE,"
+ ""
+ "    nvl(avg(f.QTE),0) AS QTEFAB,"
+ "    NVL(sum(bcf.QUANTITE) - nvl(avg(f.QTE),0), 0) AS QTEFABRESTANTE,"
+ ""
+ "    AVG(NVL(abcf.QUANTITE, 0)) AS QTELIVRE,"
+ "	NVL(avg(bcf.QUANTITE) - AVG(NVL(abcf.QUANTITE,0)), 0) AS QTENONLIVRE,"
+ "	ing.LIBELLE as libelleProduit,"
+ "	bc.DATY "
+ ""
+ "FROM BONDECOMMANDE_CLIENT_FILLE bcf"
+ ""
+ "LEFT JOIN BONDECOMMANDE_CLIENT bc ON bc.ID = bcf.IDBC "
+ ""
+ "LEFT JOIN OfGroupByIdbc o ON o.IDBCFILLE = bcf.ID"
+ ""
+ ""
+ "LEFT JOIN fabrGroupByIdbc f ON f.IDBCFILLE = bcf.ID"
+ ""
+ "LEFT JOIN BLGroupByIdbc abcf ON abcf.IDBC_FILLE = bcf.ID"
+ ""
+ "left join AS_INGREDIENTS ing on ing.id=bcf.PRODUIT"
+ ""
+ "GROUP BY"
+ "    bcf.PRODUIT,"
+ "    ing.LIBELLE, ing.UNITE,bc.DATY"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."AS_RECETTEBC"                        ("ID","I"
+ "DPRODUITS","IDINGREDIENTS","QUANTITE","UNITE","COMPOSE") AS "
+ "select offi.id,offi.idbc as IDPRODUITS,offi.PRODUIT as idingredients,"
+ "cast(cast(offi.quantite as number(20,2))*cast(nvl(e.qte,1) as number(20,2))"
+ " as number(20,2)) as quantite,ing.unite,ing.compose from BONDECOMMANDE_CLIE"
+ "NT_FILLE offi left join equivalence e"
+ "on e.idproduit=offi.PRODUIT and e.idunite=offi.unite"
+ "left join as_ingredients ing on ing.id=offi.PRODUIT"
+ "union all"
+ "select ID,IDPRODUITS,IDINGREDIENTS,cast (QUANTITE as number(20,2))as quanti"
+ "te,UNITE,COMPOSE from AS_RECETTECOMPOSE"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."VUE_SUIVI_CARTON_LIVRAISON"                  "
+ "      ("ID","IDBC_MERE","IDCARTONMERE","PRODUIT","PRODUITLIB","UNITE","QUAN"
+ "TITEBCF","QUANTITECARTONFILLE","RESTECARTONFILLE") AS "
+ "SELECT "
+ "    bcf.ID AS id,"
+ "    bcf.IDBC AS idbc_mere,"
+ "    vci.ID_CARTON_MERE AS idCartonMere,"
+ "    ai.ID AS produit,"
+ "    ai.LIBELLE AS produitlib,"
+ "    ai.UNITE AS unite,"
+ "    NVL(bcf.QUANTITE, 0) AS quantitebcf,"
+ "    NVL(vc.QUANTITE_CARTONFILLE, 0) AS quantitecartonfille,"
+ "    NVL(bcf.QUANTITE, 0) - NVL(vc.QUANTITE_CARTONFILLE, 0) AS restecartonfi"
+ "lle"
+ "FROM BONDECOMMANDE_CLIENT_FILLE bcf"
+ "LEFT JOIN AS_INGREDIENTS ai ON ai.ID = bcf.PRODUIT"
+ "LEFT JOIN VUE_CARTONFILLE_SUM vc ON vc.IDBCFILLE = bcf.ID"
+ "LEFT JOIN VUE_CARTONFILLE_IDMERE vci ON vci.IDBCFILLE = bcf.ID"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."DISPONIBILITE_HEURE"                        ("
+ ""ID","HEUREDEBUT","HEUREFIN","JOUR","MAX","IDCATEGORIEINGREDIENTLIB","IDSUP"
+ "PORT","IDSUPPORTLIB","DUREE_DIFFUSION") AS "
+ "SELECT"
+ "    dr.ID,"
+ "    dr.HEUREDEBUT,"
+ "    dr.HEUREFIN,"
+ "    dr.JOUR,"
+ "    dr.MAX,"
+ "    dr.IDCATEGORIEINGREDIENTLIB,"
+ "    dr.IDSUPPORT,"
+ "    dr.IDSUPPORTLIB,"
+ "    SUM("
+ "            CASE"
+ "                WHEN"
+ "                    TO_DATE(a.HEURE, 'HH24:MI:SS') >= TO_DATE(dr.HEUREDEBUT"
+ ", 'HH24:MI:SS')"
+ "                    AND TO_DATE(a.HEURE, 'HH24:MI:SS') <= TO_DATE(dr.HEUREF"
+ "IN, 'HH24:MI:SS')"
+ "                THEN TO_NUMBER(a.DUREE)"
+ "                ELSE 0"
+ "            END"
+ "    ) AS duree_diffusion"
+ "FROM DUREEMAXSPOT_CPL dr"
+ "         LEFT JOIN ACTE a ON dr.IDSUPPORT = a.IDSUPPORT"
+ "GROUP BY"
+ "    dr.IDSUPPORTLIB,"
+ "    dr.HEUREDEBUT,"
+ "    dr.HEUREFIN,"
+ "    dr.JOUR,"
+ "    dr.MAX,"
+ "    dr.IDCATEGORIEINGREDIENTLIB,"
+ "    dr.IDSUPPORT,"
+ "    dr.ID"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."AS_RECETTEOF"                        ("ID","I"
+ "DPRODUITS","IDINGREDIENTS","QUANTITE","UNITE","COMPOSE") AS "
+ "select offi.id,offi.idMere as IDPRODUITS,offi.idingredients,"
+ "cast(cast(offi.qte as number(20,2))*cast(nvl(e.qte,1) as number(20,2)) as n"
+ "umber(20,2)) as quantite,ing.unite,ing.compose from OFFille offi left join "
+ "equivalence e"
+ "on e.idproduit=offi.idingredients and e.idunite=offi.idunite"
+ "left join as_ingredients ing on ing.id=offi.idingredients"
+ "union all"
+ "select "ID","IDPRODUITS","IDINGREDIENTS",cast (QUANTITE as number(20,2))as "
+ "quantite,"UNITE","COMPOSE" from AS_RECETTECOMPOSE"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."RESERVATIONDETAILS_LIB"                      "
+ "  ("ID","IDMERE","QTE","DATY","IDPRODUIT","IDMEDIA","SOURCE","REMARQUE","LI"
+ "BELLEPRODUIT","CATEGORIEPRODUIT","PU","MONTANT","TVA","MONTANTTVA","MONTANT"
+ "TTC","CATEGORIEPRODUITLIB","HEURE","DUREE","REMISE","IDBCFILLE","MONTANTREM"
+ "ISE","MONTANTFINAL","IDPARRAINAGE","LIBELLEMEDIA","CODECOULEUR","ISENTETE","
+ ""ORDRE","ETAT") AS "
+ "SELECT"
+ "    r.ID,"
+ "    r.IDMERE,"
+ "    r.QTE,"
+ "    r.DATY,"
+ "    r.IDPRODUIT,"
+ "    r.IDMEDIA,"
+ "    r.SOURCE,"
+ "    r.REMARQUE,"
+ "    ai.LIBELLE AS libelleproduit,"
+ "    ai.idCATEGORIEINGREDIENT AS categorieproduit,"
+ "    r.PU,"
+ "    r.QTE * r.PU AS montant,"
+ "    ai.tva AS tva,"
+ "    CAST(r.qte*r.pu*(nvl(ai.tva, 0)/ 100) AS NUMBER(20,2)) AS montantTva,"
+ "    CAST((r.QTE * r.PU)+(r.qte*r.pu*(nvl(ai.tva, 0)/ 100)) AS NUMBER(20,2))"
+ " AS montantttc,"
+ "    ai.CATEGORIEINGREDIENT AS categorieproduitlib,"
+ "    r.heure AS heure,"
+ "    r.duree,"
+ "    r.remise,"
+ "    r.idbcfille,"
+ "    CAST(nvl(r.REMISE, 0) AS NUMBER(20,2)) AS montantremise,"
+ "    CAST(((r.QTE * r.PU)+(r.qte*r.pu*(nvl(ai.tva, 0)/ 100))) - nvl(r.REMISE"
+ ", 0) AS NUMBER(20,2)) AS montantfinal,"
+ "    r.IDPARRAINAGE,"
+ "    m.DESCRIPTION AS libellemedia,"
+ "    CASE"
+ "        WHEN r.IDPARRAINAGE IS NOT NULL AND cat_parrainage.CODECOULEUR is n"
+ "ot null AND cat.VAL != 'Billboard' THEN cat_parrainage.CODECOULEUR"
+ "        ELSE cat.CODECOULEUR"
+ "        END AS CODECOULEUR,"
+ "    r.ISENTETE,"
+ "    r.ORDRE,"
+ "    r.ETAT"
+ "FROM"
+ "    RESERVATIONDETAILS r"
+ "        LEFT JOIN AS_INGREDIENTS_LIB ai ON"
+ "        ai.id = r.IDPRODUIT"
+ "        LEFT JOIN MEDIA m ON m.id=r.IDMEDIA"
+ "        LEFT JOIN CATEGORIEINGREDIENT cat ON cat.ID = ai.IDCATEGORIEINGREDI"
+ "ENT"
+ "        LEFT JOIN ("
+ "        SELECT CODECOULEUR"
+ "        FROM CATEGORIEINGREDIENT"
+ "        WHERE VAL LIKE '%Parrainage%'"
+ "          AND ROWNUM = 1"
+ "        ) cat_parrainage ON 1 = 1"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."ACTE_LIB_C"                        ("ID","DAT"
+ "Y","IDPRODUIT","LIBELLEPRODUIT","QTE","PU","MONTANT","LIBELLE","IDCLIENT",""
+ "IDCLIENTLIB","IDRESERVATION","ETAT","ETATLIB","COMPTE_VENTE","COMPTE_ACHAT""
+ ") AS "
+ "SELECT "
+ "al."ID",al."DATY",al."IDPRODUIT",al."LIBELLEPRODUIT",al."QTE",al."PU",al."M"
+ "ONTANT",al."LIBELLE",al."IDCLIENT",al."IDCLIENTLIB",al."IDRESERVATION",al.""
+ "ETAT",al."ETATLIB",al."COMPTE_VENTE",al."COMPTE_ACHAT""
+ "FROM ACTE_LIB al "
+ "WHERE al.etat = 1 "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."ACTE_LIB_V"                        ("ID","DAT"
+ "Y","IDPRODUIT","LIBELLEPRODUIT","QTE","PU","MONTANT","LIBELLE","IDCLIENT",""
+ "IDCLIENTLIB","IDRESERVATION","ETAT","ETATLIB","COMPTE_VENTE","COMPTE_ACHAT""
+ ") AS "
+ "SELECT "
+ "al."ID",al."DATY",al."IDPRODUIT",al."LIBELLEPRODUIT",al."QTE",al."PU",al."M"
+ "ONTANT",al."LIBELLE",al."IDCLIENT",al."IDCLIENTLIB",al."IDRESERVATION",al.""
+ "ETAT",al."ETATLIB",al."COMPTE_VENTE",al."COMPTE_ACHAT""
+ "FROM ACTE_LIB al "
+ "WHERE al.etat = 11 "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."ACTE_LIB_FACT"                        ("ID",""
+ "DATY","IDPRODUIT","LIBELLEPRODUIT","QTE","PU","MONTANT","LIBELLE","IDCLIENT"
+ "","IDCLIENTLIB","IDRESERVATION","ETAT","ETATLIB","COMPTE_VENTE","COMPTE_ACH"
+ "AT") AS "
+ "SELECT"
+ "al."ID",al."DATY",al."IDPRODUIT",al."LIBELLEPRODUIT",al."QTE",al."PU",al."M"
+ "ONTANT",al."LIBELLE",al."IDCLIENT",al."IDCLIENTLIB",al."IDRESERVATION",al.""
+ "ETAT",al."ETATLIB",al."COMPTE_VENTE",al."COMPTE_ACHAT""
+ "FROM ACTE_LIB al "
+ "WHERE EXISTS ( SELECT f.idacte FROM FACTURECLIENTDETAILS f WHERE f.idacte ="
+ " al.id )"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."ACTE_LIB_NONFACT"                        ("ID"
+ "","DATY","IDPRODUIT","LIBELLEPRODUIT","QTE","PU","MONTANT","LIBELLE","IDCLI"
+ "ENT","IDCLIENTLIB","IDRESERVATION","ETAT","ETATLIB","COMPTE_VENTE","COMPTE_"
+ "ACHAT") AS "
+ "SELECT"
+ "al."ID",al."DATY",al."IDPRODUIT",al."LIBELLEPRODUIT",al."QTE",al."PU",al."M"
+ "ONTANT",al."LIBELLE",al."IDCLIENT",al."IDCLIENTLIB",al."IDRESERVATION",al.""
+ "ETAT",al."ETATLIB",al."COMPTE_VENTE",al."COMPTE_ACHAT""
+ "FROM ACTE_LIB al "
+ "WHERE NOT EXISTS ( SELECT f.idacte FROM FACTURECLIENTDETAILS f WHERE f.idac"
+ "te = al.id )"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."ACTE_LIB_A"                        ("ID","DAT"
+ "Y","IDPRODUIT","LIBELLEPRODUIT","QTE","PU","MONTANT","LIBELLE","IDCLIENT",""
+ "IDCLIENTLIB","IDRESERVATION","ETAT","ETATLIB","COMPTE_VENTE","COMPTE_ACHAT""
+ ") AS "
+ "SELECT "
+ "al."ID",al."DATY",al."IDPRODUIT",al."LIBELLEPRODUIT",al."QTE",al."PU",al."M"
+ "ONTANT",al."LIBELLE",al."IDCLIENT",al."IDCLIENTLIB",al."IDRESERVATION",al.""
+ "ETAT",al."ETATLIB",al."COMPTE_VENTE",al."COMPTE_ACHAT""
+ "FROM ACTE_LIB al "
+ "WHERE al.etat = 0 "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."MVTSTOCKLIBCREER"                        ("ID"
+ "","DESIGNATION","IDMAGASIN","IDOBJET","IDMAGASINLIB","IDVENTE","IDVENTELIB""
+ ","IDTRANSFERT","IDTRANSFERTLIB","IDTYPEMVSTOCK","IDTYPEMVSTOCKLIB","DATY",""
+ "ETAT","ETATLIB","IDRESERVATION") AS "
+ "SELECT"
+ "m."ID",m."DESIGNATION",m."IDMAGASIN",m."IDOBJET",m."IDMAGASINLIB",m."IDVENT"
+ "E",m."IDVENTELIB",m."IDTRANSFERT",m."IDTRANSFERTLIB",m."IDTYPEMVSTOCK",m."I"
+ "DTYPEMVSTOCKLIB",m."DATY",m."ETAT",m."ETATLIB",m."IDRESERVATION""
+ "FROM MVTSTOCKLIB m"
+ "WHERE m.ETAT = 1"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."MVTSTOCKLIBANNULER"                        (""
+ "ID","DESIGNATION","IDMAGASIN","IDOBJET","IDMAGASINLIB","IDVENTE","IDVENTELI"
+ "B","IDTRANSFERT","IDTRANSFERTLIB","IDTYPEMVSTOCK","IDTYPEMVSTOCKLIB","DATY""
+ ","ETAT","ETATLIB","IDRESERVATION") AS "
+ "SELECT"
+ "m."ID",m."DESIGNATION",m."IDMAGASIN",m."IDOBJET",m."IDMAGASINLIB",m."IDVENT"
+ "E",m."IDVENTELIB",m."IDTRANSFERT",m."IDTRANSFERTLIB",m."IDTYPEMVSTOCK",m."I"
+ "DTYPEMVSTOCKLIB",m."DATY",m."ETAT",m."ETATLIB",m."IDRESERVATION""
+ "FROM MVTSTOCKLIB m"
+ "WHERE m.ETAT = 0"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."MVTSTOCKLIBVALIDER"                        (""
+ "ID","DESIGNATION","IDMAGASIN","IDOBJET","IDMAGASINLIB","IDVENTE","IDVENTELI"
+ "B","IDTRANSFERT","IDTRANSFERTLIB","IDTYPEMVSTOCK","IDTYPEMVSTOCKLIB","DATY""
+ ","ETAT","ETATLIB","IDRESERVATION") AS "
+ "SELECT"
+ "m."ID",m."DESIGNATION",m."IDMAGASIN",m."IDOBJET",m."IDMAGASINLIB",m."IDVENT"
+ "E",m."IDVENTELIB",m."IDTRANSFERT",m."IDTRANSFERTLIB",m."IDTYPEMVSTOCK",m."I"
+ "DTYPEMVSTOCKLIB",m."DATY",m."ETAT",m."ETATLIB",m."IDRESERVATION""
+ "FROM MVTSTOCKLIB m"
+ "WHERE m.ETAT = 11"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."PRELEVEMENTLIB"                        ("ID","
+ ""IDPRELEVEMENTANTERIEUR","COMPTEUR","DATY","HEURE","IDPOMPISTE","IDPOMPE",""
+ "NOMUSER","IDROLE","NOMMAGASIN","DESCRIPTIONMAGASIN","ETAT","ETATLIB","DESIG"
+ "NATION") AS "
+ "SELECT "
+ "    p.ID AS ID,"
+ "    p.IDPRELEVEMENTANTERIEUR AS IDPRELEVEMENTANTERIEUR,"
+ "    p.COMPTEUR AS COMPTEUR,"
+ "    CASE "
+ "  		WHEN p.HEURE IS NULL AND p.DATY IS NOT NULL  "
+ "  		THEN TO_DATE((TO_CHAR(p.DATY, 'YYYY-MM-DD') ||' '||'00:00'), 'YYYY-MM-D"
+ "D HH24:MI')  "
+ "  		ELSE "
+ "  		TO_DATE((TO_CHAR(p.DATY, 'YYYY-MM-DD') || ' ' || p.HEURE), 'YYYY-MM-DD "
+ "HH24:MI')"
+ "    END AS DATY,"
+ "    p.HEURE AS HEURE,"
+ "    p.IDPOMPISTE AS IDPOMPISTE,"
+ "    p.IDPOMPE AS IDPOMPE,"
+ "    u.NOMUSER AS NOMUSER,"
+ "    u.IDROLE AS IDROLE,"
+ "    m.VAL AS NOMMAGASIN,"
+ "    m.DESCE AS DESCRIPTIONMAGASIN,"
+ "    p.ETAT ,"
+ "CASE "
+ "	WHEN p.ETAT = 0 "
+ "	THEN 'ANNULEE'"
+ "	WHEN p.ETAT = 1 "
+ "	THEN 'CREE'"
+ "	WHEN p.ETAT = 11 "
+ "	THEN 'VALIDEE'"
+ "	WHEN p.ETAT = 22 "
+ "	THEN 'ENCAISSEE'"
+ "END AS ETATLIB,"
+ "p.DESIGNATION "
+ "FROM "
+ "    PRELEVEMENT p"
+ "JOIN "
+ "    UTILISATEUR u ON u.REFUSER = p.IDPOMPISTE"
+ "JOIN "
+ "    POMPE p2 ON p2.ID = p.IDPOMPE "
+ "JOIN "
+ "    MAGASINLIB m ON m.ID = p2.IDMAGASIN "
+ "WHERE "
+ "    u.IDROLE = 'pompiste'"
+ "   "
+ "   "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."V_ETATSTOCK"                        ("ID","ID"
+ "PRODUITLIB","IDTYPEPRODUIT","IDTYPEPRODUITLIB","IDMAGASIN","IDMAGASINLIB",""
+ "DATEDERNIERINVENTAIRE","QUANTITE","ENTREE","SORTIE","RESTE","IDUNITE","IDUN"
+ "ITELIB","PUVENTE","IDPOINT","IDTYPEMAGASIN","SEUILMIN","SEUILMAX") AS "
+ "SELECT inv.IDPRODUIT AS                                               ID,"
+ "       p.desce       AS                                               idpro"
+ "duitLib,"
+ "       p.IDTYPEPRODUIT,"
+ "       tp.desce      AS                                               idtyp"
+ "eproduitlib,"
+ "       inv.idmagasin,"
+ "       mag.desce     AS                                               idmag"
+ "asinlib,"
+ "       inv.DATY                                                       dateD"
+ "ernierinventaire,"
+ "       CAST(NVL(inv.QUANTITE, 0)  AS NUMBER(30, 2))                        "
+ "                  QUANTITE,"
+ "       NVL(mvt.ENTREE, 0)                                             ENTRE"
+ "E,"
+ "       NVL(mvt.SORTIE, 0)                                             SORTI"
+ "E,"
+ "       NVL(mvt.ENTREE, 0) + NVL(inv.QUANTITE, 0) - NVL(mvt.SORTIE, 0) reste"
+ ","
+ "       p.IDUNITE,"
+ "       u.desce       AS                                               iduni"
+ "telib,"
+ "       CAST(NVL(p.PUVENTE, 0) AS NUMBER(30, 2))                       PUVEN"
+ "TE,"
+ "       mag.IDPOINT,"
+ "       mag.IDTYPEMAGASIN,"
+ "       p.seuilmin,"
+ "       p.seuilmax"
+ "FROM INVENTAIRE_FILLE_CPL inv,"
+ "     ("
+ "         SELECT inv.IDPRODUIT,"
+ "                inv.IDMAGASIN,"
+ "                MAX(inv.DATY) maxDateInventaire"
+ "         FROM INVENTAIRE_FILLE_CPL inv"
+ "         WHERE inv.ETAT = 11"
+ "           AND inv.DATY <= SYSDATE --- dateMin"
+ "         GROUP BY inv.IDPRODUIT, inv.IDMAGASIN"
+ "     ) invm,"
+ "     ("
+ "         SELECT m.IDPRODUIT,"
+ "                dinv.IDMAGASIN,"
+ "                SUM(nvl(m.ENTREE, 0)) ENTREE,"
+ "                SUM(nvl(m.SORTIE, 0)) SORTIE"
+ "         FROM MVTSTOCKFILLELIB_VISE m,"
+ "              ("
+ "                  SELECT inv.IDPRODUIT,"
+ "                         inv.IDMAGASIN,"
+ "                         MAX(inv.DATY) maxDateInventaire"
+ "                  FROM INVENTAIRE_FILLE_CPL inv"
+ "                  WHERE inv.ETAT = 11"
+ "                    AND inv.DATY <= SYSDATE --- dateMin"
+ "                  GROUP BY inv.IDPRODUIT, inv.IDMAGASIN"
+ "              ) dinv"
+ "         WHERE m.IDPRODUIT = dinv.IDPRODUIT(+)"
+ "           AND m.IDMAGASIN = dinv.IDMAGASIN(+)"
+ "           AND m.DATY > dinv.maxDateInventaire"
+ "           AND m.DATY <= SYSDATE -- dateMax"
+ "         GROUP BY m.IDPRODUIT, dinv.IDMAGASIN"
+ "     ) mvt,"
+ "     produit p,"
+ "     type_produit tp,"
+ "     magasin mag,"
+ "     AS_UNITE u"
+ "WHERE inv.DATY = invm.maxDateInventaire"
+ "  AND inv.IDMAGASIN = invm.IDMAGASIN"
+ "  AND inv.IDPRODUIT = invm.IDPRODUIT"
+ "  AND inv.IDPRODUIT = mvt.IDPRODUIT(+)"
+ "  AND inv.IDMAGASIN = mvt.IDMAGASIN(+)"
+ "  AND inv.IDPRODUIT = p.ID(+)"
+ "  AND p.IDTYPEPRODUIT = tp.ID"
+ "  AND inv.idmagasin = mag.ID"
+ "  AND p.IDUNITE = u.ID(+)"
+ "  AND ( mvt.SORTIE > 0 OR mvt.ENTREE > 0 )"
+ "  AND inv.ETAT >= 11"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."BLC_NONFACTURE"                        ("ID","
+ ""REMARQUE","IDBC","DATY","ETAT","MAGASIN","MAGASINLIB","ETATLIB","IDVENTE","
+ ""IDVENTELIB","IDCLIENT","IDCLIENTLIB") AS "
+ "SELECT"
+ "	ID,"
+ "	REMARQUE,"
+ "	IDBC,"
+ "	DATY,"
+ "	ETAT,"
+ "	MAGASIN,"
+ "	MAGASINLIB,"
+ "	ETATLIB,"
+ "	IDVENTE,"
+ "	IDVENTELIB,"
+ "	IDCLIENT ,"
+ "    IDCLIENTLIB"
+ "FROM"
+ "	AS_BONDELIVRAISONCLIENT_LIB"
+ "WHERE"
+ "	idVente IS NULL AND ETAT >=11"
+ "    "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."AS_BONDELIVRAISONC_LIBCPL_C"                 "
+ "       ("ID","REMARQUE","IDVENTE","IDBC","DATY","ETAT","MAGASIN","IDORIGINE"
+ "","IDCLIENT","IDMAGASINLIB","IDCLIENTLIB","ETATLIB") AS "
+ "SELECT "ID","REMARQUE","IDVENTE","IDBC","DATY","ETAT","MAGASIN","IDORIGINE""
+ ","IDCLIENT","IDMAGASINLIB","IDCLIENTLIB","ETATLIB" FROM AS_BONDELIVRAISONCL"
+ "IENT_LIBCPL WHERE etat=1"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."AS_BONDELIVRAISONC_LIBCPL_V"                 "
+ "       ("ID","REMARQUE","IDVENTE","IDBC","DATY","ETAT","MAGASIN","IDORIGINE"
+ "","IDCLIENT","IDMAGASINLIB","IDCLIENTLIB","ETATLIB") AS "
+ "SELECT "ID","REMARQUE","IDVENTE","IDBC","DATY","ETAT","MAGASIN","IDORIGINE""
+ ","IDCLIENT","IDMAGASINLIB","IDCLIENTLIB","ETATLIB" FROM AS_BONDELIVRAISONCL"
+ "IENT_LIBCPL WHERE etat=11"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."AS_BONDELIVRAISONC_LIBCPL_A"                 "
+ "       ("ID","REMARQUE","IDVENTE","IDBC","DATY","ETAT","MAGASIN","IDORIGINE"
+ "","IDCLIENT","IDMAGASINLIB","IDCLIENTLIB","ETATLIB") AS "
+ "SELECT "ID","REMARQUE","IDVENTE","IDBC","DATY","ETAT","MAGASIN","IDORIGINE""
+ ","IDCLIENT","IDMAGASINLIB","IDCLIENTLIB","ETATLIB" FROM AS_BONDELIVRAISONCL"
+ "IENT_LIBCPL WHERE etat=0"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."BL_NONFACTURE"                        ("ID",""
+ "REMARQUE","IDBC","DATY","ETAT","MAGASIN","MAGASINLIB","ETATLIB","IDFOURNISS"
+ "EUR","IDFOURNISSEURLIB") AS "
+ "SELECT "
+ "abl."ID",abl."REMARQUE",abl."IDBC",abl."DATY",abl."ETAT",abl."MAGASIN",abl."
+ ""MAGASINLIB",abl."ETATLIB",abl."IDFOURNISSEUR",abl."IDFOURNISSEURLIB""
+ "FROM AS_BONDELIVRAISON_LIB abl "
+ "WHERE abl.IDFOURNISSEUR IS NULL "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."SITUATION_ARTICLE"                        ("I"
+ "D","PRODUIT","IDBC","QUANTITE","PU","MONTANT","TVA","UNITE","REMISE","DATY""
+ ","ETAT","REMARQUE","DESIGNATION","MODEPAIEMENT","FOURNISSEUR","REFERENCE",""
+ "QTE_RESTE") AS "
+ "select bc."ID",bc."PRODUIT",bc."IDBC",bc."QUANTITE",bc."PU",bc."MONTANT",bc"
+ "."TVA",bc."UNITE",bc."REMISE",bc."DATY",bc."ETAT",bc."REMARQUE",bc."DESIGNA"
+ "TION",bc."MODEPAIEMENT",bc."FOURNISSEUR",bc."REFERENCE","
+ "       BC.QUANTITE - nvl(AB.qte_livre,0) AS QTE_reste"
+ "from AS_BONDECOMMANDE_MF bc"
+ "         left join AS_BONDELIVRAISON_LIVRE AB on AB.IDBC_FILLE = bc.id"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."AS_BONDECOMMANDE_LIVRE"                      "
+ "  ("ID","PRODUIT","IDBC","QUANTITE","PU","MONTANT","TVA","UNITE","REMISE",""
+ "DATY","ETAT","REMARQUE","DESIGNATION","MODEPAIEMENT","FOURNISSEUR","REFEREN"
+ "CE","QTE_COMMANDE","QTE_LIVRE","QTE_RESTE","PRODUITLIB") AS "
+ "select bc.ID,bc.PRODUIT,bc.IDBC,bc.QUANTITE,bc.PU,bc.MONTANT,bc.TVA,bc.UNIT"
+ "E,bc.REMISE,bc.DATY,bc.ETAT,bc.REMARQUE,bc.DESIGNATION,bc.MODEPAIEMENT,bc.F"
+ "OURNISSEUR,bc.REFERENCE,"
+ "       BC.QUANTITE as qte_commande,"
+ "       nvl(AB.qte_livre, 0)               as qte_livre,"
+ "       BC.QUANTITE - nvl(AB.qte_livre, 0) AS QTE_reste,"
+ "       p.LIBELLE as produitlib"
+ "from AS_BONDECOMMANDE_MF bc"
+ "         left join AS_BONDELIVRAISON_LIVRE AB on AB.IDBC_FILLE = bc.id"
+ "         left join AS_INGREDIENTS  p on p.id=bc.PRODUIT"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."AS_BLCLFILLEGRP_VENTE_CPL_V"                 "
+ "       ("PRODUIT","IDPRODUITLIB","IDVENTE","QUANTITE") AS "
+ "SELECT "
+ "a.PRODUIT ,"
+ "a.IDPRODUITLIB,"
+ "a.IDVENTE,"
+ "nvl( sum(QUANTITE) ,0) AS QUANTITE"
+ "FROM AS_BONLIVRFILLE_CLIENT_CPL a "
+ "LEFT JOIN AS_BONDELIVRAISON_CLIENT abc ON abc.id = a.numbl"
+ "WHERE abc.etat = 11"
+ "GROUP BY a.IDPRODUITLIB,"
+ "a.IDVENTE,a.PRODUIT "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."AVOIRFCLIB_CPL"                        ("ID","
+ ""DESIGNATION","IDMAGASIN","IDMAGASINLIB","DATY","REMARQUE","ETAT","IDORIGIN"
+ "E","IDCLIENT","COMPTE","IDVENTE","IDVENTELIB","IDMOTIF","IDMOTIFLIB","IDCAT"
+ "EGORIE","IDCATEGORIELIB","IDDEVISE","TAUXDECHANGE","MONTANTHT","MONTANTTVA""
+ ","MONTANTTTC","MONTANTHTAR","MONTANTTVAAR","MONTANTTTCAR","MONTANTPAYE","MO"
+ "NTANTPAYEAR","RESTEAPAYER","RESTEAPAYERAR") AS "
+ "SELECT AL.ID,"
+ "       AL.DESIGNATION,"
+ "       AL.IDMAGASIN,"
+ "       AL.IDMAGASINLIB,"
+ "       AL.DATY,"
+ "       AL.REMARQUE,"
+ "       AL.ETAT,"
+ "       AL.IDORIGINE,"
+ "       AL.IDCLIENT,"
+ "       AL.COMPTE,"
+ "       AL.IDVENTE,"
+ "       AL.IDVENTELIB,"
+ "       AL.IDMOTIF,"
+ "       AL.IDMOTIFLIB,"
+ "       AL.IDCATEGORIE,"
+ "       AL.IDCATEGORIELIB,"
+ "       AL.IDDEVISE,"
+ "       AL.TAUXDECHANGE,"
+ "       AL.MONTANTHT,"
+ "       AL.MONTANTTVA,"
+ "       AL.MONTANTTTC,"
+ "       AL.MONTANTHTAR,"
+ "       AL.MONTANTTVAAR,"
+ "       AL.MONTANTTTCAR,"
+ "       M.DEBIT as MONTANTPAYE,"
+ "       nvl(M.DEBIT, 0)*nvl(AL.TAUXDECHANGE, 0) as MONTANTPAYEAR,"
+ "       AL.MONTANTTTC - nvl(M.DEBIT, 0) as RESTEAPAYER,"
+ "       AL.MONTANTTTCAR - (nvl(M.DEBIT,0)*nvl(AL.TAUXDECHANGE, 0)) as RESTEA"
+ "PAYERAR"
+ "from AVOIRFCLIB AL"
+ "LEFT JOIN MOUVEMENTCAISSEGROUPEFACTURE M on AL.ID = M.IDORIGINE"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."MOUVEMENTCAISSECPL_NATTACH"                  "
+ "      ("ID","DESIGNATION","IDCAISSE","IDCAISSELIB","IDVENTEDETAIL","IDVIREM"
+ "ENT","DEBIT","CREDIT","DATY","ETAT","ETATLIB","IDVENTE","IDORIGINE","IDTIER"
+ "S","TIERS","IDPREVISION","IDOP","TAUX","COMPTE","IDDEVISE") AS "
+ "SELECT "ID","DESIGNATION","IDCAISSE","IDCAISSELIB","IDVENTEDETAIL","IDVIREM"
+ "ENT","DEBIT","CREDIT","DATY","ETAT","ETATLIB","IDVENTE","IDORIGINE","IDTIER"
+ "S","TIERS","IDPREVISION","IDOP","TAUX","COMPTE","IDDEVISE" FROM MOUVEMENTCA"
+ "ISSECPL m  "
+ "WHERE NOT EXISTS (SELECT mvp.id FROM MVTCAISSEPREVISION mvp WHERE mvp.id1=m"
+ ".id) AND m.ETAT >=11"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."PREVISIONAVECMVTCAISSE"                      "
+ "  ("ID","DESIGNATION","IDCAISSE","IDVENTEDETAIL","IDVIREMENT","DEBIT","CRED"
+ "IT","DATY","ETAT","IDOP","IDORIGINE","IDDEVISE","TAUX","IDTIERS","COMPTE",""
+ "IDFACTURE","EFFECTIFDEB","EFFECTIFCRED") AS "
+ "SELECT p."ID",p."DESIGNATION",p."IDCAISSE",p."IDVENTEDETAIL",p."IDVIREMENT""
+ ",p."DEBIT",p."CREDIT",p."DATY",p."ETAT",p."IDOP",p."IDORIGINE",p."IDDEVISE""
+ ","
+ "  p."TAUX",p."IDTIERS",p."COMPTE",p."IDFACTURE",nvl(m.montantMere*nvl(m.tau"
+ "x,1),0) AS effectifdeb,nvl(m.montantCredit*nvl(m.taux,1),0) AS effectifCred"
+ " "
+ "FROM PREVISIONVALIDE p LEFT JOIN MvtCaisseSomPrevisionGroup m ON p.id=m.id2"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."OFFILLELIB"                        ("ID","IDI"
+ "NGREDIENTS","LIBELLE","REMARQUE","IDMERE","DATYBESOIN","QTE","IDUNITE","QTE"
+ "FABRIQUE","QTERESTE","LIBELLEEXACTE") AS "
+ "SELECT"
+ "	ofll.ID,"
+ "	ofll.IDINGREDIENTS,"
+ "	ai.LIBELLE ||' '|| ofll.LIBELLE as LIBELLE,"
+ "	ofll.REMARQUE,"
+ "	ofll.IDMERE,"
+ "	ofll.DATYBESOIN,"
+ "	ofll.QTE,"
+ "	nvl(au.VAL,'unite') AS IDUNITE,"
+ "	fmf.qte AS qteFabrique,(ofll.qte-nvl(fmf.qte,0)) AS qteReste,"
+ "	nvl(ai.LIBELLEEXTACTE,ai.LIBELLE ||' '|| ofll.LIBELLE) as libelleexacte"
+ "FROM OFFILLE ofll"
+ "	LEFT JOIN AS_INGREDIENTS ai ON ai.ID = ofll.IDINGREDIENTS"
+ "	LEFT JOIN AS_UNITE au ON au.ID = ofll.IDUNITE"
+ "    LEFT JOIN FabricationMereFille fmf on fmf.IDOF=ofll.IDMERE and fmf.IDIN"
+ "GREDIENTS=ofll.IDINGREDIENTS"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."V_ETATSTOCK_ING"                        ("ID""
+ ","IDPRODUITLIB","IDTYPEPRODUIT","IDTYPEPRODUITLIB","IDMAGASIN","IDMAGASINLI"
+ "B","DATEDERNIERINVENTAIRE","QUANTITE","ENTREE","SORTIE","RESTE","IDUNITE",""
+ "IDUNITELIB","PUVENTE","IDPOINT","IDTYPEMAGASIN","SEUILMIN","SEUILMAX") AS "
+ "SELECT inv.IDPRODUIT AS                                               ID,"
+ "       p.LIBELLE       AS                                               idp"
+ "roduitLib,"
+ "       p.CATEGORIEINGREDIENT,"
+ "       tp.desce      AS                                               idtyp"
+ "eproduitlib,"
+ "       inv.idmagasin,"
+ "       mag.desce     AS                                               idmag"
+ "asinlib,"
+ "       inv.DATY                                                       dateD"
+ "ernierinventaire,"
+ "       CAST(NVL(inv.QUANTITE, 0)  AS NUMBER(30, 2))                        "
+ "                  QUANTITE,"
+ "       NVL(mvt.ENTREE, 0)                                             ENTRE"
+ "E,"
+ "       NVL(mvt.SORTIE, 0)                                             SORTI"
+ "E,"
+ "       NVL(mvt.ENTREE, 0) + NVL(inv.QUANTITE, 0) - NVL(mvt.SORTIE, 0) reste"
+ ","
+ "       p.UNITE,"
+ "       u.desce       AS                                               iduni"
+ "telib,"
+ "       CAST(NVL(p.PV, 0) AS NUMBER(30, 2))                       PUVENTE,"
+ "       mag.IDPOINT,"
+ "       mag.IDTYPEMAGASIN,"
+ "       p.seuilmin,"
+ "       p.seuilmax"
+ "FROM INVENTAIRE_FILLE_CPL_ING inv,"
+ "     ("
+ "         SELECT inv.IDPRODUIT,"
+ "                inv.IDMAGASIN,"
+ "                MAX(inv.DATY) maxDateInventaire"
+ "         FROM INVENTAIRE_FILLE_CPL_ING inv"
+ "         WHERE inv.ETAT = 11"
+ "           AND inv.DATY <= SYSDATE --- dateMin"
+ "         GROUP BY inv.IDPRODUIT, inv.IDMAGASIN"
+ "     ) invm,"
+ "     ("
+ "         SELECT m.IDPRODUIT,"
+ "                dinv.IDMAGASIN,"
+ "                SUM(nvl(m.ENTREE, 0)) ENTREE,"
+ "                SUM(nvl(m.SORTIE, 0)) SORTIE"
+ "         FROM MVTSTOCKFILLELIB_VISE m,"
+ "              ("
+ "                  SELECT inv.IDPRODUIT,"
+ "                         inv.IDMAGASIN,"
+ "                         MAX(inv.DATY) maxDateInventaire"
+ "                  FROM INVENTAIRE_FILLE_CPL inv"
+ "                  WHERE inv.ETAT = 11"
+ "                    AND inv.DATY <= SYSDATE --- dateMin"
+ "                  GROUP BY inv.IDPRODUIT, inv.IDMAGASIN"
+ "              ) dinv"
+ "         WHERE m.IDPRODUIT = dinv.IDPRODUIT(+)"
+ "           AND m.IDMAGASIN = dinv.IDMAGASIN(+)"
+ "           AND m.DATY > dinv.maxDateInventaire"
+ "           AND m.DATY <= SYSDATE -- dateMax"
+ "         GROUP BY m.IDPRODUIT, dinv.IDMAGASIN"
+ "     ) mvt,"
+ "     AS_INGREDIENTS p,"
+ "     CATEGORIEINGREDIENT tp,"
+ "     magasin mag,"
+ "     as_unite u"
+ "WHERE inv.DATY = invm.maxDateInventaire"
+ "  AND inv.IDMAGASIN = invm.IDMAGASIN"
+ "  AND inv.IDPRODUIT = invm.IDPRODUIT"
+ "  AND inv.IDPRODUIT = mvt.IDPRODUIT(+)"
+ "  AND inv.IDMAGASIN = mvt.IDMAGASIN(+)"
+ "  AND inv.IDPRODUIT = p.ID(+)"
+ "  AND p.CATEGORIEINGREDIENT = tp.ID"
+ "  AND inv.idmagasin = mag.ID"
+ "  AND p.UNITE = u.ID(+)"
+ "  AND ( mvt.SORTIE > 0 OR mvt.ENTREE > 0 )"
+ "  AND inv.ETAT >= 11"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."OFFILLELIBQTERESTE"                        (""
+ "ID","IDINGREDIENTS","LIBELLE","REMARQUE","IDMERE","DATYBESOIN","QTE","IDUNI"
+ "TE","QTEFABRIQUE","QTERESTE","LIBELLEMERE","DATY") AS "
+ "SELECT"
+ "	ofll.ID,"
+ "	ofll.IDINGREDIENTS,"
+ "	ai.LIBELLE ||' '|| ofll.LIBELLE as LIBELLE,"
+ "	ai.LIBELLE as remarque,"
+ "	ofll.IDMERE,"
+ "	ofll.DATYBESOIN,"
+ "	(ofll.qte-nvl(fmf.qte,0)) as QTE,"
+ "	nvl(au.VAL,'unite') AS IDUNITE,"
+ "	fmf.qte AS qteFabrique,(ofll.qte-fmf.qte) AS qteReste,"
+ "	ofa.LIBELLE as libelleMere,fmf.daty"
+ "    "
+ "FROM OFFILLE ofll"
+ "	LEFT JOIN AS_INGREDIENTS ai ON ai.ID = ofll.IDINGREDIENTS"
+ "	LEFT JOIN AS_UNITE au ON au.ID = ofll.IDUNITE"
+ "    LEFT JOIN FabricationMereFille fmf on fmf.IDOF=ofll.IDMERE and fmf.IDIN"
+ "GREDIENTS=ofll.IDINGREDIENTS"
+ "left join OFAB ofa on ofa.id=ofll.IDMERE"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."JAUGE_LIB_CREE"                        ("ID","
+ ""IDMAGASIN","IDMAGASINLIB","QTE","DATY","ETAT","ETATLIB") AS "
+ "SELECT "
+ "j."ID",j."IDMAGASIN",j."IDMAGASINLIB",j."QTE",j."DATY",j."ETAT",j."ETATLIB""
+ ""
+ "FROM JAUGELIB j "
+ "WHERE j.ETAT = 1 "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."JAUGE_LIB_ANNULEE"                        ("I"
+ "D","IDMAGASIN","IDMAGASINLIB","QTE","DATY","ETAT","ETATLIB") AS "
+ "SELECT "
+ "j."ID",j."IDMAGASIN",j."IDMAGASINLIB",j."QTE",j."DATY",j."ETAT",j."ETATLIB""
+ ""
+ "FROM JAUGELIB j "
+ "WHERE j.ETAT = 0 "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."JAUGE_LIB_VALIDEE"                        ("I"
+ "D","IDMAGASIN","IDMAGASINLIB","QTE","DATY","ETAT","ETATLIB") AS "
+ "SELECT "
+ "j."ID",j."IDMAGASIN",j."IDMAGASINLIB",j."QTE",j."DATY",j."ETAT",j."ETATLIB""
+ ""
+ "FROM JAUGELIB j "
+ "WHERE j.ETAT = 11 "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."VENTELUBRIFIANTLIB_CV"                       "
+ " ("ID","IDPRODUIT","IDPRODUITLIB","QTE","PU","TAUXREMISE","IDENCAISSEMENT","
+ ""IDENCAISSEMENTLIB","IDMAGASIN","DATY","REMARQUE","IDMAGASINLIB","ETAT","ET"
+ "ATLIB") AS "
+ "SELECT "
+ "v."ID",v."IDPRODUIT",v."IDPRODUITLIB",v."QTE",v."PU",v."TAUXREMISE",v."IDEN"
+ "CAISSEMENT",v."IDENCAISSEMENTLIB",v."IDMAGASIN",v."DATY",v."REMARQUE",v."ID"
+ "MAGASINLIB",v."ETAT",v."ETATLIB""
+ "FROM venteLubrifiantLib v "
+ "WHERE v.ETAT != 0 "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."VENTELUBRIFIANTLIBCREE"                      "
+ "  ("ID","IDPRODUIT","IDPRODUITLIB","QTE","PU","TAUXREMISE","IDENCAISSEMENT""
+ ","IDENCAISSEMENTLIB","IDMAGASIN","DATY","REMARQUE","IDMAGASINLIB","ETAT","E"
+ "TATLIB") AS "
+ "SELECT "
+ "v."ID",v."IDPRODUIT",v."IDPRODUITLIB",v."QTE",v."PU",v."TAUXREMISE",v."IDEN"
+ "CAISSEMENT",v."IDENCAISSEMENTLIB",v."IDMAGASIN",v."DATY",v."REMARQUE",v."ID"
+ "MAGASINLIB",v."ETAT",v."ETATLIB""
+ " FROM VENTELUBRIFIANTLIB v "
+ " WHERE v.ETAT = 1 "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."VENTELUBRIFIANTLIBVISEE"                     "
+ "   ("ID","IDPRODUIT","IDPRODUITLIB","QTE","PU","TAUXREMISE","IDENCAISSEMENT"
+ "","IDENCAISSEMENTLIB","IDMAGASIN","DATY","REMARQUE","IDMAGASINLIB","ETAT",""
+ "ETATLIB") AS "
+ "SELECT "
+ "v."ID",v."IDPRODUIT",v."IDPRODUITLIB",v."QTE",v."PU",v."TAUXREMISE",v."IDEN"
+ "CAISSEMENT",v."IDENCAISSEMENTLIB",v."IDMAGASIN",v."DATY",v."REMARQUE",v."ID"
+ "MAGASINLIB",v."ETAT",v."ETATLIB""
+ " FROM VENTELUBRIFIANTLIB v "
+ " WHERE v.ETAT = 11 "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."VENTELUBRIFIANTLIBANNULE"                    "
+ "    ("ID","IDPRODUIT","IDPRODUITLIB","QTE","PU","TAUXREMISE","IDENCAISSEMEN"
+ "T","IDENCAISSEMENTLIB","IDMAGASIN","DATY","REMARQUE","IDMAGASINLIB","ETAT","
+ ""ETATLIB") AS "
+ "SELECT "
+ "v."ID",v."IDPRODUIT",v."IDPRODUITLIB",v."QTE",v."PU",v."TAUXREMISE",v."IDEN"
+ "CAISSEMENT",v."IDENCAISSEMENTLIB",v."IDMAGASIN",v."DATY",v."REMARQUE",v."ID"
+ "MAGASINLIB",v."ETAT",v."ETATLIB""
+ " FROM VENTELUBRIFIANTLIB v "
+ " WHERE v.ETAT = 0 "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."CHECKOUTLIB"                        ("ID","RE"
+ "SERVATION","DATY","HEURE","REMARQUE","ETAT","PRODUITLIBELLE","ETATLIB","IDR"
+ "ESERVATION") AS "
+ "select"
+ "    ch."ID",ch."RESERVATION",ch."DATY",ch."HEURE",ch."REMARQUE",ch."ETAT","
+ "    ci.PRODUITLIBELLE,"
+ "    case when ch.ETAT = 1 then 'CREE'"
+ "         when ch.ETAT = 11 then 'VALIDEE'"
+ "        END as etatlib,"
+ "    ci.RESERVATION as idreservation"
+ "from CHECKOUT ch"
+ "         join CHECKINLIBELLE ci on ci.ID = ch.RESERVATION"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."BC_CLIENT_FILLE_CPL_LIB_VISEE"               "
+ "         ("ID","IDBC","IDDEVISE","MONTANT","PRODUIT","PU","QUANTITE","REMIS"
+ "E","TVA","UNITE","QTEOF","QTEOFRESTANTE","QTEFAB","QTEFABRESTANTE","QTELIVR"
+ "E","QTENONLIVRE","LIBELLEPRODUIT","PRODUITLIB") AS "
+ "select bc.ID,bc.IDBC,bc.IDDEVISE,bc.MONTANT,bc.PRODUIT,bc.PU,bc.QUANTITE,bc"
+ ".REMISE,bc.TVA,bc.UNITE,bc.QTEOF,bc.QTEOFRESTANTE,bc.QTEFAB,bc.QTEFABRESTAN"
+ "TE,bc.QTELIVRE,bc.QTENONLIVRE,bc.LIBELLEPRODUIT,i.LIBELLE as produitlib"
+ "from BONDECOMMANDE_CLIENT_FILLE_CPL bc"
+ "join AS_INGREDIENTS i"
+ "on i.ID = bc.PRODUIT"
+ "JOIN BONDECOMMANDE_CLIENT mere"
+ "on mere.ID = bc.IDBC"
+ "where ETAT >=11"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."RESERVATIONMONTANT"                        (""
+ "IDMERE","MONTANT","MONTANTTVA","MONTANTTTC","MONTANTREMISE","MONTANTFINAL")"
+ " AS "
+ "SELECT "
+ "r.IDMERE,"
+ "cast(sum(r.montant) as number(20,2)) AS montant,"
+ "cast(sum(r.MONTANTTVA)as number(20,2)) as MONTANTTVA,"
+ "cast(sum(r.MONTANTTTC) as number(20,2))as MONTANTTTC,"
+ "cast(sum(r.MONTANTREMISE) AS number(20,2)) AS MONTANTREMISE,"
+ "cast(sum(r.MONTANTFINAL) AS number(20,2)) AS MONTANTFINAL"
+ "FROM reservationdetails_lib r "
+ "GROUP BY r.IDMERE"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."PREVISION_COMPLET_CPL"                       "
+ " ("ID","DESIGNATION","IDCAISSE","IDCAISSELIB","IDVENTEDETAIL","IDVENTE","ID"
+ "VENTELIB","IDVIREMENT","DEBIT","CREDIT","DATY","ETAT","IDOP","IDOPLIB","IDO"
+ "RIGINE","IDDEVISE","IDDEVISELIB","TAUX","IDTIERS","COMPTE","EFFECTIFDEBIT","
+ ""EFFECTIFCREDIT","DEPENSEECART","RECETTEECART","IDFACTURE") AS "
+ "SELECT"
+ "	p.ID,p.DESIGNATION,p.IDCAISSE,p.IDCAISSELIB,p.IDVENTEDETAIL,p.IDVENTE,p.ID"
+ "VENTELIB,p.IDVIREMENT,p.DEBIT,p.CREDIT,p.DATY,p.ETAT,p.IDOP,p.IDOPLIB,p.IDO"
+ "RIGINE,p.IDDEVISE,p.IDDEVISELIB,p.TAUX,p.IDTIERS,p.COMPTE ,"
+ "	nvl(pe.effectifDeb,0) AS effectifDebit,"
+ "	nvl(pe.effectifCred,0) AS effectifCredit,"
+ "	p.debit - nvl(pe.effectifDeb,0) AS depenseEcart,"
+ "	p.credit - nvl(pe.effectifCred,0) AS recetteEcart,"
+ "	p.idfacture"
+ "FROM PREVISION_CPL p"
+ "LEFT join PrevisionAvecMvtCaisse pe on pe.id=p.id "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."AVOIRFCLIB_CPL_VISEE"                        "
+ "("ID","DESIGNATION","IDMAGASIN","IDMAGASINLIB","DATY","REMARQUE","ETAT","ID"
+ "ORIGINE","IDCLIENT","COMPTE","IDVENTE","IDVENTELIB","IDMOTIF","IDMOTIFLIB","
+ ""IDCATEGORIE","IDCATEGORIELIB","IDDEVISE","TAUXDECHANGE","MONTANTHT","MONTA"
+ "NTTVA","MONTANTTTC","MONTANTHTAR","MONTANTTVAAR","MONTANTTTCAR","MONTANTPAY"
+ "E","MONTANTPAYEAR","RESTEAPAYER","RESTEAPAYERAR") AS "
+ "select "ID","DESIGNATION","IDMAGASIN","IDMAGASINLIB","DATY","REMARQUE","ETA"
+ "T","IDORIGINE","IDCLIENT","COMPTE","IDVENTE","IDVENTELIB","IDMOTIF","IDMOTI"
+ "FLIB","IDCATEGORIE","IDCATEGORIELIB","IDDEVISE","TAUXDECHANGE","MONTANTHT","
+ ""MONTANTTVA","MONTANTTTC","MONTANTHTAR","MONTANTTVAAR","MONTANTTTCAR","MONT"
+ "ANTPAYE","MONTANTPAYEAR","RESTEAPAYER","RESTEAPAYERAR" from avoirfclib_cpl "
+ "where ETAT >= 11"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."RESULTATPREVGROUPSEMAINE"                    "
+ "    ("DATY","DEBIT","CREDIT","semaine","annee","mois") AS "
+ "SELECT min(r.daty) AS daty,sum(r.debit) AS debit,sum(r.CREDIT) AS credit,r."
+ ""semaine",r."annee", r."mois" "
+ "FROM RESULTATPREVISIONNELTOUS r GROUP BY r."semaine",r."annee", r."mois""
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."RESULTATPREVGROUPMOIS"                       "
+ " ("DATY","DEBIT","CREDIT","annee","mois") AS "
+ "SELECT min(r.daty) AS daty,sum(r.debit) AS debit,sum(r.CREDIT) AS credit,r."
+ ""annee", r."mois" "
+ "FROM RESULTATPREVISIONNELTOUS r GROUP BY r."annee", r."mois""
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."RESULTATPREVISIONNELMVT"                     "
+ "   ("DATY","DEBIT","CREDIT") AS "
+ "SELECT "
+ "daty,"
+ "greatest(sum(debit-effectifdeb),0) AS debit, "
+ "greatest(sum(credit-effectifCred),0) AS credit "
+ "FROM PrevisionAvecMvtCaisse p  group by daty"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."OFFILLERESTELIB"                        ("ID""
+ ","IDINGREDIENTS","LIBELLE","REMARQUE","IDMERE","DATYBESOIN","QTE","IDUNITE""
+ ","QTEFABRIQUE","QTERESTE") AS "
+ "SELECT o."ID",o."IDINGREDIENTS",o."LIBELLE",o."REMARQUE",o."IDMERE",o."DATY"
+ "BESOIN",o."QTE",o."IDUNITE",fmf.qte AS qteFabrique,(o.qte-fmf.qte) AS qteRe"
+ "ste FROM FabricationMereFille fmf JOIN OfFilleLib o ON fmf.idof=o.IDMERE  A"
+ "ND fmf.IDINGREDIENTS=o.IDINGREDIENTS"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."PRELEVEMENTLIB_CREE"                        ("
+ ""ID","IDPRELEVEMENTANTERIEUR","COMPTEUR","DATY","HEURE","IDPOMPISTE","IDPOM"
+ "PE","NOMUSER","IDROLE","NOMMAGASIN","DESCRIPTIONMAGASIN","ETAT","ETATLIB",""
+ "DESIGNATION") AS "
+ "SELECT "
+ "p."ID",p."IDPRELEVEMENTANTERIEUR",p."COMPTEUR",p."DATY",p."HEURE",p."IDPOMP"
+ "ISTE",p."IDPOMPE",p."NOMUSER",p."IDROLE",p."NOMMAGASIN",p."DESCRIPTIONMAGAS"
+ "IN",p."ETAT",p."ETATLIB",p."DESIGNATION""
+ "FROM PRELEVEMENTLIB p "
+ "WHERE p.ETAT = 1 "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."PRELEVEMENTLIB_VISEE"                        "
+ "("ID","IDPRELEVEMENTANTERIEUR","COMPTEUR","DATY","HEURE","IDPOMPISTE","IDPO"
+ "MPE","NOMUSER","IDROLE","NOMMAGASIN","DESCRIPTIONMAGASIN","ETAT","ETATLIB","
+ ""DESIGNATION","IDPOMPELIB") AS "
+ "SELECT"
+ "	p.ID,"
+ "	p.IDPRELEVEMENTANTERIEUR,"
+ "	p.COMPTEUR,"
+ "	p.DATY,"
+ "	p.HEURE,"
+ "	p.IDPOMPISTE,"
+ "	p.IDPOMPE,"
+ "	p.NOMUSER,"
+ "	p.IDROLE,"
+ "	p.NOMMAGASIN,"
+ "	p.DESCRIPTIONMAGASIN,"
+ "	p.ETAT,"
+ "	p.ETATLIB,"
+ "	p.DESIGNATION,"
+ "	p2.val AS IDPOMPELIB"
+ "	"
+ "FROM"
+ "	PRELEVEMENTLIB p"
+ "	LEFT JOIN POMPE p2 ON p2.ID = p.IDPOMPE "
+ "WHERE"
+ "	p.ETAT = 11 "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."PRELEVEMENTLIB_ANNULEE"                      "
+ "  ("ID","IDPRELEVEMENTANTERIEUR","COMPTEUR","DATY","HEURE","IDPOMPISTE","ID"
+ "POMPE","NOMUSER","IDROLE","NOMMAGASIN","DESCRIPTIONMAGASIN","ETAT","ETATLIB"
+ "","DESIGNATION") AS "
+ "SELECT "
+ "p."ID",p."IDPRELEVEMENTANTERIEUR",p."COMPTEUR",p."DATY",p."HEURE",p."IDPOMP"
+ "ISTE",p."IDPOMPE",p."NOMUSER",p."IDROLE",p."NOMMAGASIN",p."DESCRIPTIONMAGAS"
+ "IN",p."ETAT",p."ETATLIB",p."DESIGNATION""
+ "FROM PRELEVEMENTLIB p "
+ "WHERE p.ETAT = 0 "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."PRELEVEMENTLIB_ENCAISSEE"                    "
+ "    ("ID","IDPRELEVEMENTANTERIEUR","COMPTEUR","DATY","HEURE","IDPOMPISTE",""
+ "IDPOMPE","NOMUSER","IDROLE","NOMMAGASIN","DESCRIPTIONMAGASIN","ETAT","ETATL"
+ "IB","DESIGNATION") AS "
+ "SELECT "
+ "p."ID",p."IDPRELEVEMENTANTERIEUR",p."COMPTEUR",p."DATY",p."HEURE",p."IDPOMP"
+ "ISTE",p."IDPOMPE",p."NOMUSER",p."IDROLE",p."NOMMAGASIN",p."DESCRIPTIONMAGAS"
+ "IN",p."ETAT",p."ETATLIB",p."DESIGNATION""
+ "FROM PRELEVEMENTLIB p "
+ "WHERE p.ETAT = 22"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."PRELEVEMENTLIB_VALIDE"                       "
+ " ("ID","IDPRELEVEMENTANTERIEUR","COMPTEUR","DATY","HEURE","IDPOMPISTE","IDP"
+ "OMPE","NOMUSER","IDROLE","NOMMAGASIN","DESCRIPTIONMAGASIN","ETAT","ETATLIB""
+ ","DESIGNATION","IDPOMPELIB") AS "
+ "SELECT"
+ "	p.ID,"
+ "	p.IDPRELEVEMENTANTERIEUR,"
+ "	p.COMPTEUR,"
+ "	p.DATY,"
+ "	p.HEURE,"
+ "	p.IDPOMPISTE,"
+ "	p.IDPOMPE,"
+ "	p.NOMUSER,"
+ "	p.IDROLE,"
+ "	p.NOMMAGASIN,"
+ "	p.DESCRIPTIONMAGASIN,"
+ "	p.ETAT,"
+ "	p.ETATLIB,"
+ "	p.DESIGNATION,"
+ "	p2.val AS IDPOMPELIB"
+ "	"
+ "FROM"
+ "	PRELEVEMENTLIB p"
+ "	LEFT JOIN POMPE p2 ON p2.ID = p.IDPOMPE "
+ "WHERE"
+ "	p.ETAT >= 11 "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."VENTEDETAILS_AVEC_MONTANT"                   "
+ "     ("ID","IDVENTE","IDVENTELIB","IDPRODUIT","IDPRODUITLIB","IDORIGINE","Q"
+ "TE","PU","MONTANT","IDDEVISE","TAUXDECHANGE","TVA","IDCLIENT","IDCLIENTLIB""
+ ","PUTOTAL","PUREVIENT","MONTANTRESTE","MONTANTPAYE") AS "
+ "SELECT "
+ "	v."ID",v."IDVENTE",v."IDVENTELIB",v."IDPRODUIT",v."IDPRODUITLIB",v."IDORIG"
+ "INE",v."QTE",v."PU",v."MONTANT",v."IDDEVISE",v."TAUXDECHANGE",v."TVA",v."ID"
+ "CLIENT",v."IDCLIENTLIB","
+ "	v.pu*v.qte*nvl(v.tauxdechange,0) AS putotal,"
+ "	v.pu*v.qte AS 	purevient,"
+ "	vcm.montantreste,"
+ "	vcm.montantpaye"
+ "FROM VENTE_DETAILS_CPL v"
+ "JOIN VENTE_CPL_AVEC_MONTANT vcm ON vcm.id=v.IDVENTE "
+ ""
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."AVOIRFCLIB_CPL_CREE"                        ("
+ ""ID","DESIGNATION","IDMAGASIN","IDMAGASINLIB","DATY","REMARQUE","ETAT","IDO"
+ "RIGINE","IDCLIENT","COMPTE","IDVENTE","IDVENTELIB","IDMOTIF","IDMOTIFLIB",""
+ "IDCATEGORIE","IDCATEGORIELIB","IDDEVISE","TAUXDECHANGE","MONTANTHT","MONTAN"
+ "TTVA","MONTANTTTC","MONTANTHTAR","MONTANTTVAAR","MONTANTTTCAR","MONTANTPAYE"
+ "","MONTANTPAYEAR","RESTEAPAYER","RESTEAPAYERAR") AS "
+ "SELECT"
+ "	ID,"
+ "	DESIGNATION,"
+ "	IDMAGASIN,"
+ "	IDMAGASINLIB,"
+ "	DATY,"
+ "	REMARQUE,"
+ "	ETAT,"
+ "	IDORIGINE,"
+ "	IDCLIENT,"
+ "	COMPTE,"
+ "	IDVENTE,"
+ "	IDVENTELIB,"
+ "	IDMOTIF,"
+ "	IDMOTIFLIB,"
+ "	IDCATEGORIE,"
+ "	IDCATEGORIELIB,"
+ "	IDDEVISE,"
+ "	TAUXDECHANGE,"
+ "	MONTANTHT,"
+ "	MONTANTTVA,"
+ "	MONTANTTTC,"
+ "	MONTANTHTAR,"
+ "	MONTANTTVAAR,"
+ "	MONTANTTTCAR,"
+ "	MONTANTPAYE,"
+ "	MONTANTPAYEAR,"
+ "	RESTEAPAYER,"
+ "	RESTEAPAYERAR"
+ "FROM"
+ "	avoirfclib_cpl"
+ "WHERE"
+ "	ETAT != 1"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."AVOIRFCLIB_CPL_NON_CREE"                     "
+ "   ("ID","DESIGNATION","IDMAGASIN","IDMAGASINLIB","DATY","REMARQUE","ETAT","
+ ""IDORIGINE","IDCLIENT","COMPTE","IDVENTE","IDVENTELIB","IDMOTIF","IDMOTIFLI"
+ "B","IDCATEGORIE","IDCATEGORIELIB","IDDEVISE","TAUXDECHANGE","MONTANTHT","MO"
+ "NTANTTVA","MONTANTTTC","MONTANTHTAR","MONTANTTVAAR","MONTANTTTCAR","MONTANT"
+ "PAYE","MONTANTPAYEAR","RESTEAPAYER","RESTEAPAYERAR") AS "
+ "SELECT"
+ "	ID,"
+ "	DESIGNATION,"
+ "	IDMAGASIN,"
+ "	IDMAGASINLIB,"
+ "	DATY,"
+ "	REMARQUE,"
+ "	ETAT,"
+ "	IDORIGINE,"
+ "	IDCLIENT,"
+ "	COMPTE,"
+ "	IDVENTE,"
+ "	IDVENTELIB,"
+ "	IDMOTIF,"
+ "	IDMOTIFLIB,"
+ "	IDCATEGORIE,"
+ "	IDCATEGORIELIB,"
+ "	IDDEVISE,"
+ "	TAUXDECHANGE,"
+ "	MONTANTHT,"
+ "	MONTANTTVA,"
+ "	MONTANTTTC,"
+ "	MONTANTHTAR,"
+ "	MONTANTTVAAR,"
+ "	MONTANTTTCAR,"
+ "	MONTANTPAYE,"
+ "	MONTANTPAYEAR,"
+ "	RESTEAPAYER,"
+ "	RESTEAPAYERAR"
+ "FROM"
+ "	avoirfclib_cpl"
+ "WHERE"
+ "	ETAT != 1"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."RESERVATIONDETAILS_LIBGROUPE"                "
+ "        ("ID","IDMERE","QTE","DATY","IDPRODUIT","LIBELLEPRODUIT","CATEGORIE"
+ "PRODUIT","PU","MONTANT","TVA","MONTANTTVA","MONTANTTTC","CATEGORIEPRODUITLI"
+ "B","HEURE") AS "
+ "SELECT"
+ "min(r.ID) as id,"
+ "r.IDMERE,"
+ "sum(r.QTE) as qte,"
+ "min(r.DATY) as daty,"
+ "r.IDPRODUIT,"
+ "r.libelleproduit AS libelleproduit,"
+ "r.categorieproduit AS categorieproduit,"
+ "avg(r.PU) as pu,"
+ "sum(r.QTE * r.PU) AS  montant,"
+ "avg(r.tva) as tva,"
+ "cast(sum(montantTva) as number(20,2)) as montantTva,"
+ "cast(sum(montantttc) as number(20,2)) as montantttc,"
+ "r.categorieproduitlib AS categorieproduitlib,"
+ "min(r.heure) AS heure"
+ "FROM RESERVATIONDETAILS_LIB r"
+ ""
+ "group by r.idmere,r.idproduit,r.libelleproduit,r.categorieproduit,r.categor"
+ "ieproduitlib"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."RESERVATIONAVECDIFFUSION"                    "
+ "    ("ID","IDMERE","QTE","DATY","IDPRODUIT","LIBELLEPRODUIT","CATEGORIEPROD"
+ "UIT","PU","MONTANT","TVA","MONTANTTVA","MONTANTTTC","CATEGORIEPRODUITLIB",""
+ "HEURE","DUREE","REMISE","IDBCFILLE","MONTANTREMISE","MONTANTFINAL","IDDIFFU"
+ "SION","ETAT","HEUREDIFFUSION","DUREEDIFFUSION","ETATLIB","IDMEDIALIB","IDSU"
+ "PPORT","IDSUPPORTLIB","ETATMERE","CAMPAGNE","REMARQUE") AS "
+ "SELECT"
+ "    r."ID",r."IDMERE",r."QTE",r."DATY",r."IDPRODUIT",r."LIBELLEPRODUIT",r.""
+ "CATEGORIEPRODUIT",r."PU",r."MONTANT",r."TVA",r."MONTANTTVA",r."MONTANTTTC","
+ "r."CATEGORIEPRODUITLIB",r."HEURE",r."DUREE",r."REMISE",r."IDBCFILLE",r."MON"
+ "TANTREMISE",r."MONTANTFINAL","
+ "    a.ID as IDDIFFUSION,"
+ "    a.ETAT,"
+ "    a.HEURE as HEUREDIFFUSION,"
+ "    a.DUREE as DUREEDIFFUSION,"
+ "    a.ETATLIB,"
+ "    a.idmedialib,"
+ "    rmere.IDSUPPORT,"
+ "    s.VAL AS IDSUPPORTLIB,"
+ "    rmere.ETAT as ETATMERE,"
+ "    rmere.REMARQUE as campagne,"
+ "    r.remarque"
+ "FROM RESERVATIONDETAILS_LIB r"
+ "    LEFT JOIN ACTE_LIB a ON a.IDRESERVATIONFILLE = r.ID"
+ "    LEFT JOIN RESERVATION rmere ON rmere.ID = r.IDMERE"
+ "    LEFT JOIN SUPPORT s ON s.ID = rmere.IDSUPPORT"
+ "WHERE a.ID IS NOT NULL"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."RESERVATIONSANSDIFFUSION"                    "
+ "    ("ID","IDMERE","QTE","DATY","IDPRODUIT","LIBELLEPRODUIT","CATEGORIEPROD"
+ "UIT","PU","MONTANT","TVA","MONTANTTVA","MONTANTTTC","CATEGORIEPRODUITLIB",""
+ "HEURE","DUREE","REMISE","IDBCFILLE","MONTANTREMISE","MONTANTFINAL","IDDIFFU"
+ "SION","ETAT","HEUREDIFFUSION","DUREEDIFFUSION","ETATLIB","IDMEDIALIB","IDSU"
+ "PPORT","IDSUPPORTLIB","ETATMERE") AS "
+ "SELECT"
+ "    r."ID",r."IDMERE",r."QTE",r."DATY",r."IDPRODUIT",r."LIBELLEPRODUIT",r.""
+ "CATEGORIEPRODUIT",r."PU",r."MONTANT",r."TVA",r."MONTANTTVA",r."MONTANTTTC","
+ "r."CATEGORIEPRODUITLIB",r."HEURE",r."DUREE",r."REMISE",r."IDBCFILLE",r."MON"
+ "TANTREMISE",r."MONTANTFINAL","
+ "    a.ID as IDDIFFUSION,"
+ "    a.ETAT,"
+ "    a.HEURE as HEUREDIFFUSION,"
+ "    a.DUREE as DUREEDIFFUSION,"
+ "    a.ETATLIB,"
+ "    a.idmedialib,"
+ "    rmere.IDSUPPORT,"
+ "    s.VAL AS IDSUPPORTLIB,"
+ "    rmere.ETAT as ETATMERE"
+ "FROM RESERVATIONDETAILS_LIB r"
+ "    LEFT JOIN ACTE_LIB a ON a.IDRESERVATIONFILLE = r.ID"
+ "    LEFT JOIN RESERVATION rmere ON rmere.ID = r.IDMERE"
+ "    LEFT JOIN SUPPORT s ON s.ID = rmere.IDSUPPORT"
+ "    WHERE a.id IS NULL AND RMERE.etat >=11"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."RESERVATIONDETAILS_DIFFUSION"                "
+ "        ("ID","IDMERE","QTE","DATY","IDPRODUIT","IDMEDIA","SOURCE","REMARQU"
+ "E","LIBELLEPRODUIT","CATEGORIEPRODUIT","PU","MONTANT","TVA","MONTANTTVA","M"
+ "ONTANTTTC","CATEGORIEPRODUITLIB","HEURE","DUREE","REMISE","IDBCFILLE","MONT"
+ "ANTREMISE","MONTANTFINAL","IDPARRAINAGE","LIBELLEMEDIA","CODECOULEUR","ISEN"
+ "TETE","ORDRE","ETAT","IDDIFFUSION","HEUREDIFFUSION","DUREEDIFFUSION","ETATL"
+ "IB","IDMEDIALIB","IDSUPPORT","IDSUPPORTLIB","ETATMERE","CLIENT","ETATDIFFUS"
+ "ION") AS "
+ "SELECT"
+ "    r."ID",r."IDMERE",r."QTE",r."DATY",r."IDPRODUIT",r."IDMEDIA",r."SOURCE""
+ ",r."REMARQUE",r."LIBELLEPRODUIT",r."CATEGORIEPRODUIT",r."PU",r."MONTANT",r."
+ ""TVA",r."MONTANTTVA",r."MONTANTTTC",r."CATEGORIEPRODUITLIB",r."HEURE",r."DU"
+ "REE",r."REMISE",r."IDBCFILLE",r."MONTANTREMISE",r."MONTANTFINAL",r."IDPARRA"
+ "INAGE",r."LIBELLEMEDIA",r."CODECOULEUR",r."ISENTETE",r."ORDRE",r."ETAT","
+ "    a.ID as IDDIFFUSION,"
+ "    a.HEURE as HEUREDIFFUSION,"
+ "    a.DUREE as DUREEDIFFUSION,"
+ "    a.ETATLIB,"
+ "    a.idmedialib,"
+ "    rmere.IDSUPPORT,"
+ "    s.VAL AS IDSUPPORTLIB,"
+ "    rmere.ETAT as ETATMERE,"
+ "    c.NOM AS client,"
+ "    CASE"
+ "        WHEN a.id IS null THEN 'Non diffus&eacute;'"
+ "        ELSE 'Diffus&eacute;'"
+ "        END AS etatdiffusion"
+ "FROM RESERVATIONDETAILS_LIB r"
+ "         LEFT JOIN ACTE_LIB a ON a.IDRESERVATIONFILLE = r.ID"
+ "         LEFT JOIN RESERVATION rmere ON rmere.ID = r.IDMERE"
+ "         LEFT JOIN CLIENT c ON c.id=rmere.IDCLIENT"
+ "         LEFT JOIN SUPPORT s ON s.ID = rmere.IDSUPPORT"
+ "WHERE rmere.ETAT >=11 ORDER BY r.HEURE ASC"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."RESERVATIONDETAILS_SANSETAT"                 "
+ "       ("ID","IDMERE","QTE","DATY","IDPRODUIT","IDMEDIA","SOURCE","REMARQUE"
+ "","LIBELLEPRODUIT","CATEGORIEPRODUIT","PU","MONTANT","TVA","MONTANTTVA","MO"
+ "NTANTTTC","CATEGORIEPRODUITLIB","HEURE","DUREE","REMISE","IDBCFILLE","MONTA"
+ "NTREMISE","MONTANTFINAL","IDPARRAINAGE","LIBELLEMEDIA","CODECOULEUR","ISENT"
+ "ETE","ORDRE","ETAT","IDDIFFUSION","HEUREDIFFUSION","DUREEDIFFUSION","ETATLI"
+ "B","IDMEDIALIB","IDSUPPORT","IDSUPPORTLIB","ETATMERE","CLIENT","ETATDIFFUSI"
+ "ON") AS "
+ "SELECT"
+ "    r."ID",r."IDMERE",r."QTE",r."DATY",r."IDPRODUIT",r."IDMEDIA",r."SOURCE""
+ ",r."REMARQUE",r."LIBELLEPRODUIT",r."CATEGORIEPRODUIT",r."PU",r."MONTANT",r."
+ ""TVA",r."MONTANTTVA",r."MONTANTTTC",r."CATEGORIEPRODUITLIB",r."HEURE",r."DU"
+ "REE",r."REMISE",r."IDBCFILLE",r."MONTANTREMISE",r."MONTANTFINAL",r."IDPARRA"
+ "INAGE",r."LIBELLEMEDIA",r."CODECOULEUR",r."ISENTETE",r."ORDRE",r."ETAT","
+ "    a.ID as IDDIFFUSION,"
+ "    a.HEURE as HEUREDIFFUSION,"
+ "    a.DUREE as DUREEDIFFUSION,"
+ "    a.ETATLIB,"
+ "    a.idmedialib,"
+ "    rmere.IDSUPPORT,"
+ "    s.VAL AS IDSUPPORTLIB,"
+ "    rmere.ETAT as ETATMERE,"
+ "    c.NOM AS client,"
+ "    CASE"
+ "        WHEN a.id IS null THEN 'Non diffus&eacute;'"
+ "        ELSE 'Diffus&eacute;'"
+ "        END AS etatdiffusion"
+ "FROM RESERVATIONDETAILS_LIB r"
+ "         LEFT JOIN ACTE_LIB a ON a.IDRESERVATIONFILLE = r.ID"
+ "         LEFT JOIN RESERVATION rmere ON rmere.ID = r.IDMERE"
+ "         LEFT JOIN CLIENT c ON c.id=rmere.IDCLIENT"
+ "         LEFT JOIN SUPPORT s ON s.ID = rmere.IDSUPPORT ORDER BY r.HEURE ASC"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."RESERVATIONSDETAILS_CREE"                    "
+ "    ("ID","IDMERE","QTE","DATY","IDPRODUIT","LIBELLEPRODUIT","CATEGORIEPROD"
+ "UIT","PU","MONTANT","TVA","MONTANTTVA","MONTANTTTC","CATEGORIEPRODUITLIB",""
+ "HEURE","DUREE","REMISE","IDBCFILLE","MONTANTREMISE","MONTANTFINAL","IDDIFFU"
+ "SION","ETAT","HEUREDIFFUSION","DUREEDIFFUSION","ETATLIB","IDMEDIALIB","IDSU"
+ "PPORT","IDSUPPORTLIB","ETATMERE","CAMPAGNE","REMARQUE") AS "
+ "SELECT"
+ "    r."ID",r."IDMERE",r."QTE",r."DATY",r."IDPRODUIT",r."LIBELLEPRODUIT",r.""
+ "CATEGORIEPRODUIT",r."PU",r."MONTANT",r."TVA",r."MONTANTTVA",r."MONTANTTTC","
+ "r."CATEGORIEPRODUITLIB",r."HEURE",r."DUREE",r."REMISE",r."IDBCFILLE",r."MON"
+ "TANTREMISE",r."MONTANTFINAL","
+ "    a.ID as IDDIFFUSION,"
+ "    a.ETAT,"
+ "    a.HEURE as HEUREDIFFUSION,"
+ "    a.DUREE as DUREEDIFFUSION,"
+ "    a.ETATLIB,"
+ "    a.idmedialib,"
+ "    rmere.IDSUPPORT,"
+ "    s.VAL AS IDSUPPORTLIB,"
+ "    rmere.ETAT as ETATMERE,"
+ "    rmere.REMARQUE as campagne,"
+ "    r.remarque"
+ "FROM RESERVATIONDETAILS_LIB r"
+ "    LEFT JOIN ACTE_LIB a ON a.IDRESERVATIONFILLE = r.ID"
+ "    LEFT JOIN RESERVATION rmere ON rmere.ID = r.IDMERE"
+ "    LEFT JOIN SUPPORT s ON s.ID = rmere.IDSUPPORT"
+ "WHERE rmere.ETAT = 1"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."RESERVATIONSDETAILS_VALIDE"                  "
+ "      ("ID","IDMERE","QTE","DATY","IDPRODUIT","LIBELLEPRODUIT","CATEGORIEPR"
+ "ODUIT","PU","MONTANT","TVA","MONTANTTVA","MONTANTTTC","CATEGORIEPRODUITLIB""
+ ","HEURE","DUREE","REMISE","IDBCFILLE","MONTANTREMISE","MONTANTFINAL","IDDIF"
+ "FUSION","ETAT","HEUREDIFFUSION","DUREEDIFFUSION","ETATLIB","IDMEDIALIB","ID"
+ "SUPPORT","IDSUPPORTLIB","ETATMERE","CAMPAGNE","REMARQUE") AS "
+ "SELECT"
+ "    r."ID",r."IDMERE",r."QTE",r."DATY",r."IDPRODUIT",r."LIBELLEPRODUIT",r.""
+ "CATEGORIEPRODUIT",r."PU",r."MONTANT",r."TVA",r."MONTANTTVA",r."MONTANTTTC","
+ "r."CATEGORIEPRODUITLIB",r."HEURE",r."DUREE",r."REMISE",r."IDBCFILLE",r."MON"
+ "TANTREMISE",r."MONTANTFINAL","
+ "    a.ID as IDDIFFUSION,"
+ "    a.ETAT,"
+ "    a.HEURE as HEUREDIFFUSION,"
+ "    a.DUREE as DUREEDIFFUSION,"
+ "    a.ETATLIB,"
+ "    a.idmedialib,"
+ "    rmere.IDSUPPORT,"
+ "    s.VAL AS IDSUPPORTLIB,"
+ "    rmere.ETAT as ETATMERE,"
+ "    rmere.REMARQUE as campagne,"
+ "    r.remarque"
+ "FROM RESERVATIONDETAILS_LIB r"
+ "    LEFT JOIN ACTE_LIB a ON a.IDRESERVATIONFILLE = r.ID"
+ "    LEFT JOIN RESERVATION rmere ON rmere.ID = r.IDMERE"
+ "    LEFT JOIN SUPPORT s ON s.ID = rmere.IDSUPPORT"
+ "WHERE rmere.ETAT = 11"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."RESERVATIONSDETAILS_ANNULE"                  "
+ "      ("ID","IDMERE","QTE","DATY","IDPRODUIT","LIBELLEPRODUIT","CATEGORIEPR"
+ "ODUIT","PU","MONTANT","TVA","MONTANTTVA","MONTANTTTC","CATEGORIEPRODUITLIB""
+ ","HEURE","DUREE","REMISE","IDBCFILLE","MONTANTREMISE","MONTANTFINAL","IDDIF"
+ "FUSION","ETAT","HEUREDIFFUSION","DUREEDIFFUSION","ETATLIB","IDMEDIALIB","ID"
+ "SUPPORT","IDSUPPORTLIB","ETATMERE","CAMPAGNE","REMARQUE") AS "
+ "SELECT"
+ "    r."ID",r."IDMERE",r."QTE",r."DATY",r."IDPRODUIT",r."LIBELLEPRODUIT",r.""
+ "CATEGORIEPRODUIT",r."PU",r."MONTANT",r."TVA",r."MONTANTTVA",r."MONTANTTTC","
+ "r."CATEGORIEPRODUITLIB",r."HEURE",r."DUREE",r."REMISE",r."IDBCFILLE",r."MON"
+ "TANTREMISE",r."MONTANTFINAL","
+ "    a.ID as IDDIFFUSION,"
+ "    a.ETAT,"
+ "    a.HEURE as HEUREDIFFUSION,"
+ "    a.DUREE as DUREEDIFFUSION,"
+ "    a.ETATLIB,"
+ "    a.idmedialib,"
+ "    rmere.IDSUPPORT,"
+ "    s.VAL AS IDSUPPORTLIB,"
+ "    rmere.ETAT as ETATMERE,"
+ "    rmere.REMARQUE as campagne,"
+ "    r.remarque"
+ "FROM RESERVATIONDETAILS_LIB r"
+ "    LEFT JOIN ACTE_LIB a ON a.IDRESERVATIONFILLE = r.ID"
+ "    LEFT JOIN RESERVATION rmere ON rmere.ID = r.IDMERE"
+ "    LEFT JOIN SUPPORT s ON s.ID = rmere.IDSUPPORT"
+ "WHERE rmere.ETAT = 0"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."RESERVATIONSDETAILS_TOUS"                    "
+ "    ("ID","IDMERE","QTE","DATY","IDPRODUIT","LIBELLEPRODUIT","CATEGORIEPROD"
+ "UIT","PU","MONTANT","TVA","MONTANTTVA","MONTANTTTC","CATEGORIEPRODUITLIB",""
+ "HEURE","DUREE","REMISE","IDBCFILLE","MONTANTREMISE","MONTANTFINAL","IDDIFFU"
+ "SION","ETAT","HEUREDIFFUSION","DUREEDIFFUSION","ETATLIB","IDMEDIALIB","IDSU"
+ "PPORT","IDSUPPORTLIB","ETATMERE","CAMPAGNE","REMARQUE") AS "
+ "SELECT"
+ "    r."ID",r."IDMERE",r."QTE",r."DATY",r."IDPRODUIT",r."LIBELLEPRODUIT",r.""
+ "CATEGORIEPRODUIT",r."PU",r."MONTANT",r."TVA",r."MONTANTTVA",r."MONTANTTTC","
+ "r."CATEGORIEPRODUITLIB",r."HEURE",r."DUREE",r."REMISE",r."IDBCFILLE",r."MON"
+ "TANTREMISE",r."MONTANTFINAL","
+ "    a.ID as IDDIFFUSION,"
+ "    a.ETAT,"
+ "    a.HEURE as HEUREDIFFUSION,"
+ "    a.DUREE as DUREEDIFFUSION,"
+ "    a.ETATLIB,"
+ "    a.idmedialib,"
+ "    rmere.IDSUPPORT,"
+ "    s.VAL AS IDSUPPORTLIB,"
+ "    rmere.ETAT as ETATMERE,"
+ "    rmere.REMARQUE as campagne,"
+ "    r.remarque"
+ "FROM RESERVATIONDETAILS_LIB r"
+ "    LEFT JOIN ACTE_LIB a ON a.IDRESERVATIONFILLE = r.ID"
+ "    LEFT JOIN RESERVATION rmere ON rmere.ID = r.IDMERE"
+ "    LEFT JOIN SUPPORT s ON s.ID = rmere.IDSUPPORT"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."RESERVATION_LIB"                        ("ID""
+ ","IDCLIENT","IDCLIENTLIB","DATY","REMARQUE","ETAT","ETATLIB","MONTANT","MON"
+ "TANTTTC","MONTANTTVA","PAYE","RESTEAPAYER","IDBC","IDSUPPORTLIB","MONTANTRE"
+ "MISE","MONTANTFINAL","SOURCE") AS "
+ "SELECT"
+ "    r.id,"
+ "    r.idClient,"
+ "    c.NOM AS idclientlib,"
+ "    r.daty,"
+ "    r.remarque,"
+ "    r.etat,"
+ "    CASE"
+ "        WHEN r.etat = 1"
+ "            THEN 'CREE'"
+ "        WHEN r.etat = 0"
+ "            THEN 'ANNULEE'"
+ "        WHEN r.etat = 11"
+ "            THEN 'VISEE'"
+ "        END AS etatlib,"
+ "    rm.montant,"
+ "    rm.MONTANTTTC,"
+ "    rm.MONTANTTVA,"
+ "    nvl(mvt.CREDIT,0) as paye,"
+ "    cast(rm.MONTANTTTC-nvl(mvt.CREDIT,0) as number(20,2)) as resteAPayer,"
+ "    r.idbc,"
+ "    sp.VAL AS IDSUPPORTLIB,"
+ "    rm.MONTANTREMISE,"
+ "    rm.MONTANTFINAL,"
+ "    r."SOURCE""
+ "FROM RESERVATION r"
+ "         LEFT JOIN CLIENT c ON c.id = r.idClient"
+ "         LEFT JOIN reservationmontant rm ON rm.idmere = r.id"
+ "         left join MOUVEMENTCAISSEGROUPERESA mvt on mvt.IDORIGINE=r.ID"
+ "         LEFT JOIN SUPPORT sp on sp.ID = r.IDSUPPORT"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."AVOIRFCLIB_CPL_GRP"                        (""
+ "IDVENTE","IDDEVISE","MONTANTHT_AVR","MONTANTTVA_AVR","MONTANTTTC_AVR","MONT"
+ "ANTHTAR_AVR","MONTANTTVAAR_AVR","MONTANTTTCAR_AVR","MONTANTPAYE","MONTANTPA"
+ "YEAR","RESTEAPAYER_AVR","RESTEAPAYERAR_AVR") AS "
+ "SELECT AL.IDVENTE,"
+ "       AL.IDDEVISE,"
+ "       SUM(MONTANTHT) as MONTANTHT_avr,"
+ "       SUM(MONTANTTVA) as MONTANTTVA_avr,"
+ "       SUM(MONTANTTTC) as MONTANTTTC_avr,"
+ "       SUM(MONTANTHTAR) as MONTANTHTAR_avr,"
+ "       SUM(MONTANTTVAAR) as MONTANTTVAAR_avr,"
+ "       SUM(MONTANTTTCAR) as MONTANTTTCAR_avr,"
+ "       SUM(MONTANTPAYE) as MONTANTPAYE,"
+ "       SUM(MONTANTPAYEAR) as MONTANTPAYEAR,"
+ "       SUM(RESTEAPAYER) as resteapayer_avr,"
+ "       SUM(RESTEAPAYERAR) as resteapayerar_avr"
+ "from avoirfclib_cpl_visee AL"
+ "group by IDVENTE, IDDEVISE"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."RESULTATPREVISIONNELTOUSMVT"                 "
+ "       ("DATY","DEBIT","CREDIT","SEMAINE","ANNEE","MOIS") AS "
+ "SELECT "
+ "t.daty,"
+ "nvl(r.debit,0) AS debit,"
+ "nvl(r.credit,0) AS credit,"
+ "(CAST (to_char( t.daty, 'IW') AS INTEGER)) AS semaine,"
+ "extract(YEAR FROM t.daty) AS annee,"
+ "EXTRACT (MONTH FROM t.daty) AS mois"
+ "FROM tousLesDate t  left join resultatPrevisionnelMvt r ON t.daty=r.daty   "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."PREVISION_COMPLET_CPL_DEP"                   "
+ "     ("ID","DESIGNATION","IDCAISSE","IDCAISSELIB","IDVENTEDETAIL","IDVENTE""
+ ","IDVENTELIB","IDVIREMENT","DEBIT","CREDIT","DATY","ETAT","IDOP","IDOPLIB","
+ ""IDORIGINE","IDDEVISE","IDDEVISELIB","TAUX","IDTIERS","COMPTE","EFFECTIFDEB"
+ "IT","EFFECTIFCREDIT","DEPENSEECART","RECETTEECART","IDFACTURE") AS "
+ "SELECT "ID","DESIGNATION","IDCAISSE","IDCAISSELIB","IDVENTEDETAIL","IDVENTE"
+ "","IDVENTELIB","IDVIREMENT","DEBIT","CREDIT","DATY","ETAT","IDOP","IDOPLIB""
+ ","IDORIGINE","IDDEVISE","IDDEVISELIB","TAUX","IDTIERS","COMPTE","EFFECTIFDE"
+ "BIT","EFFECTIFCREDIT","DEPENSEECART","RECETTEECART","IDFACTURE" FROM PREVIS"
+ "ION_COMPLET_CPL pcc  WHERE "
+ "debit > 0"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."VENTE_PRELEVEMENT"                        ("I"
+ "D","IDPRELEVEMENTANTERIEUR","COMPTEUR","DATY","HEURE","IDPOMPISTE","IDPOMPE"
+ "","ETAT","MONTANTTOTALVENTE","IDENCAISSEMENT","MONTANTTOTALENCAISSEMENT") A"
+ "S "
+ "SELECT"
+ "	p.ID ,"
+ "	p.IDPRELEVEMENTANTERIEUR ,"
+ "	p.COMPTEUR ,"
+ "	p.DATY ,"
+ "	p.HEURE ,"
+ "	p.IDPOMPISTE ,"
+ "	p.IDPOMPE ,"
+ "	p.ETAT ,"
+ "	nvl(vdc.montantTotalVente,0) AS montantTotalVente,"
+ "	pe.IDENCAISSEMENT ,"
+ "	nvl(m.montantTotalEncaissement,0) AS montantTotalEncaissement"
+ "FROM"
+ "	PRELEVEMENT p"
+ "LEFT JOIN PRELEVEMENT_ENCAISSE pe ON"
+ "	pe.IDPRELEVEMENT = p.ID"
+ "LEFT JOIN VENTEPRELEVEMENT vdc ON"
+ "	vdc.IDORIGINE = pe.IDPRELEVEMENT"
+ "LEFT JOIN MONTANTENCAISSEMENT m ON m.IDENCAISSEMENT = pe.IDENCAISSEMENT "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."PRELEVEMENTLIB_VISEE_POP"                    "
+ "    ("ID","IDPRELEVEMENTANTERIEUR","COMPTEUR","DATY","HEURE","IDPOMPISTE",""
+ "IDPOMPE","IDPOMPELIB","NOMUSER","IDROLE","NOMMAGASIN","DESCRIPTIONMAGASIN","
+ ""ETAT","ETATLIB","DESIGNATION","COMPTEURINIT","DATYINIT") AS "
+ "SELECT "
+ "pv.ID,"
+ "pv.IDPRELEVEMENTANTERIEUR,"
+ "pv.COMPTEUR,"
+ "pv.DATY,"
+ "pv.HEURE,"
+ "pv2.IDPOMPISTE ,"
+ "pv2.IDPOMPE ,"
+ "pv2.IDPOMPELIB ,"
+ "pv2.NOMUSER  ,"
+ "pv.IDROLE ,"
+ "pv.NOMMAGASIN ,"
+ "pv.DESCRIPTIONMAGASIN ,"
+ "pv.ETAT ,"
+ "pv.ETATLIB ,"
+ "pv.DESIGNATION ,"
+ "pv2.COMPTEUR AS compteurinit ,"
+ "pv2.DATY AS datyinit"
+ "FROM PRELEVEMENTLIB_VALIDE pv "
+ "LEFT JOIN PRELEVEMENTLIB_VALIDE pv2 ON pv2.ID = pv.IDPRELEVEMENTANTERIEUR "
+ "WHERE NOT EXISTS (SELECT * FROM  PRELEVEMENT_ENCAISSE pe  WHERE pv.ID =pe.I"
+ "DPRELEVEMENT)"
+ "AND pv.IDPRELEVEMENTANTERIEUR IS NOT  NULL "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."PREVISION_COMPLET_CPL_REC"                   "
+ "     ("ID","DESIGNATION","IDCAISSE","IDCAISSELIB","IDVENTEDETAIL","IDVENTE""
+ ","IDVENTELIB","IDVIREMENT","DEBIT","CREDIT","DATY","ETAT","IDOP","IDOPLIB","
+ ""IDORIGINE","IDDEVISE","IDDEVISELIB","TAUX","IDTIERS","COMPTE","EFFECTIFDEB"
+ "IT","EFFECTIFCREDIT","DEPENSEECART","RECETTEECART","IDFACTURE") AS "
+ "SELECT "ID","DESIGNATION","IDCAISSE","IDCAISSELIB","IDVENTEDETAIL","IDVENTE"
+ "","IDVENTELIB","IDVIREMENT","DEBIT","CREDIT","DATY","ETAT","IDOP","IDOPLIB""
+ ","IDORIGINE","IDDEVISE","IDDEVISELIB","TAUX","IDTIERS","COMPTE","EFFECTIFDE"
+ "BIT","EFFECTIFCREDIT","DEPENSEECART","RECETTEECART","IDFACTURE" FROM PREVIS"
+ "ION_COMPLET_CPL pcc  WHERE "
+ "credit > 0"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."PREVISION_COMPLET_CPLPOSITIF"                "
+ "        ("ID","DESIGNATION","IDCAISSE","IDCAISSELIB","IDVENTEDETAIL","IDVEN"
+ "TE","IDVENTELIB","IDVIREMENT","DEBIT","CREDIT","DATY","ETAT","IDOP","IDOPLI"
+ "B","IDORIGINE","IDDEVISE","IDDEVISELIB","TAUX","IDTIERS","COMPTE","EFFECTIF"
+ "DEBIT","EFFECTIFCREDIT","DEPENSEECART","RECETTEECART","IDFACTURE") AS "
+ "SELECT "ID","DESIGNATION","IDCAISSE","IDCAISSELIB","IDVENTEDETAIL","IDVENTE"
+ "","IDVENTELIB","IDVIREMENT","DEBIT","CREDIT","DATY","ETAT","IDOP","IDOPLIB""
+ ","IDORIGINE","IDDEVISE","IDDEVISELIB","TAUX","IDTIERS","COMPTE","EFFECTIFDE"
+ "BIT","EFFECTIFCREDIT","DEPENSEECART","RECETTEECART","IDFACTURE""
+ "from PREVISION_COMPLET_CPL pr WHERE pr.DEPENSEECART >0 OR RECETTEECART >0 o"
+ "rder by daty asc"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."RESERVATIONLIB_ETAT"                        ("
+ ""ID","IDCLIENT","IDCLIENTLIB","DATY","REMARQUE","ETAT","ETATLIB","ETATFACTU"
+ "RATION","MONTANT","MONTANTTTC","MONTANTTVA","PAYE","RESTEAPAYER","IDBC","ID"
+ "SUPPORTLIB","MONTANTREMISE","MONTANTFINAL","SOURCE") AS "
+ "SELECT"
+ "    r.id,"
+ "    r.idClient,"
+ "    c.NOM AS idclientlib,"
+ "    r.daty,"
+ "    r.remarque,"
+ "    r.etat,"
+ "    CASE"
+ "        WHEN r.etat = 1"
+ "            THEN 'CREE'"
+ "        WHEN r.etat = 0"
+ "            THEN 'ANNULEE'"
+ "        WHEN r.etat = 11"
+ "            THEN 'VISEE'"
+ "        END AS etatlib,"
+ "    CASE"
+ "        WHEN r.ID in (SELECT IDORIGINE FROM VENTE v WHERE v.ETAT = 11) OR r"
+ ".IDBC in (SELECT IDORIGINE FROM VENTE v WHERE v.ETAT = 11)"
+ "            THEN 1"
+ "        ELSE 0"
+ "        END AS etatFacturation,"
+ "    rm.montant,"
+ "    rm.MONTANTTTC,"
+ "    rm.MONTANTTVA,"
+ "    nvl(mvt.CREDIT,0) as paye,"
+ "    cast(rm.MONTANTTTC-nvl(mvt.CREDIT,0) as number(20,2)) as resteAPayer,"
+ "    r.idbc,"
+ "    sp.VAL AS IDSUPPORTLIB,"
+ "    rm.MONTANTREMISE,"
+ "    rm.MONTANTFINAL,"
+ "    r."SOURCE""
+ "FROM RESERVATION r"
+ "         LEFT JOIN CLIENT c ON c.id = r.idClient"
+ "         LEFT JOIN reservationmontant rm ON rm.idmere = r.id"
+ "         left join MOUVEMENTCAISSEGROUPERESA mvt on mvt.IDORIGINE=r.ID"
+ "         LEFT JOIN SUPPORT sp on sp.ID = r.IDSUPPORT"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."VENTE_CPL"                        ("ID","DESI"
+ "GNATION","IDMAGASIN","IDMAGASINLIB","DATY","REMARQUE","ETAT","ETATLIB","MON"
+ "TANTTOTAL","IDDEVISE","IDCLIENT","IDCLIENTLIB","MONTANTTVA","MONTANTTTC","M"
+ "ONTANTTTCAR","MONTANTPAYE","MONTANTRESTE","AVOIR","TAUXDECHANGE","MONTANTRE"
+ "VIENT","MARGEBRUTE","IDRESERVATION","IDORIGINE","ECHEANCE","REGLEMENT","REF"
+ "ERENCE","REFERENCEBC") AS "
+ "SELECT v.ID,"
+ "       v.DESIGNATION,"
+ "       v.IDMAGASIN,"
+ "       m.VAL AS IDMAGASINLIB,"
+ "       v.DATY,"
+ "       v.REMARQUE,"
+ "       v.ETAT,"
+ "       CASE"
+ "           WHEN v.ETAT = 1 THEN 'CREE'"
+ "           WHEN v.ETAT = 11 THEN 'VISEE'"
+ "           WHEN v.ETAT = 0 THEN 'ANNULEE'"
+ "           END"
+ "             AS ETATLIB,"
+ "       v2.MONTANTTOTAL,"
+ "       v2.IDDEVISE,"
+ "       v.IDCLIENT,"
+ "       c.NOM AS IDCLIENTLIB,"
+ "       cast(V2.MONTANTTVA as number(30,2)) as MONTANTTVA,"
+ "       cast(V2.MONTANTTTC as number(30,2)) as montantttc,"
+ "       cast(V2.MONTANTTTCAR as number(30,2)) as MONTANTTTCAR,"
+ "       cast(nvl(mv.credit,0)-nvl(ACG.MONTANTPAYE, 0) AS NUMBER(30,2)) AS mo"
+ "ntantpaye,"
+ "       cast(V2.MONTANTTTC-nvl(mv.credit,0)-nvl(ACG.resteapayer_avr, 0) AS N"
+ "UMBER(30,2)) AS montantreste,"
+ "       nvl(ACG.MONTANTTTC_avr, 0)  as avoir,"
+ "       v2.tauxDeChange AS tauxDeChange,v2.MONTANTREVIENT,cast((V2.MONTANTTT"
+ "CAR-v2.MONTANTREVIENT) as number(20,2))  as margeBrute,"
+ "       v.IDRESERVATION,"
+ "       v.IDORIGINE,"
+ "       v.ECHEANCE,"
+ "       v.REGLEMENT,"
+ "       v.REFERENCE,"
+ "       v.REFERENCEBC"
+ "FROM VENTE v"
+ "         LEFT JOIN CLIENT c ON c.ID = v.IDCLIENT"
+ "         LEFT JOIN MAGASIN m ON m.ID = v.IDMAGASIN"
+ "         JOIN VENTEMONTANT v2 ON v2.ID = v.ID"
+ "         LEFT JOIN mouvementcaisseGroupeFacture mv ON v.id=mv.IDORIGINE"
+ "         LEFT JOIN AVOIRFCLIB_CPL_GRP ACG on ACG.IDVENTE = v.ID"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."PREVISION_COMPLET_CPL_NR"                    "
+ "    ("ID","DESIGNATION","IDCAISSE","IDCAISSELIB","IDVENTEDETAIL","IDVENTE","
+ ""IDVENTELIB","IDVIREMENT","DEBIT","CREDIT","DATY","ETAT","IDOP","IDOPLIB",""
+ "IDORIGINE","IDDEVISE","IDDEVISELIB","TAUX","IDTIERS","COMPTE","EFFECTIFDEBI"
+ "T","EFFECTIFCREDIT","DEPENSEECART","RECETTEECART","IDFACTURE") AS "
+ "SELECT "ID","DESIGNATION","IDCAISSE","IDCAISSELIB","IDVENTEDETAIL","IDVENTE"
+ "","IDVENTELIB","IDVIREMENT","DEBIT","CREDIT","DATY","ETAT","IDOP","IDOPLIB""
+ ","IDORIGINE","IDDEVISE","IDDEVISELIB","TAUX","IDTIERS","COMPTE","EFFECTIFDE"
+ "BIT","EFFECTIFCREDIT","DEPENSEECART","RECETTEECART","IDFACTURE" FROM "
+ "PREVISION_COMPLET_CPL_DEP"
+ "where depenseEcart > 0"
+ "UNION ALL "
+ " SELECT "ID","DESIGNATION","IDCAISSE","IDCAISSELIB","IDVENTEDETAIL","IDVENT"
+ "E","IDVENTELIB","IDVIREMENT","DEBIT","CREDIT","DATY","ETAT","IDOP","IDOPLIB"
+ "","IDORIGINE","IDDEVISE","IDDEVISELIB","TAUX","IDTIERS","COMPTE","EFFECTIFD"
+ "EBIT","EFFECTIFCREDIT","DEPENSEECART","RECETTEECART","IDFACTURE" FROM"
+ "PREVISION_COMPLET_CPL_REC"
+ "where recetteEcart > 0"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."RESERVATION_LIB_AVECMAXDATE"                 "
+ "       ("ID","IDCLIENT","IDCLIENTLIB","DATY","REMARQUE","ETAT","ETATLIB","M"
+ "ONTANT","MONTANTTTC","MONTANTTVA","PAYE","RESTEAPAYER","DATYFINPOTENTIEL",""
+ "IDBC") AS "
+ "SELECT"
+ "	rl.ID,"
+ "	rl.IDCLIENT,"
+ "	rl.IDCLIENTLIB,"
+ "	rl.DATY,"
+ "	rl.REMARQUE,"
+ "	rl.ETAT,"
+ "	rl.ETATLIB,"
+ "	rl.MONTANT,"
+ "	rl.MONTANTTTC,"
+ "	rl.MONTANTTVA,"
+ "	rl.PAYE,"
+ "	rl.RESTEAPAYER,"
+ "	rdmd.DATY AS DATYFINPOTENTIEL,"
+ "	rl.idbc"
+ "FROM"
+ "	RESERVATION_LIB rl"
+ "LEFT JOIN RESERVATIONDETAILSMAXDATE rdmd ON"
+ "	rl.id = rdmd.IDMERE"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."VENTE_CPL_BC_VISEE"                        (""
+ "ID","DESIGNATION","IDMAGASIN","IDMAGASINLIB","DATY","REMARQUE","ETAT","ETAT"
+ "LIB","MONTANTTOTAL","IDDEVISE","IDCLIENT","CLIENTLIB","MONTANTTVA","MONTANT"
+ "TTC","MONTANTTTCAR","MONTANTPAYE","MONTANTRESTE","AVOIR","TAUXDECHANGE","MO"
+ "NTANTREVIENT","MARGEBRUTE","IDRESERVATION","IDORIGINE") AS "
+ "SELECT v.ID,"
+ "       v.DESIGNATION,"
+ "       v.IDMAGASIN,"
+ "       m.VAL AS IDMAGASINLIB,"
+ "       v.DATY,"
+ "       v.REMARQUE,"
+ "       v.ETAT,"
+ "       CASE"
+ "           WHEN v.ETAT = 1 THEN 'CREE'"
+ "           WHEN v.ETAT = 11 THEN 'VISEE'"
+ "           WHEN v.ETAT = 0 THEN 'ANNULEE'"
+ "           END"
+ "             AS ETATLIB,"
+ "       v2.MONTANTTOTAL,"
+ "       v2.IDDEVISE,"
+ "       v.IDCLIENT,"
+ "       c.NOM AS CLIENTLIB,"
+ "       cast(V2.MONTANTTVA as number(30,2)) as MONTANTTVA,"
+ "       cast(V2.MONTANTTTC as number(30,2)) as montantttc,"
+ "       cast(V2.MONTANTTTCAR as number(30,2)) as MONTANTTTCAR,"
+ "       cast(nvl(mv.credit,0)-nvl(ACG.MONTANTPAYE, 0) AS NUMBER(30,2)) AS mo"
+ "ntantpaye,"
+ "       cast(V2.MONTANTTTC-nvl(mv.credit,0)-nvl(ACG.resteapayer_avr, 0) AS N"
+ "UMBER(30,2)) AS montantreste,"
+ "       nvl(ACG.MONTANTTTC_avr, 0)  as avoir,"
+ "       v2.tauxDeChange AS tauxDeChange,v2.MONTANTREVIENT,cast((V2.MONTANTTT"
+ "CAR-v2.MONTANTREVIENT) as number(20,2))  as margeBrute,"
+ "       v.IDRESERVATION,"
+ "       --asbl.IDBC as IDORIGINE"
+ "       v.IDORIGINE AS IDORIGINE "
+ "FROM VENTE v"
+ "         LEFT JOIN CLIENT c ON c.ID = v.IDCLIENT"
+ "         LEFT JOIN MAGASIN m ON m.ID = v.IDMAGASIN"
+ "         JOIN VENTEMONTANT v2 ON v2.ID = v.ID"
+ "         LEFT JOIN mouvementcaisseGroupeFacture mv ON v.id=mv.IDORIGINE"
+ "         LEFT JOIN AVOIRFCLIB_CPL_GRP ACG on ACG.IDVENTE = v.ID"
+ "         left join AS_BONDELIVRAISON_CLIENT asbl on asbl.ID = v.IDORIGINE"
+ "where v.ETAT = 11"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."RESERVATION_LIB_VISEE"                       "
+ " ("ID","IDCLIENT","IDCLIENTLIB","DATY","REMARQUE","ETAT","ETATLIB","MONTANT"
+ "","MONTANTTTC","MONTANTTVA","PAYE","RESTEAPAYER","IDBC","IDSUPPORTLIB","MON"
+ "TANTREMISE","MONTANTFINAL") AS "
+ "SELECT "ID","IDCLIENT","IDCLIENTLIB","DATY","REMARQUE","ETAT","ETATLIB","MO"
+ "NTANT","MONTANTTTC","MONTANTTVA","PAYE","RESTEAPAYER","IDBC","IDSUPPORTLIB""
+ ","MONTANTREMISE","MONTANTFINAL" FROM RESERVATION_LIB rl "
+ "where ETAT >=11"
+ "--lib_visee"
+ "--ttc , paye RESTEAPAYER "
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."VENTE_CLIENT_CPL"                        ("ID"
+ "","DESIGNATION","IDMAGASIN","IDMAGASINLIB","DATY","REMARQUE","ETAT","ETATLI"
+ "B","MONTANTTOTAL","IDDEVISE","IDCLIENT","IDCLIENTLIB","NIF","STAT","ADRESSE"
+ "","CONTACT","MONTANTTVA","MONTANTTTC","MONTANTTTCAR","MONTANTPAYE","MONTANT"
+ "RESTE","AVOIR","TAUXDECHANGE","MONTANTREVIENT","MARGEBRUTE","IDRESERVATION""
+ ","IDORIGINE","REGLEMENT","REFERENCE","REFERENCEBC","ECHEANCE","CIN") AS "
+ "SELECT v.ID,"
+ "          v.DESIGNATION,"
+ "          v.IDMAGASIN,"
+ "          m.VAL AS IDMAGASINLIB,"
+ "          v.DATY,"
+ "          v.REMARQUE,"
+ "          v.ETAT,"
+ "          CASE"
+ "             WHEN v.ETAT = 1 THEN 'CREE'"
+ "             WHEN v.ETAT = 11 THEN 'VISEE'"
+ "             WHEN v.ETAT = 0 THEN 'ANNULEE'"
+ "          END"
+ "             AS ETATLIB,"
+ "          v2.MONTANTTOTAL,"
+ "          v2.IDDEVISE,"
+ "          v.IDCLIENT,"
+ "          c.NOM AS IDCLIENTLIB,"
+ "          c.NIF,"
+ "          c.STAT,"
+ "          c.ADRESSE,"
+ "          c.TELEPHONE AS CONTACT,"
+ "          cast(V2.MONTANTTVA as number(30,2)) as MONTANTTVA,"
+ "          cast(V2.MONTANTTTC as number(30,2)) as montantttc,"
+ "          cast(V2.MONTANTTTCAR as number(30,2)) as MONTANTTTCAR,"
+ "          cast(nvl(mv.credit,0)-nvl(ACG.MONTANTPAYE, 0) AS NUMBER(30,2)) AS"
+ " montantpaye,"
+ "          cast(V2.MONTANTTTC-nvl(mv.credit,0)-nvl(ACG.resteapayer_avr, 0) A"
+ "S NUMBER(30,2)) AS montantreste,"
+ "          nvl(ACG.MONTANTTTC_avr, 0)  as avoir,"
+ "          v2.tauxDeChange AS tauxDeChange,v2.MONTANTREVIENT,cast((V2.MONTAN"
+ "TTTCAR-v2.MONTANTREVIENT) as number(20,2))  as margeBrute,"
+ "          v.IDRESERVATION,"
+ "          v.IDORIGINE,"
+ "          v.REGLEMENT,"
+ "          v.REFERENCE,"
+ "          v.REFERENCEBC,"
+ "          V.ECHEANCE,"
+ "          c.cin"
+ "     FROM VENTE v"
+ "          LEFT JOIN CLIENT c ON c.ID = v.IDCLIENT"
+ "          LEFT JOIN MAGASIN m ON m.ID = v.IDMAGASIN"
+ "          JOIN VENTEMONTANT v2 ON v2.ID = v.ID"
+ "          LEFT JOIN mouvementcaisseGroupeFacture mv ON v.id=mv.IDORIGINE"
+ "		  LEFT JOIN AVOIRFCLIB_CPL_GRP ACG on ACG.IDVENTE = v.ID"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."RESERVATIONLIB_ETAT_FACTURE"                 "
+ "       ("ID","IDCLIENT","IDCLIENTLIB","DATY","REMARQUE","ETAT","ETATLIB","E"
+ "TATFACTURATION","MONTANT","MONTANTTTC","MONTANTTVA","PAYE","RESTEAPAYER","I"
+ "DBC","IDSUPPORTLIB","MONTANTREMISE","MONTANTFINAL","SOURCE","ETATFACTURATIO"
+ "NLIB") AS "
+ "SELECT"
+ "    r."ID",r."IDCLIENT",r."IDCLIENTLIB",r."DATY",r."REMARQUE",r."ETAT",r."E"
+ "TATLIB",r."ETATFACTURATION",r."MONTANT",r."MONTANTTTC",r."MONTANTTVA",r."PA"
+ "YE",r."RESTEAPAYER",r."IDBC",r."IDSUPPORTLIB",r."MONTANTREMISE",r."MONTANTF"
+ "INAL",r."SOURCE","
+ "    CASE"
+ "        WHEN r.ETATFACTURATION = 1 THEN 'Factur&eacute;e'"
+ "        WHEN r.ETATFACTURATION = 0 THEN 'Non factur&eacute;e'"
+ "        END AS etatFacturationLib"
+ "FROM RESERVATIONLIB_ETAT r"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."PROFORMA_CPL"                        ("ID","D"
+ "ESIGNATION","IDMAGASIN","IDMAGASINLIB","DATY","REMARQUE","ETAT","ETATLIB",""
+ "MONTANTTOTAL","IDDEVISE","IDCLIENT","IDCLIENTLIB","NIF","STAT","ADRESSE","C"
+ "ONTACT","MONTANTTVA","MONTANTTTC","MONTANTTTCAR","MONTANTPAYE","MONTANTREST"
+ "E","AVOIR","TAUXDECHANGE","MONTANTREVIENT","MARGEBRUTE","IDRESERVATION","ID"
+ "ORIGINE","ECHEANCE","REGLEMENT","CIN") AS "
+ "SELECT v.ID,"
+ "          v.DESIGNATION,"
+ "          v.IDMAGASIN,"
+ "          m.VAL AS IDMAGASINLIB,"
+ "          v.DATY,"
+ "          v.REMARQUE,"
+ "          v.ETAT,"
+ "          CASE"
+ "             WHEN v.ETAT = 1 THEN 'CREE'"
+ "             WHEN v.ETAT = 11 THEN 'VISEE'"
+ "             WHEN v.ETAT = 0 THEN 'ANNULEE'"
+ "          END"
+ "             AS ETATLIB,"
+ "          v2.MONTANTTOTAL,"
+ "          v2.IDDEVISE,"
+ "          v.IDCLIENT,"
+ "          c.NOM AS IDCLIENTLIB,"
+ "          c.NIF,"
+ "          c.STAT,"
+ "          c.ADRESSE,"
+ "          c.TELEPHONE AS CONTACT,"
+ "          cast(V2.MONTANTTVA as number(30,2)) as MONTANTTVA,"
+ "          cast(V2.MONTANTTTC as number(30,2)) as montantttc,"
+ "          cast(V2.MONTANTTTCAR as number(30,2)) as MONTANTTTCAR,"
+ "          cast(nvl(mv.credit,0)-nvl(ACG.MONTANTPAYE, 0) AS NUMBER(30,2)) AS"
+ " montantpaye,"
+ "          cast(V2.MONTANTTTC-nvl(mv.credit,0)-nvl(ACG.resteapayer_avr, 0) A"
+ "S NUMBER(30,2)) AS montantreste,"
+ "          nvl(ACG.MONTANTTTC_avr, 0)  as avoir,"
+ "          v2.tauxDeChange AS tauxDeChange,v2.MONTANTREVIENT,cast((V2.MONTAN"
+ "TTTCAR-v2.MONTANTREVIENT) as number(20,2))  as margeBrute,"
+ "          v.IDRESERVATION,"
+ "          v.IDORIGINE,"
+ "          v.ECHEANCE ,"
+ "          v.REGLEMENT,"
+ "          c.cin"
+ "     FROM PROFORMA v"
+ "          LEFT JOIN CLIENT c ON c.ID = v.IDCLIENT"
+ "          LEFT JOIN MAGASIN m ON m.ID = v.IDMAGASIN"
+ "          JOIN PROFORMAMONTANT v2 ON v2.ID = v.ID"
+ "          LEFT JOIN mouvementcaisseGroupeFacture mv ON v.id=mv.IDORIGINE"
+ "          LEFT JOIN AVOIRFCLIB_CPL_GRP ACG on ACG.IDVENTE = v.ID"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."VENTE_CPL_LIVREE"                        ("ID"
+ "","DESIGNATION","IDMAGASIN","IDMAGASINLIB","DATY","REMARQUE","ETAT","ETATLI"
+ "B","MONTANTTOTAL") AS "
+ "select "ID","DESIGNATION","IDMAGASIN","IDMAGASINLIB","DATY","REMARQUE","ETA"
+ "T","ETATLIB","MONTANTTOTAL""
+ "from VENTE_CPL v"
+ "where v.ETAT = 11"
+ "   or v.ETAT = 13"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."VENTE_CPL_PAYEE"                        ("ID""
+ ","DESIGNATION","IDMAGASIN","IDMAGASINLIB","DATY","REMARQUE","ETAT","ETATLIB"
+ "","MONTANTTOTAL") AS "
+ "select "ID","DESIGNATION","IDMAGASIN","IDMAGASINLIB","DATY","REMARQUE","ETA"
+ "T","ETATLIB","MONTANTTOTAL""
+ "from VENTE_CPL v"
+ "where  v.ETAT = 11 OR v.ETAT = 12"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."VENTE_CPL_EUR"                        ("ID",""
+ "DESIGNATION","IDMAGASIN","IDMAGASINLIB","DATY","REMARQUE","ETAT","ETATLIB","
+ ""MONTANTTOTAL","IDDEVISE","IDCLIENT","IDCLIENTLIB","MONTANTTVA","MONTANTTTC"
+ "","MONTANTTTCAR","MONTANTPAYE","MONTANTRESTE") AS "
+ "SELECT "ID","DESIGNATION","IDMAGASIN","IDMAGASINLIB","DATY","REMARQUE","ETA"
+ "T","ETATLIB","MONTANTTOTAL","IDDEVISE","IDCLIENT","IDCLIENTLIB","MONTANTTVA"
+ "","MONTANTTTC","MONTANTTTCAR","MONTANTPAYE","MONTANTRESTE" FROM VENTE_CPL W"
+ "HERE iddevise='EUR'"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."VENTE_CPL_MGA"                        ("ID",""
+ "DESIGNATION","IDMAGASIN","IDMAGASINLIB","DATY","REMARQUE","ETAT","ETATLIB","
+ ""MONTANTTOTAL","IDDEVISE","IDCLIENT","IDCLIENTLIB","MONTANTTVA","MONTANTTTC"
+ "","MONTANTTTCAR","MONTANTPAYE","MONTANTRESTE") AS "
+ "SELECT "ID","DESIGNATION","IDMAGASIN","IDMAGASINLIB","DATY","REMARQUE","ETA"
+ "T","ETATLIB","MONTANTTOTAL","IDDEVISE","IDCLIENT","IDCLIENTLIB","MONTANTTVA"
+ "","MONTANTTTC","MONTANTTTCAR","MONTANTPAYE","MONTANTRESTE" FROM VENTE_CPL W"
+ "HERE iddevise='AR'"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."VENTE_CPL_USD"                        ("ID",""
+ "DESIGNATION","IDMAGASIN","IDMAGASINLIB","DATY","REMARQUE","ETAT","ETATLIB","
+ ""MONTANTTOTAL","IDDEVISE","IDCLIENT","IDCLIENTLIB","MONTANTTVA","MONTANTTTC"
+ "","MONTANTTTCAR","MONTANTPAYE","MONTANTRESTE") AS "
+ "SELECT "ID","DESIGNATION","IDMAGASIN","IDMAGASINLIB","DATY","REMARQUE","ETA"
+ "T","ETATLIB","MONTANTTOTAL","IDDEVISE","IDCLIENT","IDCLIENTLIB","MONTANTTVA"
+ "","MONTANTTTC","MONTANTTTCAR","MONTANTPAYE","MONTANTRESTE" FROM VENTE_CPL W"
+ "HERE iddevise='USD'"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."VENTE_CPLVISE"                        ("ID",""
+ "DESIGNATION","IDMAGASIN","IDMAGASINLIB","DATY","REMARQUE","ETAT","ETATLIB","
+ ""MONTANTTOTAL","IDDEVISE","IDCLIENT","IDCLIENTLIB","MONTANTTVA","MONTANTTTC"
+ "","MONTANTTTCAR","MONTANTPAYE","MONTANTRESTE","AVOIR","TAUXDECHANGE","MONTA"
+ "NTREVIENT","MARGEBRUTE","IDRESERVATION","IDORIGINE") AS "
+ "select "ID","DESIGNATION","IDMAGASIN","IDMAGASINLIB","DATY","REMARQUE","ETA"
+ "T","ETATLIB","MONTANTTOTAL","IDDEVISE","IDCLIENT","IDCLIENTLIB","MONTANTTVA"
+ "","MONTANTTTC","MONTANTTTCAR","MONTANTPAYE","MONTANTRESTE","AVOIR","TAUXDEC"
+ "HANGE","MONTANTREVIENT","MARGEBRUTE","IDRESERVATION","IDORIGINE" from VENTE"
+ "_CPL where ETAT>=11"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."EMISSION_VENTE"                        ("NOM""
+ ","IDSUPPORT","MONTANTTTC","MONTANTPAYE","MONTANTRESTE","DATY","IDDEVISE") A"
+ "S "
+ "SELECT"
+ "    e.NOM,"
+ "    e.IDSUPPORT,"
+ "    nvl(v.MONTANTTTC,0) as MONTANTTTC,"
+ "    nvl(v.MONTANTPAYE,0) as MONTANTPAYE,"
+ "    nvl(v.MONTANTRESTE,0) as MONTANTRESTE,"
+ "    v.DATY,"
+ "    nvl(v.IDDEVISE,'AR') as IDDEVISE"
+ "FROM EMISSION e"
+ "         LEFT JOIN PARRAINAGEEMISSION p ON e.ID = p.IDEMISSION"
+ "         LEFT JOIN PLATEAU pl ON e.ID = pl.IDEMISSION"
+ "         JOIN RESERVATION r ON pl.ID = r.SOURCE OR p.ID = r.SOURCE"
+ "         JOIN VENTE_CPL v ON v.IDORIGINE=r.ID"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."PLANNINGFACTURE"                        ("ID""
+ ","IDCLIENT","DESIGNATION","DATY","MONTANTTOTAL","MONTANTRESTE","MONTANTPAYE"
+ "","ETATPLANNING","ETATPAIEMENT") AS "
+ "SELECT"
+ "    v.ID,"
+ "    v.IDCLIENT,"
+ "    v.DESIGNATION,"
+ "    v.DATYPREVU AS DATY,"
+ "    v.MONTANTTTC AS MONTANTTOTAL,"
+ "    v.MONTANTRESTE,"
+ "    v.MONTANTPAYE,"
+ "    CASE"
+ "        WHEN v.DATYPREVU < SYSDATE THEN 1"
+ "        ELSE 0"
+ "        END etatPlanning,"
+ "    CASE"
+ "        WHEN v.MONTANTRESTE = 0 THEN 1"
+ "        ELSE 0"
+ "        END etatPaiement"
+ "FROM VENTE_CPL v"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."PLANNINGFACTURELIB"                        (""
+ "ID","IDCLIENT","DESIGNATION","DATY","MONTANTTOTAL","MONTANTRESTE","MONTANTP"
+ "AYE","ETATPLANNING","ETATPAIEMENT","ETATPAIEMENTLIB","IDCLIENTLIB") AS "
+ "SELECT p."ID",p."IDCLIENT",p."DESIGNATION",p."DATY",p."MONTANTTOTAL",p."MON"
+ "TANTRESTE",p."MONTANTPAYE",p."ETATPLANNING",p."ETATPAIEMENT","
+ "       CASE"
+ "           WHEN p.etatPaiement = 1 THEN 'Pay&eacute;'"
+ "           ELSE 'Impay&eacute;'"
+ "           END etatPaiementLib,"
+ "       c.NOM AS idClientLib"
+ "FROM PLANNINGFACTURE p"
+ "         LEFT JOIN CLIENT c ON p.IDCLIENT = c.ID"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."EQUIVALENCE_QTE"                        ("ID""
+ ","IDPRODUIT","IDUNITE","QTE","IDPRODUITLIB","IDUNITELIB") AS "
+ "select "ID","
+ "       "IDPRODUIT","
+ "       "IDUNITE","
+ "       "QTE","
+ "       "IDPRODUITLIB","
+ "       "IDUNITELIB""
+ "from EQUIVALENCE_LIBCOMPLET"
+ "where QTE = 1"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."ENCAISSEMENT_RESUME"                        ("
+ ""ID","IDPOINT","IDPOINTLIB","DATY","VENTECARBURANT","VENTELUBRIFIANT","BON""
+ ","CHEQUE","MVOLA","ESPECES","ORANGEMONEY","FANILO","TPE","VISA","DEPENSE",""
+ "TOTALRECETTE","TOTALENCAISSEMENT","TOTALVERSEMENT") AS "
+ "SELECT "
+ "el.ID ,"
+ "el.IDPOINT,"
+ "el.IDPOINTLIB ,"
+ "el.DATY,"
+ "el.ventecarburant,"
+ "el.ventelubrifiant,"
+ "nvl(eb.montantcategorie,0) AS bon ,"
+ "nvl(ec.montantcategorie,0) AS cheque ,"
+ "nvl(em.montantcategorie,0) AS mvola ,"
+ "nvl(ee.montantcategorie,0) AS especes ,"
+ "nvl(eo.montantcategorie,0) AS orangemoney ,"
+ "nvl(ef.montantcategorie,0) AS fanilo,"
+ "nvl(et.montantcategorie,0) AS tpe ,"
+ "nvl(ev.montantcategorie,0) AS visa ,"
+ "el.depense ,"
+ "el.totalrecette ,"
+ "el.totalencaissement ,"
+ "el.totalversement "
+ "FROM ENCAISSEMENT_LIB el "
+ "LEFT JOIN CATEGORIECAISSE c ON c.ID = el.IDCATEGORIECAISSE "
+ "LEFT JOIN encaissement_bon eb ON eb.IDENCAISSEMENT = el.ID "
+ "LEFT JOIN encaissement_cheque ec ON ec.IDENCAISSEMENT = el.ID"
+ "LEFT JOIN encaissement_mvola em ON em.IDENCAISSEMENT = el.ID"
+ "LEFT JOIN encaissement_especes ee ON ee.IDENCAISSEMENT = el.ID "
+ "LEFT JOIN encaissement_orangemoney eo ON eo.IDENCAISSEMENT = el.ID"
+ "LEFT JOIN encaissement_fanilo ef ON ef.IDENCAISSEMENT = el.ID"
+ "LEFT JOIN encaissement_tpe et ON et.IDENCAISSEMENT = el.ID"
+ "LEFT JOIN encaissement_visa ev ON ev.IDENCAISSEMENT = el.ID"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."VENTE_CARBU_CLIENT"                        (""
+ "IDPRELEVEMENT","IDENCAISSEMENT","IDPOMPISTE","NOMUSER","IDPOMPE","NOMMAGASI"
+ "N","VENTECARBURANT","DATY") AS "
+ "("
+ "SELECT "
+ "pe.IDPRELEVEMENT,"
+ "pe.IDENCAISSEMENT,"
+ "p.IDPOMPISTE,"
+ "p.NOMUSER,"
+ "p.IDPOMPE,"
+ "p.NOMMAGASIN,"
+ "el.VENTECARBURANT,"
+ "el.DATY"
+ "FROM PRELEVEMENT_ENCAISSE pe"
+ "JOIN PRELEVEMENTLIB p ON p.id=pe.IDPRELEVEMENT"
+ "JOIN ENCAISSEMENT_LIB el ON el.ID =pe.IDENCAISSEMENT)"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."VENTEDEP_GRAPH"                        ("IDPR"
+ "ELEVEMENT","IDENCAISSEMENT","IDPOMPISTE","NOMUSER","IDPOMPE","NOMMAGASIN",""
+ "VENTECARBURANT","ENTREE","DATY") AS "
+ "("
+ "SELECT"
+ "pe.IDPRELEVEMENT,"
+ "pe.IDENCAISSEMENT,"
+ "p.IDPOMPISTE,"
+ "p.NOMUSER,"
+ "p.IDPOMPE,"
+ "p.NOMMAGASIN,"
+ "el.VENTECARBURANT,"
+ "el.VENTECARBURANT - el.DEPENSE AS entree,"
+ "el.DATY"
+ "FROM PRELEVEMENT_ENCAISSE pe"
+ "JOIN PRELEVEMENTLIB p ON p.id=pe.IDPRELEVEMENT"
+ "JOIN ENCAISSEMENT_LIB el ON el.ID =pe.IDENCAISSEMENT"
+ ")"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."ST_ARTICLELIB_PU"                        ("ID"
+ "","CODE","DESIGNATION","SEUIL","UNITE","PRESENTATION","TYPE","GROUPEE","SOU"
+ "SGROUPE","CLASSEE","CODEMNEMONIQUE","PUGROS","PUDONATION") AS "
+ "select ar.id,"
+ "       ar.code,"
+ "       ar.designation,"
+ "       ar.seuil,"
+ "       uni.val as unite,"
+ "       ar.presentation,"
+ "       ta.VAL        as type,"
+ "       ga.VAL        as groupee,"
+ "       sga.VAL       as sousgroupe,"
+ "       ar.classee,"
+ "       ar.codemnemonique,"
+ "       ar.PUGROS,"
+ "       ar.PUDONATION"
+ "from ST_ARTICLE ar"
+ "         left join ST_TYPE_ARTICLE ta on ta.id = ar.TYPE"
+ "         left join ST_GROUPE_ARTICLE ga on ga.id = ar.GROUPEE"
+ "         left join ST_SOUSGROUPE_ARTICLE sga on sga.id = ar.SOUSGROUPE"
+ "         left join st_unite uni on ar.UNITE = uni.ID"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."ST_ARTICLE_EQUIVALENCE"                      "
+ "  ("ID","CODE","DESIGNATION","SEUIL","UNITE","PRESENTATION","TYPE","GROUPEE"
+ "","SOUSGROUPE","CLASSEE","CODEMNEMONIQUE","PUGROS","PUDONATION","UNITEEQUIV"
+ "ALENCE","QTEEQUIVALENCE") AS "
+ "SELECT sa."ID","
+ "       sa."CODE","
+ "       sa."DESIGNATION","
+ "       sa."SEUIL","
+ "       sa."UNITE","
+ "       sa."PRESENTATION","
+ "       sa."TYPE","
+ "       sa."GROUPEE","
+ "       sa."SOUSGROUPE","
+ "       sa."CLASSEE","
+ "       sa."CODEMNEMONIQUE","
+ "       sa."PUGROS","
+ "       sa."PUDONATION","
+ "       ''                         AS uniteEquivalence,"
+ "       CAST(0.0 AS NUMBER(38, 2)) as qteEquivalence"
+ "FROM ST_ARTICLE sa"
+IMP-00041: Warning: object created with compilation warnings
+ "CREATE FORCE VIEW "KOLO0107"."EQUIVALENCE_LIBCOMPLET"                      "
+ "  ("ID","IDPRODUIT","IDUNITE","QTE","IDPRODUITLIB","IDUNITELIB") AS "
+ "SELECT eq."ID","
+ "          eq."IDPRODUIT","
+ "          eq."IDUNITE","
+ "          eq."QTE","
+ "          ar.DESIGNATION AS idproduitlib,"
+ "          un.VAL||' ('||EQ.QTE||' unite)' AS idunitelib"
+ "     FROM equivalence eq"
+ "          LEFT JOIN ST_ARTICLE ar ON ar.ID = eq.IDPRODUIT"
+ "          LEFT JOIN ST_UNITE un ON un.id = eq.IDUNITE"
+About to enable constraints...
 Import terminated successfully with warnings.
