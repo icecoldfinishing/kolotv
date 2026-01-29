@@ -1,0 +1,90 @@
+
+Connected to: Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+
+Export file created by EXPORT:V11.02.00 via conventional path
+
+Warning: the objects were exported by KOLOTV1203, not by you
+
+import done in AL32UTF8 character set and AL16UTF16 NCHAR character set
+export client uses WE8MSWIN1252 character set (possible charset conversion)
+. importing KOLOTV1203's objects into KOLO0107
+. . importing table                         "ACTE"        417 rows imported
+. . importing table                       "AGENCE"          4 rows imported
+. . importing table                "ANCIEN_CAISSE"         10 rows imported
+. . importing table        "ANNULATIONUTILISATEUR"          6 rows imported
+. . importing table                 "ANOMALIEORDO"       6833 rows imported
+. . importing table                  "ARTICLEPRIX"       3104 rows imported
+. . importing table               "AS_INGREDIENTS"        402 rows imported
+. . importing table              "AS_RECETTE_BACK"         12 rows imported
+. . importing table                     "AS_UNITE"         10 rows imported
+. . importing table             "ATTACHER_FICHIER"         33 rows imported
+. . importing table                      "AVOIRFC"          5 rows imported
+. . importing table                 "AVOIRFCFILLE"          6 rows imported
+. . importing table                 "BILANSECTION"          2 rows imported
+. . importing table         "BILAN_SECTION_COMPTE"          1 rows imported
+. . importing table                  "BONCOMMANDE"          1 rows imported
+. . importing table         "BONDECOMMANDE_CLIENT"          4 rows imported
+. . importing table   "BONDECOMMANDE_CLIENT_FILLE"          4 rows imported
+. . importing table                       "CAISSE"         10 rows imported
+. . importing table                    "CATEGORIE"          3 rows imported
+. . importing table              "CATEGORIECAISSE"          8 rows imported
+. . importing table               "CATEGORIEHEURE"          2 rows imported
+. . importing table          "CATEGORIEINGREDIENT"         16 rows imported
+. . importing table                "CLASSEETFICHE"          6 rows imported
+. . importing table                       "CLIENT"        456 rows imported
+. . importing table           "CLOTURE_MOIS_ANNEE"         13 rows imported
+. . importing table                   "CNAPS_USER"         19 rows imported
+. . importing table         "COMPTA_CLASSE_COMPTE"          8 rows imported
+. . importing table                "COMPTA_COMPTE"        214 rows imported
+. . importing table              "COMPTA_ECRITURE"        242 rows imported
+. . importing table              "COMPTA_EXERCICE"          3 rows imported
+. . importing table               "COMPTA_JOURNAL"         13 rows imported
+. . importing table              "COMPTA_LETTRAGE"          1 rows imported
+. . importing table               "COMPTA_ORIGINE"         15 rows imported
+. . importing table         "COMPTA_SOUS_ECRITURE"        468 rows imported
+. . importing table           "COMPTA_TYPE_COMPTE"          4 rows imported
+. . importing table              "CONDITIONNEMENT"        271 rows imported
+. . importing table                "CONFIGURATION"          1 rows imported
+. . importing table            "CONFIGURATIONPRIX"          2 rows imported
+. . importing table                       "DEVISE"          3 rows imported
+. . importing table                    "DIRECTION"          1 rows imported
+. . importing table                     "EMISSION"         92 rows imported
+. . importing table              "EMISSIONDETAILS"        635 rows imported
+. . importing table                 "ENCAISSEMENT"          4 rows imported
+. . importing table           "FACTUREFOURNISSEUR"          1 rows imported
+. . importing table      "FACTUREFOURNISSEURFILLE"          1 rows imported
+. . importing table                  "FOURNISSEUR"          2 rows imported
+. . importing table                  "HISTOINSERT"       1272 rows imported
+. . importing table                   "HISTORIQUE"     274243 rows imported
+. . importing table           "HISTORIQUE_PRODUIT"         22 rows imported
+. . importing table              "HISTORIQUEPUING"         10 rows imported
+. . importing table              "HISTORIQUEPVING"          7 rows imported
+. . importing table                   "INVENTAIRE"         70 rows imported
+. . importing table              "INVENTAIREFILLE"         48 rows imported
+. . importing table                         "JOUR"          7 rows imported
+. . importing table                "LOG_DIRECTION"          9 rows imported
+. . importing table                "LOG_PERSONNEL"       2580 rows imported
+. . importing table                  "LOG_SERVICE"        160 rows imported
+. . importing table                     "MAGASIN2"          2 rows imported
+. . importing table                        "MEDIA"          4 rows imported
+. . importing table                "MENUDYNAMIQUE"        327 rows imported
+. . importing table                      "MESSAGE"         34 rows imported
+. . importing table                 "MODEPAIEMENT"          3 rows imported
+. . importing table                   "MODEREMISE"          2 rows imported
+. . importing table              "MOUVEMENTCAISSE"         15 rows imported
+. . importing table            "MVTSTOCKFILLEBACK"        137 rows imported
+. . importing table                     "MY_TABLE"       1844 rows imported
+. . importing table                 "NOTIFICATION"        513 rows imported
+. . importing table               "ORDREDIFFUSION"          3 rows imported
+. . importing table                   "PARAMCRYPT"         19 rows imported
+. . importing table           "PARRAINAGEEMISSION"         19 rows imported
+. . importing table    "PARRAINAGEEMISSIONDETAILS"         19 rows imported
+. . importing table                    "PERSONNEL"          2 rows imported
+. . importing table            "PERTEGAINIMPREVUE"          5 rows imported
+. . importing table                        "PLAGE"         28 rows imported
+. . importing table                      "PLATEAU"          1 rows imported
+. . importing table                        "POINT"          7 rows imported
+. . importing table                    "PREVISION"
+IMP-00009: abnormal end of export file
+IMP-00028: partial import of previous table rolled back: 12 rows rolled back
+Import terminated successfully with warnings.
